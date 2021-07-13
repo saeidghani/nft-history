@@ -1,0 +1,22 @@
+/* custom slider */
+.slick-track {
+  display: flex !important;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 40px;
+  opacity: 1;
+  position: relative;
+  bottom: 60px;
+  z-index: 10;
+}
+
+.slick-slides-gap {
+  .slick-list {margin: 0 -5px;}
+  .slick-slide>div {padding: 0 5px;}
+  @media (min-width: 1024px) {
+    .slick-list {margin: 0 -5px;}
+    .slick-slide>div {padding: 0 5px;}
+  }
+}
+
