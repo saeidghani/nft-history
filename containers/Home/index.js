@@ -1,110 +1,72 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
-import BidCard from '../../components/common/BidCard';
+import Layout from '../../layout';
+import Introduction from './Introduction';
+import BidCardsList from './BidCardsList';
 import CalendarSlider from '../../components/common/CalendarSlider';
 
 export default function Home() {
-  const [activeSort, setActiveSort] = useState(1);
-  const [activeCheckbox, setActiveCheckbox] = useState(1);
+  const router = useRouter();
+  const { pathname, query } = router;
+  const { category, isAuth } = query;
 
-  const sortByItems = [
-    { key: 1, title: 'Recently Added' },
-    { key: 2, title: 'Most Liked' },
-    { key: 3, title: 'Cheapest' },
-    { key: 4, title: 'Highest Price' },
+  const categories = [
+    { key: 'sport', name: 'Sport' },
+    { key: 'art', name: 'Art' },
+    { key: 'history', name: 'History' },
+    { key: 'personal', name: 'Personal' },
   ];
-  const checkBoxItems = [
-    { key: 1, title: 'Unsold' },
-    { key: 2, title: 'Sold' },
-    { key: 3, title: 'Packages' },
+
+  const sliderDates = [
+    { key: 9, title1: 9 },
+    { key: 10, title1: 10 },
+    { key: 11, title1: 11 },
+    { key: 12, title1: 12 },
+    { key: 13, title1: 13 },
+    { key: 14, title1: 14, displayPointer: true },
+    { key: 15, title1: 15 },
+    { key: 16, title1: 16 },
+    { key: 17, title1: 17 },
+    { key: 18, title1: 18 },
+    { key: 19, title1: 19 },
+    { key: 20, title1: 20 },
+    { key: 21, title1: 21 },
   ];
 
   return (
-    <div className="flex flex-col mt-10 min-h-screen p-10">
-      <div className="text-20 text-white">The Premier Marketplace for Dates</div>
-      <div
-        className="flex items-center justify-between bg-white bg-opacity-10
-                   border border-solid border-fadeLightBlue1 rounded-18 px-5.5 py-4 mt-4.5"
-      >
-        <div className="flex space-x-8.5 text-secondary text-opacity-80">
-          <div className="">Sport</div>
-          <div className="">Art</div>
-          <div className="">History</div>
-          <div className="">Personal</div>
-        </div>
-        <Image src="/icons/calendar.svg" width={25} height={22} />
-      </div>
-      <div className="mt-12 w-full" style={{ maxWidth: 1088 }}>
-        <CalendarSlider />
-      </div>
-      <BidCard wrapperClass="mt-8" />
-      <div
-        className="bg-darkGray rounded-18 w-full flex flex-col items-center mt-20"
-        style={{ width: 206, height: 213 }}
-      >
-        <div className="flex justify-center -mt-10">
-          <Image src="/images/calendarIllustration.svg" width={180} height={180} />
-        </div>
-        <div className="">
-          <div className="text-white text-15 font-light text-center" style={{ letterSpacing: 2 }}>
-            <div>Sell your date</div>
-            <div>as NFT now!</div>
-          </div>
-        </div>
-      </div>
-      <div className="bg-darkGray py-5 pl-6.5 rounded-20 mt-10" style={{ maxWidth: 248 }}>
-        <div className="text-white mb-4.5">Sort By</div>
-        <div className="flex flex-col space-y-5">
-          {sortByItems.map((i) => (
-            <div
-              key={i.key}
-              className="flex items-center space-x-2 cursor-pointer"
-              onClick={() => setActiveSort(i.key)}
-            >
-              <div
-                className={`w-4 h-4 rounded-full flex justify-center items-center
-                              border border-solid ${
-                                i.key === activeSort ? 'border-primary' : 'border-lightBlue'
-                              }`}
-              >
+    <Layout>
+      <div className="relative">
+        <div className="text-20 text-white">The Premier Marketplace for Dates</div>
+        <div
+          className="flex items-center justify-between bg-white bg-opacity-10
+                   border border-solid border-fadeLightBlue1 rounded-18 px-5.5 py-2 mt-4.5"
+        >
+          <div className="flex space-x-6">
+            {categories?.map((c) => (
+              <Link key={c.key} href={{ pathname, query: { ...query, category: c.key } }}>
                 <div
-                  className={`w-2 h-2 rounded-full ${
-                    i.key === activeSort ? 'bg-primary' : 'bg-transparent'
+                  className={`cursor-pointer ${
+                    c.key === category
+                      ? 'text-primary bg-primary bg-opacity-10 rounded-10 px-2.5 py-2'
+                      : 'text-secondary text-opacity-80 px-2.5 py-2'
                   }`}
-                />
-              </div>
-              <div className="text-white text-opacity-40">{i.title}</div>
-            </div>
-          ))}
+                >
+                  {c.name}
+                </div>
+              </Link>
+            ))}
+          </div>
+          <Image src="/icons/calendar.svg" width={25} height={22} />
         </div>
+        {category && isAuth && (
+          <div className="mt-12 w-full">
+            <CalendarSlider dates={sliderDates} title="9-21 Centery" />
+          </div>
+        )}
+        {category || isAuth ? <BidCardsList /> : <Introduction />}
       </div>
-      <div className="bg-darkGray py-5 pl-6.5 rounded-20 mt-10" style={{ maxWidth: 248 }}>
-        <div className="flex flex-col space-y-5">
-          {checkBoxItems.map((i) => (
-            <div
-              key={i.key}
-              className="flex items-center space-x-2 cursor-pointer"
-              onClick={() => setActiveCheckbox(i.key)}
-            >
-              <div
-                className={`w-4 h-4 rounded flex justify-center items-center
-                              border border-solid ${
-                                i.key === activeCheckbox
-                                  ? 'bg-primary border-primary'
-                                  : 'border-lightBlue'
-                              }`}
-              >
-                {i.key === activeCheckbox && (
-                  <div className={`pb-1 ${i.key === activeCheckbox ? '' : 'bg-transparent'}`}>
-                    <Image src="/icons/tick.svg" width={8} height={6} />
-                  </div>
-                )}
-              </div>
-              <div className="text-white text-opacity-40">{i.title}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    </Layout>
   );
 }

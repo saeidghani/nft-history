@@ -1,8 +1,6 @@
-import React from "react";
-import HomePage from '../containers/Home'
+import React from 'react';
+import Home from '../containers/Home';
 
-export default function Home() {
-  return (
-      <HomePage/>
-  )
-};
+export default function HomePage() {
+  return <Home />;
+}
