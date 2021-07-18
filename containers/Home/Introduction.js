@@ -23,15 +23,15 @@ export default function Introduction() {
 
   return (
     <div>
-      <div className="absolute top-40" style={{ left: '50%' }}>
+      <div className="home-line">
         <Image src="/images/lineVertical.svg" width={2} height={985} />
         <div className="absolute top-48 w-5 h-5 rounded-full bg-white" style={{ left: -8.5 }} />
         <div className="absolute top-160 w-5 h-5 rounded-full bg-white" style={{ left: -8.5 }} />
       </div>
-      <div className="grid grid-cols-2 justify-items-center mt-14">
+      <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center mt-11 lg:mt-14">
         <p
-          className="text-white font-light w-full mt-20"
-          style={{ maxWidth: 265, letterSpacing: 1.3 }}
+          className="order-2 lg:order-1 text-white font-light w-full max-w-62 lg:max-w-66 mt-4.5 lg:mt-20"
+          style={{ letterSpacing: 1.3 }}
         >
           Apollo 11 was the spaceflight that first landed humans on the moon. Neil Armstrong and
           Buzz Aldrin formed the American crew that landed the Apollo Lunar Module Eagle on July 20,
@@ -40,10 +40,10 @@ export default function Introduction() {
         </p>
         <BidCard {...firstBidCard} />
       </div>
-      <div className="grid grid-cols-2 justify-items-center mt-25">
+      <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center mt-9.5 lg:mt-25">
         <p
-          className="text-white font-light w-full mt-20"
-          style={{ maxWidth: 265, letterSpacing: 1.3 }}
+          className="order-2 lg:order-1 text-white font-light w-full max-w-62 lg:max-w-66 mt-4.5 lg:mt-20"
+          style={{ letterSpacing: 1.3 }}
         >
           {/* eslint-disable-next-line react/no-unescaped-entities */}
           Game 6 of the 1998 NBA Finals. Michael Jordan's game-winner to put the Bulls up 87–86 with

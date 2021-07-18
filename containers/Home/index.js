@@ -1,23 +1,16 @@
 import React from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Layout from '../../layout';
 import Introduction from './Introduction';
 import BidCardsList from './BidCardsList';
 import CalendarSlider from '../../components/common/CalendarSlider';
+import CategoryTabs from '../../components/common/CategoryTabs';
 
 export default function Home() {
   const router = useRouter();
-  const { pathname, query } = router;
+  const { query } = router;
   const { category, isAuth } = query;
-
-  const categories = [
-    { key: 'sport', name: 'Sport' },
-    { key: 'art', name: 'Art' },
-    { key: 'history', name: 'History' },
-    { key: 'personal', name: 'Personal' },
-  ];
 
   const sliderDates = [
     { key: 9, title1: 9 },
@@ -38,28 +31,15 @@ export default function Home() {
   return (
     <Layout>
       <div className="relative">
-        <div className="text-20 text-white">The Premier Marketplace for Dates</div>
-        <div
-          className="flex items-center justify-between bg-white bg-opacity-10
-                   border border-solid border-fadeLightBlue1 rounded-18 px-5.5 py-2 mt-4.5"
-        >
-          <div className="flex space-x-6">
-            {categories?.map((c) => (
-              <Link key={c.key} href={{ pathname, query: { ...query, category: c.key } }}>
-                <div
-                  className={`cursor-pointer ${
-                    c.key === category
-                      ? 'text-primary bg-primary bg-opacity-10 rounded-10 px-2.5 py-2'
-                      : 'text-secondary text-opacity-80 px-2.5 py-2'
-                  }`}
-                >
-                  {c.name}
-                </div>
-              </Link>
-            ))}
+        <div className=" flex justify-center">
+          <div className="relative lg:hidden">
+            <div className="absolute top-5 left-5 text-19 text-white font-light z-10">
+              The Premier <br /> Marketplace for <br /> Dates
+            </div>
+            <Image src="/images/calendarIllustrationSm.svg" width={327} height={128} />
           </div>
-          <Image src="/icons/calendar.svg" width={25} height={22} />
         </div>
+        <CategoryTabs />
         {category && isAuth && (
           <div className="mt-12 w-full">
             <CalendarSlider dates={sliderDates} title="9-21 Centery" />

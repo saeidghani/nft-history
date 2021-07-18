@@ -24,6 +24,31 @@ input, button, select {
   border-radius: 5px;
 }
 
-.fade-text {
+.home-line {
+  position: absolute;
+  top: 160px;
+  left: 50%;
+
+  @media (max-width: 1024px) {
+  left: 10%;
+  top: 250px;
+  }
+  @media (max-width: 640px) {
+  left: 0;
+  }
+}
+
+.market-place-grid {
+  display: grid;
+  grid-template-columns: 248px 1fr;
+  gap: 32px;
+
+  @media (max-width: 1440px) {
+   grid-template-columns: 200px 1fr;
+   gap: 16px;
+  }
+  @media (max-width: 1024px) {
+   grid-template-columns: 1fr;
+  }
 }
 

@@ -26,14 +26,12 @@ function CalendarSlider({ dates, title }) {
   return (
     <div className="">
       <div className="text-white text-20 font-medium">{title}</div>
-      <div className="slick-slides-gap relative grid grid-cols-1 mx-5 mt-8">
-        <div className="absolute top-7.5 -left-6 z-10 cursor-pointer" onClick={handlePrevArrow}>
-          <div className="hidden lg:block">
-            <Image src="/icons/prevArrow.svg" width={10} height={20} alt="arrow" />
-          </div>
-          <div className="block lg:hidden">
-            <Image src="/icons/prevArrow.svg" width={10} height={20} alt="arrow" />
-          </div>
+      <div className="slick-slides-gap relative grid grid-cols-1 sm:mr-2 lg:mx-5 mt-8">
+        <div
+          className="hidden lg:block absolute top-7.5 -left-6 z-10 cursor-pointer"
+          onClick={handlePrevArrow}
+        >
+          <Image src="/icons/prevArrow.svg" width={10} height={20} alt="arrow" />
         </div>
         <Slider className="" {...settings} ref={sliderRef}>
           {dates.map((d) => (
@@ -59,13 +57,19 @@ function CalendarSlider({ dates, title }) {
             </div>
           ))}
         </Slider>
-        <div className="absolute top-7.5 -right-6 z-10 cursor-pointer" onClick={handleNextArrow}>
-          <div className="hidden lg:block">
-            <Image src="/icons/nextArrow.svg" width={10} height={20} alt="arrow" />
-          </div>
-          <div className="block lg:hidden">
-            <Image src="/icons/nextArrow.svg" width={10} height={20} alt="arrow" />
-          </div>
+        <div
+          className="hidden lg:block absolute top-7.5 -right-6 z-10 cursor-pointer"
+          onClick={handleNextArrow}
+        >
+          <Image src="/icons/nextArrow.svg" width={10} height={20} alt="arrow" />
+        </div>
+      </div>
+      <div className="lg:hidden flex justify-center items-center space-x-11 mt-4">
+        <div className="cursor-pointer" onClick={handlePrevArrow}>
+          <Image src="/icons/prevArrow.svg" width={10} height={20} alt="arrow" />
+        </div>
+        <div className="cursor-pointer" onClick={handleNextArrow}>
+          <Image src="/icons/nextArrow.svg" width={10} height={20} alt="arrow" />
         </div>
       </div>
     </div>

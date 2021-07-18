@@ -1,16 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import Navigation from '../components/common/Navigation';
 
 function Sidebar() {
-  const router = useRouter();
-  const { pathname } = router;
-  console.log(pathname);
-
   return (
     <aside
-      className="hidden lg:flex flex-col justify-between py-10 pl-10 pr-6.5
+      className="hidden lg:flex flex-col justify-between py-10 pl-6 2xl:pl-10 pr-4 2xl:pr-6.5
                  border border-solid border-fadeLightBlue1"
       style={{ height: 902 }}
     >

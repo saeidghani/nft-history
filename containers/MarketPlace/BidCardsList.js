@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BidCard from '../../components/common/BidCard';
 import { useRouter } from 'next/router';
 
-function BidCardsList() {
+function BidCardsList({ wrapperClass }) {
   const router = useRouter();
   const { query } = router;
   const { isAuth } = query;
@@ -298,10 +298,12 @@ function BidCardsList() {
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 2xl:gap-8 mt-7 lg:mt-8">
-      {bidCards.map((i) => (
-        <BidCard key={i.key} {...i.details} />
-      ))}
+    <div className={wrapperClass}>
+      <div className="grid grid-cols-2 xl:grid-cols-3 gap-4 2xl:gap-8 w-full">
+        {bidCards.map((i) => (
+          <BidCard key={i.key} {...i.details} />
+        ))}
+      </div>
     </div>
   );
 }

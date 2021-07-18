@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { useRouter } from 'next/router';
 import { Menu, Transition } from '@headlessui/react';
 import { twOverride } from '../../utils';
 
@@ -17,9 +16,6 @@ export default function Dropdown({
   unselectedItemClass,
   displaySelected,
 }) {
-  const router = useRouter();
-  const { query } = router;
-
   return (
     <div className={`relative text-center z-10 ${width}`}>
       <Menu as="div" className=" inline-block text-left w-full">

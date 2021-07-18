@@ -7,7 +7,6 @@ import routes from '../../constants/routes';
 function Navigation({ wrapperClass = '' }) {
   const router = useRouter();
   const { pathname } = router;
-  console.log(pathname);
 
   const sidebarItems = [
     {
@@ -50,7 +49,7 @@ function Navigation({ wrapperClass = '' }) {
         {sidebarItems?.map((i) => (
           <div key={i.key} className="flex justify-between">
             <Link href={i.href}>
-              <div className="flex space-x-2.5 cursor-pointer">
+              <div className="flex space-x-2.5 items-center cursor-pointer">
                 <div>{i.icon}</div>
                 <div
                   className={`text-15 font-semibold ${

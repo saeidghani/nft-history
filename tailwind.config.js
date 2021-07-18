@@ -12,6 +12,15 @@ module.exports = {
     fontFamily: {
       sans: ['Poppins', ...defaultTheme.fontFamily.sans],
     },
+    screens: {
+      '2xs': '375px',
+      xs: '475px',
+      sm: '580px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1380px',
+    },
     extend: {
       fontFamily: {
         Ubuntu: ['Nunito', 'sans-serif'],
@@ -21,6 +30,7 @@ module.exports = {
         14: '0.875rem',
         15: '0.9375rem',
         16: '1rem',
+        19: '1.1875rem',
         20: '1.25rem',
         26: '1.625rem',
         28: '1.75rem',
@@ -34,6 +44,7 @@ module.exports = {
         darkBlue: '#2A2E39',
         gray: '#4D5059',
         darkGray: '#373D48',
+        fadeWhite1: 'rgba(255, 255, 255, 0.1)',
         fadeWhite2: 'rgba(255, 255, 255, 0.2)',
       },
       spacing: {
@@ -62,9 +73,15 @@ module.exports = {
         31: '7.75rem',
         34: '8.5rem',
         36: '9rem',
+        38: '9.5rem',
+        38.5: '9.625rem',
         95: '23.75rem',
         100: '25rem',
         160: '40rem',
+      },
+      maxWidth: {
+        62: '15.5rem',
+        66: '16.5rem',
       },
       borderRadius: {
         6: '6px',

@@ -14,9 +14,9 @@
 .slick-slides-gap {
   .slick-list {margin: 0 -5px;}
   .slick-slide>div {padding: 0 5px;}
-  @media (min-width: 1024px) {
-    .slick-list {margin: 0 -5px;}
-    .slick-slide>div {padding: 0 5px;}
+  @media (max-width: 1024px) {
+    .slick-list {margin: 0 -4px;}
+    .slick-slide>div {padding: 0 4px;}
   }
 }
 
