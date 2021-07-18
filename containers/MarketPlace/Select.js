@@ -41,7 +41,7 @@ export default function Select({
           </div>
         )}
       </div>
-      <div className="text-white text-12">{title}</div>
+      <div className={`text-white text-12 ${isSelected ? '' : 'text-opacity-40'}`}>{title}</div>
     </>
   );
 

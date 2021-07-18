@@ -15,10 +15,19 @@ function BidCard({
 }) {
   return (
     <div className={wrapperClass}>
-      <div className="flex flex-col bg-darkGray rounded-20 pt-5 pb-4 px-5">
-        <div className="flex flex-col items-center w-full" style={{ height: 218 }}>
+      <div
+        className={`flex flex-col bg-darkGray rounded-20 pb-4 px-5 ${
+          calendar && timer ? 'pt-3' : 'pt-5'
+        }`}
+      >
+        <div className="relative flex flex-col items-center w-full" style={{ height: 218 }}>
           {calendar ? (
-            <div className="flex flex-col items-center w-full mt-3.5" style={{ height: 182 }}>
+            <div
+              className={`flex flex-col items-center w-full ${
+                calendar && timer ? 'mt-10' : 'mt-3.5'
+              }`}
+              style={{ height: 182 }}
+            >
               <div
                 className="text-primary text-center text-28 font-bold bg-white w-full rounded-t-20
                          border border-solid border-white"
@@ -34,30 +43,34 @@ function BidCard({
               </div>
             </div>
           ) : (
-            <div className="relative">
-              <Image src="/images/cardPic1.png" width={208} height={218} />
-              {timer && (
-                <div
-                  className="absolute top-1.5 right-1.5 flex items-center space-x-1 rounded-6
+            <Image src="/images/cardPic1.png" width={208} height={218} />
+          )}
+          {timer && (
+            <div
+              className="absolute top-1.5 right-1.5 flex items-center space-x-1 rounded-6
                      bg-black bg-opacity-60 text-white px-1 py-0.5"
-                >
-                  <div className="text-14 text-white">{timer.hour}h</div>
-                  <div className="text-14 text-white">{timer.minute}m</div>
-                  <div className="text-14 text-white">{timer.second}s</div>
-                  <div className="text-12 text-white text-opacity-60">{timer.status}</div>
-                </div>
-              )}
+            >
+              <div className="text-14 text-white">{timer.hour}h</div>
+              <div className="text-14 text-white">{timer.minute}m</div>
+              <div className="text-14 text-white">{timer.second}s</div>
+              <div className="text-12 text-white text-opacity-60">{timer.status}</div>
             </div>
           )}
         </div>
         <div className="">
-          <div className="text-14 text-white opacity-60 font-light mt-3">{status}</div>
-          <div className="flex justify-between mt-3">
+          <div
+            className={`text-14 text-white opacity-60 font-light ${
+              timer && calendar ? 'mt-4' : 'mt-3'
+            }`}
+          >
+            {status}
+          </div>
+          <div className={`flex justify-between ${timer && calendar ? 'mt-2' : 'mt-3'}`}>
             <div className="text-white">{date}</div>
             <div className="text-white">{price}</div>
           </div>
           <div
-            className={`flex justify-between items-center text-white text-12 font-light h-8.5 ${
+            className={`flex justify-between items-center text-white text-12 font-light h-8 ${
               fixedPriceDate ? 'opacity-1' : 'opacity-0'
             }`}
           >
