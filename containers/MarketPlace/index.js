@@ -6,6 +6,7 @@ import BidCardsList from '../../components/common/BidCardsList';
 import CalendarSlider from '../../components/common/CalendarSlider';
 import CategoryTabs from '../../components/common/CategoryTabs';
 import Select from './Select';
+import SwitchSelect from '../../components/common/SwitchSelect';
 
 export default function MarketPlace() {
   const router = useRouter();
@@ -19,7 +20,7 @@ export default function MarketPlace() {
 
   useEffect(() => {
     setActiveSort(sortByItems[0]);
-    setActiveShowType(filterItems[0]);
+    setActiveShowType(showTypeItems[0]);
     setActiveFilters(filterItems[0]);
   }, []);
 
@@ -329,57 +330,17 @@ export default function MarketPlace() {
         )}
         <div className="market-place-grid mt-8">
           <div className="hidden lg:flex flex-col space-y-8">
-            <div className="bg-darkGray py-5 pl-6.5 rounded-20 w-full">
-              <div className="text-white mb-4.5">Sort By</div>
-              <div className="flex flex-col space-y-5">
-                {sortByItems.map((i) => (
-                  <div
-                    key={i.key}
-                    className="flex items-center space-x-2 cursor-pointer"
-                    onClick={() => setActiveSort(i)}
-                  >
-                    <div
-                      className={`w-4 h-4 rounded-full flex justify-center items-center
-                              border border-solid ${
-                                i.key === activeSort.key ? 'border-primary' : 'border-lightBlue'
-                              }`}
-                    >
-                      <div
-                        className={`w-2 h-2 rounded-full ${
-                          i.key === activeSort.key ? 'bg-primary' : 'bg-transparent'
-                        }`}
-                      />
-                    </div>
-                    <div className="text-white text-opacity-40">{i.title}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="bg-darkGray py-5 pl-6.5 rounded-20 w-full">
-              <div className="flex flex-col space-y-5">
-                {showTypeItems.map((i) => (
-                  <div
-                    key={i.key}
-                    className="flex items-center space-x-2 cursor-pointer"
-                    onClick={() => setActiveShowType(i)}
-                  >
-                    <div
-                      className={`w-4 h-4 rounded-full flex justify-center items-center
-                              border border-solid ${
-                                i.key === activeShowType.key ? 'border-primary' : 'border-lightBlue'
-                              }`}
-                    >
-                      <div
-                        className={`w-2 h-2 rounded-full ${
-                          i.key === activeShowType.key ? 'bg-primary' : 'bg-transparent'
-                        }`}
-                      />
-                    </div>
-                    <div className="text-white text-opacity-40">{i.title}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <SwitchSelect
+              title="Sort By"
+              items={sortByItems}
+              activeFilter={activeSort}
+              onSetActiveFilter={(i) => setActiveSort(i)}
+            />
+            <SwitchSelect
+              items={showTypeItems}
+              activeFilter={activeShowType}
+              onSetActiveFilter={(i) => setActiveShowType(i)}
+            />
             <div className="bg-darkGray py-5 pl-6.5 rounded-20 w-full">
               <div className="flex flex-col space-y-5">
                 {filterItems.map((i) => (

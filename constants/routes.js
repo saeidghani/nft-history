@@ -4,6 +4,7 @@ export default {
   },
   account: {
     index: '/account',
+    followers: '/account/followers',
   },
   drops: {
     index: '/drops',

@@ -49,7 +49,7 @@ function Header() {
     <div className="relative w-full">
       <input
         type="text"
-        className={`bg-white bg-opacity-10 rounded-18 w-full 
+        className={`text-white bg-white bg-opacity-10 rounded-18 w-full 
                     border border-solid border-fadeLightBlue1 ${
                       isSm ? 'h-9.5 pl-12' : 'h-11.5 pl-14'
                     }`}

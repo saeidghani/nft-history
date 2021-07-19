@@ -6,7 +6,7 @@ import BidCardsList from '../../components/common/BidCardsList';
 
 function Drops() {
   const router = useRouter();
-  const { pathname, query } = router;
+  const { query } = router;
   const { isAuth } = query;
   const [bidCards, setBidCards] = useState([]);
 
