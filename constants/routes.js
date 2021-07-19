@@ -14,5 +14,6 @@ export default {
   },
   walletBalance: {
     index: '/wallet-balance',
+    details: '/wallet-balance/details',
   },
 };

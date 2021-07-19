@@ -1,7 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Layout from '../../Layout';
 import PremierMarketplace from '../../components/common/PremierMarketplace';
+import routes from '../../constants/routes';
 
 function WalletBalance() {
   return (
@@ -17,9 +19,14 @@ function WalletBalance() {
         <div className="mt-7">
           <Image src="/images/metamask.png" width={115} height={90} />
         </div>
-        <button className="text-18 text-white rounded-12 w-45 h-13.5 bg-primary mt-10">
-          Connect
-        </button>
+        <Link href={routes.walletBalance.details}>
+          <div
+            className="text-18 text-white flex justify-center items-center rounded-12
+                          w-45 h-13.5 bg-primary mt-10 cursor-pointer"
+          >
+            Connect
+          </div>
+        </Link>
       </div>
     </Layout>
   );

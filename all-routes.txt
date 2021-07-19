@@ -7,3 +7,5 @@
 /account?isAuth=true&hasProfilePic=true&myProfile=true
 /account?isAuth=true&hasProfilePic=true&follows=true
 /account/followers
+/wallet-balance
+/wallet-balance/details

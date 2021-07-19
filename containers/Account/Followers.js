@@ -23,7 +23,7 @@ function Followers() {
 
   const FollowStatus = ({ isFollowing = true }) => (
     <div className="flex justify-between items-center mt-8">
-      <div className="flex space-x-6 items-center">
+      <div className="flex space-x-2 xs:space-x-6 items-center">
         <div className="w-15.5 h-15.5 flex justify-center items-center rounded-full">
           <Image src="/images/avatar.png" width={112} height={112} />
         </div>
@@ -47,7 +47,7 @@ function Followers() {
   return (
     <Layout>
       <div
-        className="bg-darkGray2 rounded-18 border border-solid border-fadeWhite1
+        className="lg:hidden bg-darkGray2 rounded-18 border border-solid border-fadeWhite1
                       flex justify-between items-center py-2 px-3"
       >
         {statuses.map((s) => (
@@ -62,7 +62,7 @@ function Followers() {
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 mt-6 lg:mt-0">
+      <div className="lg:hidden mt-6">
         {activeStatus === 2 ? (
           <div className="">
             <div className="text-white text-20 font-medium">Following</div>
@@ -80,6 +80,22 @@ function Followers() {
             ))}
           </div>
         )}
+      </div>
+      <div className="hidden lg:grid grid-cols-2 gap-x-12 mt-0">
+        <div className="">
+          <div className="text-white text-20 font-medium">Following</div>
+          <SearchInput wrapperClass="mt-7" />
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
+            <FollowStatus key={i} />
+          ))}
+        </div>
+        <div className="">
+          <div className="text-white text-20 font-medium">Follower</div>
+          <SearchInput wrapperClass="mt-7" />
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
+            <FollowStatus key={i} isFollowing={i !== 1} />
+          ))}
+        </div>
       </div>
     </Layout>
   );

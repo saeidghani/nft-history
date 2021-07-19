@@ -3,7 +3,7 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import { twOverride } from '../utils';
 
-function Main({ children, mainClass }) {
+function Layout({ children, mainClass }) {
   return (
     <div className="flex">
       <Sidebar />
@@ -17,4 +17,4 @@ function Main({ children, mainClass }) {
   );
 }
 
-export default Main;
+export default Layout;
