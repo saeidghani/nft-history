@@ -9,3 +9,4 @@
 /account/followers
 /wallet-balance
 /wallet-balance/details
+/on-sale?auctionEnded=true

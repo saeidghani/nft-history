@@ -53,9 +53,14 @@ function Details() {
   );
 
   const History = ({ title, items }) => (
-    <div className="bg-darkGray rounded-20 p-6.5 h-103.5">
-      <div className="text-white bg-white bg-opacity-10 rounded-18 font-medium p-4">{title}</div>
-      <div className="flex flex-col space-y-4 mt-6.5">
+    <div className="bg-darkGray rounded-20 py-6.5 overflow-hidden h-103.5">
+      <div className="text-white bg-white bg-opacity-10 rounded-18 font-medium p-4 mx-6.5">
+        {title}
+      </div>
+      <div
+        className="flex flex-col space-y-4 mt-6.5 overflow-auto ml-6.5 mr-4.5 pr-2"
+        style={{ height: 300 }}
+      >
         {items.map((i, index) => (
           <div
             key={i.key}

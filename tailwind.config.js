@@ -23,7 +23,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        Ubuntu: ['Nunito', 'sans-serif'],
+        Nunito: ['Nunito', 'sans-serif'],
+        Ubuntu: ['Ubuntu', 'sans-serif'],
       },
       fontSize: {
         12: '0.75rem',
@@ -34,6 +35,8 @@ module.exports = {
         20: '1.25rem',
         26: '1.625rem',
         28: '1.75rem',
+        48: '3rem',
+        84: '5.25rem',
         96: '6rem',
       },
       colors: {

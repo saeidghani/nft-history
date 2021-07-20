@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { HomeIcon, AccountIcon, DropsIcon, MarketPlaceIcon, WalletBalanceIcon } from '../icons';
+import { HomeIcon, AccountIcon, DropsIcon, MarketPlaceIcon, WalletBalanceIcon } from './icons';
 import routes from '../../constants/routes';
 
 function Navigation({ wrapperClass = '' }) {

@@ -43,7 +43,9 @@ function BidCard({
               </div>
             </div>
           ) : (
-            <Image src="/images/cardPic1.png" width={208} height={218} />
+            <div className="relative" style={{ width: '100%', height: 218 }}>
+              <Image src="/images/cardPic1.png" layout="fill" />
+            </div>
           )}
           {timer && (
             <div
