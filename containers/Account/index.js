@@ -345,14 +345,14 @@ function Account() {
             <div className="flex flex-col items-end">
               {myProfile && (
                 <div className="order-2 lg:order-1 flex mt-10 lg:mt-0">
-                  <Link href={routes.account.followers}>
-                    <div className="mr-4">
+                  <Link href={routes.account.edit}>
+                    <div className="cursor-pointer mr-4">
                       <Image src="/icons/edit.svg" width={30} height={30} />
                     </div>
                   </Link>
                   {!hasProfilePic && (
                     <Link href={routes.account.followers}>
-                      <div>
+                      <div className="cursor-pointer">
                         <Image src="/icons/dots.svg" width={30} height={30} />
                       </div>
                     </Link>

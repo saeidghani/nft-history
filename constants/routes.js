@@ -2,9 +2,11 @@ export default {
   home: {
     index: '/',
   },
+  notifications: '/notifications',
   account: {
     index: '/account',
     followers: '/account/followers',
+    edit: '/account/edit',
   },
   drops: {
     index: '/drops',

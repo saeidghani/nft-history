@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Navigation from '../components/common/Navigation';
 import Drawer from '../components/UI/Drawer';
 import Dropdown from '../components/UI/Dropdown';
+import routes from '../constants/routes';
 
 function Header() {
   const router = useRouter();
@@ -11,6 +13,7 @@ function Header() {
   const { isAuth } = query;
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [displaySearch, setDisplaySearch] = useState(false);
 
   const Menu = () => (
@@ -91,6 +94,62 @@ function Header() {
     },
   ];
 
+  const notificationsItems = [
+    {
+      key: 1,
+      title: (
+        <div
+          className="flex justify-between items-center text-18 bg-white bg-opacity-10 rounded-18
+                    h-14 px-4 mt-6.5 w-full"
+        >
+          <div className="text-white text-18">Notifications</div>
+        </div>
+      ),
+    },
+    {
+      key: 2,
+      title: (
+        <div className="text-white pr-8 mt-2">
+          Serati Ma has made an offer of 10 HSY for your “Faces” collection
+        </div>
+      ),
+    },
+    {
+      key: 3,
+      title: (
+        <div className="text-white pr-8">
+          Serati Ma has made an offer of 10 HSY for your “Faces” collection
+        </div>
+      ),
+    },
+    {
+      key: 4,
+      title: (
+        <div className="text-white pr-8">
+          Serati Ma has made an offer of 10 HSY for your “Faces” collection
+        </div>
+      ),
+    },
+    {
+      key: 5,
+      title: (
+        <div className="text-white pr-8">
+          Serati Ma has made an offer of 10 HSY for your “Faces” collection
+        </div>
+      ),
+    },
+    {
+      key: 6,
+      title: (
+        <Link href={routes.notifications}>
+          <div className="text-primary font-medium flex justify-center w-full mb-1">
+            <div>Show more</div>
+          </div>
+        </Link>
+      ),
+    },
+  ];
+
   return (
     <header className="">
       <Drawer drawerOpen={menuOpen} closeDrawer={() => setMenuOpen(false)}>
@@ -143,8 +202,18 @@ function Header() {
               menuItemsClass="pl-4 pb-5 -left-100 -mt-7 w-95"
             />
           </div>
-          <div className="w-full flex justify-end cursor-pointer">
-            <Image src="/icons/bell.svg" width={22} height={25} />
+          <div className="w-full flex justify-end">
+            <Dropdown
+              title={
+                <div className="w-full flex justify-end cursor-pointer">
+                  <Image src="/icons/bell.svg" width={22} height={25} />
+                </div>
+              }
+              items={notificationsItems}
+              width="w-6"
+              menuItemClass="justify-start text-left"
+              menuItemsClass="-left-130 mt-5 w-95 px-4 w-130 bg-darkGray"
+            />
           </div>
           <div className="w-full flex justify-end cursor-pointer pl-3">
             <div className="bg-white bg-opacity-20 rounded-full w-9.5 h-9.5 flex justify-center">

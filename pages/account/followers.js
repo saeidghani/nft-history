@@ -1,7 +1,7 @@
 import React from 'react';
 import Followers from '../../containers/Account/Followers';
 
-function followersPage() {
+function FollowersPage() {
   return (
     <div>
       <Followers />
@@ -9,4 +9,4 @@ function followersPage() {
   );
 }
 
-export default followersPage;
+export default FollowersPage;

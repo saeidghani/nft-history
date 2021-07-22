@@ -52,3 +52,6 @@ input, button, select {
   }
 }
 
+.file-upload-btn-hidden::-webkit-file-upload-button {
+  visibility: hidden;
+}

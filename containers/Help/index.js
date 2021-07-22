@@ -1,0 +1,90 @@
+import React, { useState } from 'react';
+import Image from 'next/image';
+import Layout from '../../Layout';
+import Collapse from '../../components/UI/Collapse';
+
+function Help() {
+  const items = [
+    {
+      key: 1,
+      title: 'NFT? ERC-721 Tokens?',
+      children:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia\n' +
+        '          consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+    {
+      key: 2,
+      title: 'What is NFT History?',
+      children:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia\n' +
+        '          consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+    {
+      key: 3,
+      title: 'How do we turn Dates to NFT?',
+      children:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia\n' +
+        '          consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+    {
+      key: 4,
+      title: 'What is the purpose?',
+      children:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia\n' +
+        '          consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+    {
+      key: 5,
+      title: 'What is the purpose?',
+      children:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia\n' +
+        '          consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+    {
+      key: 6,
+      title: 'What is HSY?',
+      children:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia\n' +
+        '          consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+    {
+      key: 7,
+      title: 'How do I get HSY?',
+      children:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia\n' +
+        '          consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+    {
+      key: 8,
+      title: 'How can i burn a date?',
+      children:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia\n' +
+        '          consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+    {
+      key: 9,
+      title: 'What is NFT History?',
+      children:
+        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia\n' +
+        '          consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+  ];
+
+  return (
+    <Layout>
+      <div className="text-white text-20">Need Some Help ?</div>
+      <div className="text-white text-14 font-light mt-2.5">
+        “I don’t know. But, I’ll find out for you.”
+      </div>
+      <div className="mt-7">
+        {items.map((i) => (
+          <Collapse key={i.key} title={i.title}>
+            <p className="text-white text-opacity-75 mt-3">{i.children}</p>
+          </Collapse>
+        ))}
+      </div>
+    </Layout>
+  );
+}
+
+export default Help;

@@ -1,7 +1,7 @@
 import React from 'react';
 import OnSale from '../../containers/OnSale';
 
-function onSalePage() {
+function OnSalePage() {
   return <OnSale />;
 }
 
