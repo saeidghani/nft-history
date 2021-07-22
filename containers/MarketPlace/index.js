@@ -25,7 +25,7 @@ export default function MarketPlace() {
   }, []);
 
   useEffect(() => {
-    if (isAuth) {
+    if (isAuth === 'true') {
       setBidCards(authBidCards);
     } else {
       setBidCards(guestBidCards);
@@ -323,7 +323,7 @@ export default function MarketPlace() {
     <Layout>
       <div className="relative">
         <CategoryTabs />
-        {category && isAuth && (
+        {category && isAuth === 'true' && (
           <div className="mt-12 w-full">
             <CalendarSlider dates={sliderDates} title="9-21 Centery" />
           </div>

@@ -12,6 +12,8 @@ export default function Select({
   logoClass,
   selectedClass,
   optionsClass,
+  optionClass,
+  buttonClass,
   placeholder,
   selected,
   onSelect,
@@ -24,11 +26,13 @@ export default function Select({
           <>
             <div className="relative z-10">
               <Listbox.Button
-                className="relative w-full text-left cursor-default focus:outline-none
-              focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white
-               focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2
-               focus-visible:border-indigo-500 bg-transparent"
-                {...props}
+                className={twOverride(
+                  `relative w-full text-left cursor-default  
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 
+                  focus-visible:ring-white focus-visible:ring-offset-orange-300 
+                  focus-visible:ring-offset-2 focus-visible:border-lightBlue bg-transparent`,
+                  buttonClass,
+                )}
               >
                 <div className="flex items-center space-x-4 py-0.5">
                   {selected?.logo && (
@@ -41,7 +45,7 @@ export default function Select({
                     </span>
                   </div>
                 </div>
-                <span className="absolute inset-y-0 right-0 flex items-center pointer-events-none">
+                <span className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
                   <Image
                     src="/icons/arrowDown.svg"
                     alt="Arrow"
@@ -68,10 +72,10 @@ export default function Select({
                   {options.map((option, optionIdx) => (
                     <Listbox.Option
                       key={optionIdx}
-                      className={({ active }) =>
-                        `${active ? '' : ''}
-                          select-none relative py-1 pl-4 pr-4 cursor-pointer bg-white`
-                      }
+                      className={twOverride(
+                        `select-none relative py-1 pl-4 pr-4 cursor-pointer bg-white`,
+                        optionClass,
+                      )}
                       value={option}
                     >
                       {({ selected, active }) => (

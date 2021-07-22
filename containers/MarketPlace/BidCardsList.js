@@ -10,7 +10,7 @@ function BidCardsList({ wrapperClass }) {
   const [bidCards, setBidCards] = useState([]);
 
   useEffect(() => {
-    if (isAuth) {
+    if (isAuth === 'true') {
       setBidCards(authBidCards);
     } else {
       setBidCards(guestBidCards);

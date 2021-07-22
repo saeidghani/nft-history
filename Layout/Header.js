@@ -10,7 +10,7 @@ import routes from '../constants/routes';
 function Header() {
   const router = useRouter();
   const { query } = router;
-  const { isAuth } = query;
+  const { pathname, isAuth } = query;
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
@@ -150,6 +150,21 @@ function Header() {
     },
   ];
 
+  const logoutItems = [
+    {
+      key: 1,
+      title: (
+        <div
+          className="cursor-pointer flex items-center"
+          onClick={() => router.push({ pathname, query: { isAuth: false } })}
+        >
+          <Image src="/icons/logoutSwitch.svg" width={31} height={31} />
+          <div className="text-white text-18 ml-4">Log Out</div>
+        </div>
+      ),
+    },
+  ];
+
   return (
     <header className="">
       <Drawer drawerOpen={menuOpen} closeDrawer={() => setMenuOpen(false)}>
@@ -217,8 +232,19 @@ function Header() {
           </div>
           <div className="w-full flex justify-end cursor-pointer pl-3">
             <div className="bg-white bg-opacity-20 rounded-full w-9.5 h-9.5 flex justify-center">
-              {isAuth ? (
-                <Image src="/images/avatar.png" width={38} height={38} />
+              {isAuth === 'true' ? (
+                <Dropdown
+                  title={
+                    <div className="cursor-pointer">
+                      <Image src="/images/avatar.png" width={38} height={38} />
+                    </div>
+                  }
+                  items={logoutItems}
+                  width="w-10"
+                  menuItemClass="justify-start text-left py-4.5"
+                  menuItemsClass="-left-48 mt-8 px-4 w-56 bg-darkGray"
+                  onSelect={() => {}}
+                />
               ) : (
                 <Image src="/icons/user.svg" width={20} height={20} />
               )}

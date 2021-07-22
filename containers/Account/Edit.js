@@ -49,15 +49,18 @@ export default function Edit() {
 
   return (
     <Layout>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="mx-auto" style={{ maxWidth: 373 }}>
         <div className="md:mt-6.5 flex flex-col items-center">
           {preview && (
-            <div
-              className="w-full text-18 font-semibold rounded-full bg-white
-                            bg-opacity-20"
-            >
-              {/*<Image src={preview || '/images/avatar.png'} alt="avatar" width={124} height={124} />*/}
-            </div>
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="text-18 font-semibold rounded-full bg-white bg-opacity-20"
+                style={{ height: 124, width: 124 }}
+                src={preview || '/images/avatar.png'}
+                alt=""
+              />
+            </>
           )}
           <div className="relative">
             <input
@@ -91,7 +94,6 @@ export default function Edit() {
           )}
         </div>
 
-        {/* register your input into the hook by invoking the "register" function */}
         <div className="text-white text-18">Name*</div>
         <input
           className="rounded-12 border border-solid border-fadeLightBlue5 bg-transparent
@@ -101,7 +103,6 @@ export default function Edit() {
           {...register('name')}
         />
 
-        {/* include validation with required or other standard HTML validation rules */}
         <div className="text-white text-18 mt-6">Bio</div>
         <input
           className="rounded-12 border border-solid border-fadeLightBlue5 bg-transparent

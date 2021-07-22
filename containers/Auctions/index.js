@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Layout from '../../Layout';
 
-function OnSale() {
+function Auctions() {
   const [activeDetail, setActiveDetail] = useState('comments');
   const router = useRouter();
   const { query } = router;
@@ -334,4 +334,4 @@ function OnSale() {
   );
 }
 
-export default OnSale;
+export default Auctions;

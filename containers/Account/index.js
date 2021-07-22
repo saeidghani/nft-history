@@ -19,7 +19,7 @@ function Account() {
   }, []);
 
   useEffect(() => {
-    if (isAuth) {
+    if (isAuth === 'true') {
       setBidCards(authBidCards);
     } else {
       setBidCards(guestBidCards);

@@ -18,4 +18,8 @@ export default {
     index: '/wallet-balance',
     details: '/wallet-balance/details',
   },
+  auctions: {
+    index: '/auctions',
+    edit: '/auctions/edit',
+  },
 };

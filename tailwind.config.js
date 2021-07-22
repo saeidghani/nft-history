@@ -50,6 +50,7 @@ module.exports = {
         fadeLightBlue5: 'rgba(185, 192, 222, 0.5)',
         darkBlue: '#2A2E39',
         gray: '#4D5059',
+        gray2: '#BFBFBF',
         darkGray: '#373D48',
         darkGray2: '#434953',
         darkGray3: '#40444F',

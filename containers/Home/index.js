@@ -14,7 +14,7 @@ export default function Home() {
   const [bidCards, setBidCards] = useState([]);
 
   useEffect(() => {
-    if (isAuth) {
+    if (isAuth === 'true') {
       setBidCards(authBidCards);
     } else {
       setBidCards(guestBidCards);
@@ -324,12 +324,12 @@ export default function Home() {
           <PremierMarketplace />
         </div>
         <CategoryTabs />
-        {category && isAuth && (
+        {category && isAuth === 'true' && (
           <div className="mt-12 w-full">
             <CalendarSlider dates={sliderDates} title="9-21 Centery" />
           </div>
         )}
-        {category || isAuth ? (
+        {category || isAuth === 'true' ? (
           <BidCardsList
             bidCards={bidCards}
             wrapperClass="mt-7 lg:mt-8"
