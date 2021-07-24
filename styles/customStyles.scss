@@ -20,3 +20,43 @@
   }
 }
 
+.rc-time-picker {
+  &-input {
+    height: 56px !important;
+    border-radius: 12px !important;
+    background-color: transparent;
+    border: 1px solid #B9C0DE !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 18px !important;
+    font-weight: 300 !important;
+    width: 100% !important;
+    padding-left: 15px !important;
+  }
+
+  &-panel {
+    //top: 360px !important;
+    //left: 808px !important;
+
+    &-inner {
+      background-color: #40444F !important;
+    }
+
+    &-input {
+      background-color: #40444F !important;
+      color: #fff !important;
+    }
+
+    &-select {
+      ul > li {
+        color: #fff !important;
+        &:hover {
+          color: #000 !important;
+        }
+        &.rc-time-picker-panel-select-option-selected {
+          color: #000 !important;
+        }
+      }
+    }
+  }
+}
+

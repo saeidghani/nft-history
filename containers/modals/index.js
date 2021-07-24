@@ -15,7 +15,7 @@ function Modals() {
   useEffect(() => {
     //setPlaceABidOpen(true);
     //setConfirmABidOpen(true);
-    //setMakeOfferOpen(true);
+    setMakeOfferOpen(true);
     //setUploadOpen(true);
     //setCancelAuctionOpen(true);
   }, []);

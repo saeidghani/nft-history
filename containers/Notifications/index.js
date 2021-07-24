@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Layout from '../../Layout';
+import routes from '../../constants/routes';
 
 function Notifications() {
   const notificationItems = [
@@ -198,8 +200,13 @@ function Notifications() {
 
   return (
     <Layout>
-      <div className="flex">
+      <div className="flex justify-between items-center">
         <div className="text-20 text-white">Notifications</div>
+        <Link href={routes.notifications.settings}>
+          <div className="cursor-pointer">
+            <Image src="/icons/settings.svg" width={25} height={25} />
+          </div>
+        </Link>
       </div>
       <div className="grid grid-cols-2 gap-9 mt-11">
         {notificationItems.map((item) => (

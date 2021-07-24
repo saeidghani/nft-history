@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import Layout from '../../Layout';
 import Image from 'next/image';
 import Select from '../../components/UI/Select';
+import TimePicker from '../../components/UI/TimePicker';
 
 export default function Edit() {
   const {
@@ -182,7 +183,7 @@ export default function Edit() {
                 Your auction will automatically end at this time and the highest bidder will win. No
                 need to cancel it!
               </p>
-              <div className="border border-solid border-fadeLightBlue5 rounded-12 mt-3">
+              <div className="w-full border border-solid border-fadeLightBlue5 rounded-12 mt-3">
                 <Select
                   options={expirationDurationItems}
                   onSelect={(val) => setSelectedExpirationDuration(val)}
@@ -194,7 +195,8 @@ export default function Edit() {
                   optionClass="text-white bg-darkGray"
                 />
               </div>
-              <div className="text-white text-18 mt-5">Expiration Time</div>
+              <div className="text-white text-18 mt-5 mb-2.5">Expiration Time</div>
+              <TimePicker />
             </div>
           )}
           {auctionType === 'fixed' && (

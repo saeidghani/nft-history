@@ -24,13 +24,13 @@ export default function Modal({
       <Transition show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-50 overflow-y-auto"
+          className="fixed inset-0 overflow-y-auto"
           initialFocus={cancelButtonRef}
           static
           open={open}
           onClose={closeModal}
         >
-          <Dialog.Overlay className="fixed inset-0 bg-black opacity-75" />
+          <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-50" />
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
               as={Fragment}
@@ -59,7 +59,7 @@ export default function Modal({
             >
               <div
                 className={twOverride(
-                  'bg-darkGray3 inline-block w-full my-8 overflow-hidden text-left ' +
+                  'bg-darkGray3 inline-block w-full my-8  text-left ' +
                     'align-middle transition-all transform shadow-xl rounded-20',
                   containerClass,
                 )}

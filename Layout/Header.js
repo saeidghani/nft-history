@@ -141,7 +141,7 @@ function Header() {
     {
       key: 6,
       title: (
-        <Link href={routes.notifications}>
+        <Link href={routes.notifications.index}>
           <div className="text-primary font-medium flex justify-center w-full mb-1">
             <div>Show more</div>
           </div>
