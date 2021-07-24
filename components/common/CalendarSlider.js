@@ -1,9 +1,99 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Slider from 'react-slick';
+import { useRouter } from 'next/router';
 
-function CalendarSlider({ dates, title }) {
+const daysSliderDates = [
+  { key: 9, title1: 9 },
+  { key: 10, title1: 10 },
+  { key: 11, title1: 11 },
+  { key: 12, title1: 12 },
+  { key: 13, title1: 13, displayPointer: true },
+  { key: 14, title1: 14 },
+  { key: 15, title1: 15 },
+  { key: 16, title1: 16 },
+  { key: 17, title1: 17 },
+  { key: 18, title1: 18 },
+  { key: 19, title1: 19 },
+  { key: 20, title1: 20 },
+  { key: 21, title1: 21 },
+];
+
+const monthSliderDates = [
+  { key: 1, title1: 'Mon', title2: 22 },
+  { key: 2, title1: 'Tue', title2: 23 },
+  { key: 3, title1: 'Wed', title2: 24 },
+  { key: 4, title1: 'thu', title2: 25 },
+  { key: 5, title1: 'Fri', title2: 26, displayPointer: true },
+  { key: 6, title1: 'Sat', title2: 27 },
+  { key: 7, title1: 'Sun', title2: 28 },
+  { key: 8, title1: 'Mon', title2: 29 },
+  { key: 9, title1: 'Tue', title2: 30 },
+  { key: 10, title1: 'Wed', title2: 31 },
+  { key: 11, title1: 'Thu', title2: 1 },
+  { key: 12, title1: 'Fri', title2: 2 },
+  { key: 13, title1: 'Sat', title2: 3 },
+];
+
+const yearSliderDates = [
+  { key: 1, title1: 'Jan' },
+  { key: 2, title1: 'Feb' },
+  { key: 3, title1: 'Mar' },
+  { key: 4, title1: 'Apr' },
+  { key: 5, title1: 'May', displayPointer: true },
+  { key: 6, title1: 'Jun' },
+  { key: 7, title1: 'Jul' },
+  { key: 8, title1: 'Aug' },
+  { key: 9, title1: 'Sep' },
+  { key: 10, title1: 'Oct' },
+  { key: 11, title1: 'Nov' },
+  { key: 12, title1: 'Dec' },
+];
+
+const yearsSliderDates = [
+  { key: 1, title1: 2009 },
+  { key: 2, title1: 2010 },
+  { key: 3, title1: 2011 },
+  { key: 4, title1: 2012 },
+  { key: 5, title1: 2013 },
+  { key: 6, title1: 2014, displayPointer: true },
+  { key: 7, title1: 2015 },
+  { key: 8, title1: 2016 },
+  { key: 9, title1: 2017 },
+  { key: 10, title1: 2018 },
+  { key: 11, title1: 2019 },
+  { key: 12, title1: 2020 },
+  { key: 13, title1: 2021 },
+];
+
+function CalendarSlider() {
+  const router = useRouter();
+  const { query } = router;
+  const { calendarType } = query;
   const sliderRef = React.createRef();
+
+  const [dates, setDates] = useState([]);
+  const [title, setTitle] = useState('');
+
+  useEffect(() => {
+    let dates = [];
+    let title = '';
+    if (calendarType === 'month') {
+      dates = monthSliderDates;
+      title = 'March-April 2021';
+    } else if (calendarType === 'days') {
+      dates = daysSliderDates;
+      title = '9-21 Centery';
+    } else if (calendarType === 'years') {
+      dates = yearsSliderDates;
+      title = '2009-2021';
+    } else {
+      dates = yearSliderDates;
+      title = '2021';
+    }
+    setDates(dates);
+    setTitle(title);
+  }, [calendarType]);
 
   const settings = {
     arrows: false,

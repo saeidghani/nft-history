@@ -30,7 +30,8 @@ export default function Introduction() {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center mt-11 lg:mt-14">
         <p
-          className="order-2 lg:order-1 text-white font-light w-full max-w-62 lg:max-w-66 mt-4.5 lg:mt-20"
+          className="order-2 lg:order-1 text-white font-light w-full
+                     max-w-62 lg:max-w-66 mt-4.5 lg:mt-20"
           style={{ letterSpacing: 1.3 }}
         >
           Apollo 11 was the spaceflight that first landed humans on the moon. Neil Armstrong and
@@ -38,11 +39,12 @@ export default function Introduction() {
           1969, at 20:17 UTC. Armstrong became the first person to step onto the lunar surface,
           Aldrin joined him 19 minutes later.
         </p>
-        <BidCard {...firstBidCard} />
+        <BidCard wrapperClass="lg:order-2 w-full max-w-62" {...firstBidCard} />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center mt-9.5 lg:mt-25">
         <p
-          className="order-2 lg:order-1 text-white font-light w-full max-w-62 lg:max-w-66 mt-4.5 lg:mt-20"
+          className="order-2 lg:order-1 text-white font-light w-full
+                     max-w-62 lg:max-w-66 mt-4.5 lg:mt-20"
           style={{ letterSpacing: 1.3 }}
         >
           {/* eslint-disable-next-line react/no-unescaped-entities */}
@@ -50,7 +52,7 @@ export default function Introduction() {
           5.2 seconds left is remembered as one of the greatest plays in NBA history. The Bulls
           winning their sixth NBA championship in eight years.
         </p>
-        <BidCard {...secondBidCard} />
+        <BidCard wrapperClass="lg:order-2 w-full max-w-62" {...secondBidCard} />
       </div>
     </div>
   );

@@ -4,22 +4,74 @@ import Layout from '../../Layout';
 
 function Details() {
   const historyItems = [
-    { key: 1, src: '/images/avatar3.png' },
-    { key: 2, src: '/images/avatar4.png' },
-    { key: 3, src: '/images/avatar5.png' },
-    { key: 4, src: '/images/avatar6.png' },
+    {
+      key: 1,
+      src: '/images/avatar3.png',
+      text: (
+        <div className="text-14 text-white">
+          The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
+        </div>
+      ),
+    },
+    {
+      key: 2,
+      src: '/images/avatar4.png',
+      text: (
+        <div className="text-14 text-white">
+          The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
+        </div>
+      ),
+    },
+    {
+      key: 3,
+      src: '/images/avatar5.png',
+      text: (
+        <div className="text-14 text-white">
+          The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
+        </div>
+      ),
+    },
+    {
+      key: 4,
+      src: '/images/avatar6.png',
+      text: (
+        <div className="text-14 text-white">
+          The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
+        </div>
+      ),
+    },
   ];
   const offersItems = [
-    { key: 1, src: '/images/avatar.png' },
-    { key: 2, src: '/images/avatar.png' },
-    { key: 3, src: '/images/avatar.png' },
-    { key: 4, src: '/images/avatar.png' },
+    {
+      key: 1,
+      src: '/images/avatar.png',
+      text: <div className="text-14 text-white">you offered 15 HSY on 14 Jan, 2000</div>,
+      date: '2 days ago',
+    },
+    {
+      key: 2,
+      src: '/images/avatar.png',
+      text: <div className="text-14 text-white">you offered 15 HSY on 14 Jan, 2000</div>,
+      date: '21 Jan,2020',
+    },
+    {
+      key: 3,
+      src: '/images/avatar.png',
+      text: <div className="text-14 text-white">you offered 15 HSY on 14 Jan, 2000</div>,
+      date: '12 Dec, 2020',
+    },
+    {
+      key: 4,
+      src: '/images/avatar.png',
+      text: <div className="text-14 text-white">you offered 15 HSY on 14 Jan, 2000</div>,
+      date: '6 Dec, 2020',
+    },
   ];
   const claimingItems = [
-    { key: 1, status: 'Claim', timer: '6h 35m 12s', timerStatus: 'Till End' },
-    { key: 2, status: 'Claimed' },
-    { key: 3, status: 'Lost' },
-    { key: 4, status: 'Claimed' },
+    { key: 1, status: 'Claim', timer: '6h 35m 12s', timerStatus: 'Till End', date: '2 days ago' },
+    { key: 2, status: 'Claimed', date: '21 Jan,2020' },
+    { key: 3, status: 'Lost', date: '12 Dec, 2020' },
+    { key: 4, status: 'Claimed', date: '6 Dec, 2020' },
   ];
 
   const Balance = () => (
@@ -37,9 +89,9 @@ function Details() {
         </div>
         <div
           className="flex items-center bg-primary bg-opacity-20 rounded-12 w-43
-                            py-2.5 px-4 mt-4"
+                            py-2.5 px-4.5 mt-4"
         >
-          <div className="text-white text-14 font-light mr-1">0x4A34639...5a81</div>
+          <div className="text-white text-14 font-light mr-2">0x4A34639...5a81</div>
           <Image src="/icons/walletAddress.svg" width={18} height={18} />
         </div>
       </div>
@@ -72,10 +124,8 @@ function Details() {
               <Image src={i.src} width={48} height={48} />
             </div>
             <div className="">
-              <div className="text-14 text-white">
-                The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
-              </div>
-              <div className="text-14 text-white text-opacity-50 mt-1">2 days ago</div>
+              {i.text}
+              <div className="text-14 text-white text-opacity-50 mt-1">{i.date}</div>
             </div>
           </div>
         ))}
@@ -99,7 +149,7 @@ function Details() {
               <div className={index === 0 ? 'text-primary' : 'text-lightBlue'}>{i.status}</div>
             </div>
             <div className="flex justify-between">
-              <div className="text-white text-opacity-50">2 days ago</div>
+              <div className="text-white text-opacity-50">{i.date}</div>
               {i.timer && (
                 <div className="text-white">
                   {i.timer} <span className="text-12 opacity-80">{i.timerStatus}</span>

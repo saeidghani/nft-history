@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { CommentIcon, LikeIcon, StarIcon } from './Icons';
 
 function BidCard({
   wrapperClass = '',
@@ -83,15 +84,15 @@ function BidCard({
           </div>
           <div className="flex justify-between border-t border-solid border-fadeWhite1 pt-3">
             <div className="flex items-center space-x-1">
-              <Image src="/icons/star.svg" width={17} height={16} />
+              <StarIcon fill="transparent" />
               <div className="text-white opacity-80 text-12">{stars}</div>
             </div>
             <div className="flex items-center space-x-1">
-              <Image src="/icons/comment.svg" width={16} height={15} />
+              <CommentIcon />
               <div className="text-white opacity-80 text-12">{comments}</div>
             </div>
             <div className="flex items-center space-x-1">
-              <Image src="/icons/like.svg" width={18} height={16} />
+              <LikeIcon />
               <div className="text-white opacity-80 text-12">{likes}</div>
             </div>
           </div>

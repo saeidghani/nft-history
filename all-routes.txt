@@ -1,6 +1,11 @@
 /home
+/home?category=sport
 /home?isAuth=true
-/market-place?isAuth=true
+/home?isAuth=true&calendarType=month
+/home?isAuth=true&calendarType=year
+/home?isAuth=true&calendarType=years
+/home?isAuth=true&calendarType=days
+/market-place?category=sport&isAuth=true
 /drops?isAuth=true
 /account?isAuth=true
 /account?isAuth=true&hasProfilePic=true

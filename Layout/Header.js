@@ -13,20 +13,21 @@ function Header() {
   const { pathname, isAuth } = query;
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [displaySearch, setDisplaySearch] = useState(false);
 
   const Menu = () => (
     <div className="flex justify-between items-center pt-13 px-6">
       <div className="flex items-center space-x-4">
-        <div className="flex justify-center space-x-4">
-          <div className="w-7.5">
-            <Image src="/icons/logo.svg" width={30} height={30} />
+        <Link href={routes.home.index}>
+          <div className="flex justify-center space-x-4">
+            <div className="w-7.5">
+              <Image src="/icons/logo.svg" width={30} height={30} />
+            </div>
+            <div className="text-white text-26 font-semibold" style={{ whiteSpace: 'nowrap' }}>
+              NFT HISTORY
+            </div>
           </div>
-          <div className="text-white text-26 font-semibold" style={{ whiteSpace: 'nowrap' }}>
-            NFT HISTORY
-          </div>
-        </div>
+        </Link>
         <div className="w-5 cursor-pointer">
           <Image
             onClick={() => setMenuOpen(!menuOpen)}
@@ -179,7 +180,19 @@ function Header() {
                      rounded-b-18 overflow-hidden pt-12 pb-6 px-6"
           style={{ height: 786 }}
         >
-          <SearchInput />
+          <div className="w-full">
+            <SearchInput />
+            <div className="flex flex-col space-y-5 mt-6">
+              <div className="flex items-center space-x-2">
+                <Image src="/images/avatar.png" width={38} height={38} />
+                <div className="text-white text-14">Emilie Butler</div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Image src="/images/avatar2.png" width={38} height={38} />
+                <div className="text-white text-14">Emilie Bumser</div>
+              </div>
+            </div>
+          </div>
           <div
             className="text-14 text-white font-semibold cursor-pointer
                           border-b border-solid border-white"

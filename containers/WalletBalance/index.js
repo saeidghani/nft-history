@@ -13,10 +13,13 @@ function WalletBalance() {
       </div>
       <div className="flex flex-col justify-center items-center mt-21 lg:mt-0">
         <div className="text-white text-20 font-medium">Connect your wallet</div>
-        <div className="text-white text-opacity-80 text-18 font-light mt-6.5">
+        <div
+          className="text-white text-opacity-80 text-18 font-light text-center px-4 lg:px-0
+        mt-3 lg:mt-6.5"
+        >
           Connect with one of available wallet providers
         </div>
-        <div className="mt-7">
+        <div className="mt-3 lg:mt-7">
           <Image src="/images/metamask.png" width={115} height={90} />
         </div>
         <Link href={routes.walletBalance.details}>
