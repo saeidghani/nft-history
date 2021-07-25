@@ -5,13 +5,15 @@ import Navigation from '../components/common/Navigation';
 function Sidebar() {
   return (
     <aside
-      className="hidden lg:flex flex-col justify-between py-10 pl-6 2xl:pl-10 pr-4 2xl:pr-6.5
+      className="hidden lg:flex flex-col justify-between py-10 pl-6 2xl:pl-10
                  border border-solid border-fadeLightBlue1"
       style={{ height: 902 }}
     >
       <div>
-        <div className="flex space-x-4">
-          <Image src="/icons/logo.svg" width={30} height={30} />
+        <div className="flex space-x-4 pr-4 2xl:pr-6.5">
+          <div className="w-7.5">
+            <Image src="/icons/logo.svg" width={30} height={30} />
+          </div>
           <div className="text-white text-26 font-semibold" style={{ whiteSpace: 'nowrap' }}>
             NFT HISTORY
           </div>

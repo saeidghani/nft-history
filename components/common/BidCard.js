@@ -63,7 +63,7 @@ function BidCard({
         <div className="">
           <div
             className={`text-14 text-white opacity-60 font-light ${
-              timer && calendar ? 'mt-4' : 'mt-3'
+              timer && calendar ? 'mt-5' : 'mt-3'
             }`}
           >
             {status}
