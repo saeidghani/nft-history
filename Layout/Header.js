@@ -10,7 +10,7 @@ import routes from '../constants/routes';
 function Header() {
   const router = useRouter();
   const { query } = router;
-  const { pathname, isAuth } = query;
+  const { pathname, isAuth, notification } = query;
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [displaySearch, setDisplaySearch] = useState(false);
@@ -95,7 +95,7 @@ function Header() {
     },
   ];
 
-  const notificationsItems = [
+  const basicNotifications = [
     {
       key: 1,
       title: (
@@ -147,6 +147,59 @@ function Header() {
             <div>Show more</div>
           </div>
         </Link>
+      ),
+    },
+  ];
+
+  const wonAuctionNotifications = [
+    {
+      key: 1,
+      title: (
+        <div
+          className="flex justify-between items-center text-18 bg-white bg-opacity-10 rounded-18
+                    h-14 px-4 mt-6.5 w-full"
+        >
+          <div className="text-white text-18">You Won the Auction</div>
+        </div>
+      ),
+    },
+    {
+      key: 2,
+      title: (
+        <div className="flex justify-between w-full mt-2 mb-4">
+          <div>
+            <div className="text-white text-14">
+              Congratulation, you won the auction claim your nft.
+            </div>
+            <div className="text-white text-14 mt-1.5">
+              6h 35m 2s <span className="text-12 opacity-80 ml-1">Till End</span>
+            </div>
+          </div>
+          <div className="text-primary font-medium">Claim</div>
+        </div>
+      ),
+    },
+  ];
+
+  const newOfferNotifications = [
+    {
+      key: 1,
+      title: (
+        <div
+          className="flex justify-between items-center text-18 bg-white bg-opacity-10 rounded-18
+                    h-14 px-4 mt-6.5 w-full"
+        >
+          <div className="text-white text-18">New Offer!</div>
+        </div>
+      ),
+    },
+    {
+      key: 2,
+      title: (
+        <div className="text-white text-14 mb-4">
+          <span className="font-medium text-blue mr-1">@Serati</span> Ma has made an offer of 10 HSY
+          for your “Faces” collection
+        </div>
       ),
     },
   ];
@@ -237,7 +290,13 @@ function Header() {
                   <Image src="/icons/bell.svg" width={22} height={25} />
                 </div>
               }
-              items={notificationsItems}
+              items={
+                notification === 'won-auction'
+                  ? wonAuctionNotifications
+                  : notification === 'new-offer'
+                  ? newOfferNotifications
+                  : basicNotifications
+              }
               width="w-6"
               menuItemClass="justify-start text-left"
               menuItemsClass="-left-130 mt-5 w-95 px-4 w-130 bg-darkGray"

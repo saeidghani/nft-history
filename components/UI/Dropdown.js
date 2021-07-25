@@ -17,7 +17,7 @@ export default function Dropdown({
   displaySelected,
 }) {
   return (
-    <div className={`relative text-center z-10 ${width}`}>
+    <div className={`relative text-center z-30 ${width}`}>
       <Menu as="div" className=" inline-block text-left w-full">
         {({ open }) => (
           <>

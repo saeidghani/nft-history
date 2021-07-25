@@ -66,7 +66,7 @@ export default function Settings() {
         Receive notifications only when you receive offers with a value greater than or equal to
         this amount of HSY.
       </p>
-      <div className="flex space-x-8 mt-5">
+      <div className="flex space-x-4 lg:space-x-8 mt-5">
         <div className="relative">
           <input
             type="text"
@@ -91,8 +91,8 @@ export default function Settings() {
         </div>
       </div>
       <button
-        className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14 mt-5"
-        style={{ maxWidth: 224 }}
+        className="text-white text-18 font-medium bg-primary rounded-12
+                   h-14 mt-5 w-full xs:max-w-56"
         onClick={handleSave}
       >
         Save

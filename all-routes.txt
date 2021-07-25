@@ -10,6 +10,8 @@
 /market-place?isAuth=true&calendarType=days
 /wallet-balance
 /wallet-balance/details
+/home?isAuth=true&?notification=won-auction
+/home?isAuth=true&?notification=new-offer
 /drops?isAuth=true
 /account?isAuth=true
 /account?isAuth=true&hasProfilePic=true
@@ -17,6 +19,8 @@
 /account?isAuth=true&hasProfilePic=true&myProfile=true
 /account/followers
 /account/edit
+/notifications
+/notifications/settings
 /upload
 /help
 /notifications

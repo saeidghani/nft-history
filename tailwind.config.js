@@ -48,6 +48,7 @@ module.exports = {
         fadeLightBlue2: 'rgba(185, 192, 222, 0.2)',
         fadeLightBlue4: 'rgba(185, 192, 222, 0.4)',
         fadeLightBlue5: 'rgba(185, 192, 222, 0.5)',
+        blue: '#53B9EA',
         darkBlue: '#2A2E39',
         lightGray: '#CFCFCF',
         gray: '#4D5059',
@@ -103,6 +104,7 @@ module.exports = {
       maxWidth: {
         62: '15.5rem',
         66: '16.5rem',
+        56: '14rem',
       },
       borderRadius: {
         6: '6px',

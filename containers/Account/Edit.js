@@ -73,7 +73,7 @@ export default function Edit() {
             />
             {!preview && (
               <div
-                className="absolute top-30 lg:top-9 left-3.5 z-30 font-semibold cursor-pointer mt-4"
+                className="absolute top-10 lg:top-9 left-3.5 font-semibold cursor-pointer mt-4"
                 style={{ color: '#377CF6', fontSize: 18 }}
                 onClick={() => avatarFileRef?.current?.click()}
               >
@@ -83,7 +83,7 @@ export default function Edit() {
           </div>
           {preview && (
             <div
-              className="z-30 font-semibold cursor-pointer mt-4"
+              className="z-10 font-semibold cursor-pointer mt-4"
               style={{ color: '#377CF6', fontSize: 18 }}
               onClick={() => avatarFileRef?.current?.click()}
             >
