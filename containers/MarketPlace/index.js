@@ -282,7 +282,7 @@ const authBidCards = [
 export default function MarketPlace() {
   const router = useRouter();
   const { query } = router;
-  const { category, isAuth, displayCalendar } = query;
+  const { isAuth, displayCalendar } = query;
 
   const [bidCards, setBidCards] = useState([]);
   const [activeSort, setActiveSort] = useState({});

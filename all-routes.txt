@@ -1,11 +1,15 @@
 /home
-/home?category=sport
 /home?isAuth=true
 /home?isAuth=true&calendarType=month
 /home?isAuth=true&calendarType=year
 /home?isAuth=true&calendarType=years
 /home?isAuth=true&calendarType=days
-/market-place?category=sport&isAuth=true
+/market-place?isAuth=true&calendarType=month
+/market-place?isAuth=true&calendarType=year
+/market-place?isAuth=true&calendarType=years
+/market-place?isAuth=true&calendarType=days
+/wallet-balance
+/wallet-balance/details
 /drops?isAuth=true
 /account?isAuth=true
 /account?isAuth=true&hasProfilePic=true
@@ -16,7 +20,5 @@
 /upload
 /help
 /notifications
-/wallet-balance
-/wallet-balance/details
 /auctions?auctionEnded=true
 /auctions/edit

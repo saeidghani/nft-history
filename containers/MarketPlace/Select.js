@@ -70,7 +70,10 @@ export default function Select({
                     </span>
                   </div>
                 </div>
-                <span className="absolute top-6 right-2 flex items-center pointer-events-none">
+                <span
+                  className={`absolute top-6 right-2 flex items-center pointer-events-none 
+                                  ${open ? 'transform rotate-180' : 'rotate-0'}`}
+                >
                   <Image
                     src="/icons/arrowDown.svg"
                     alt="Arrow"
