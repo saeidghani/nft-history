@@ -9,7 +9,9 @@ function Layout({ children, mainClass }) {
       <Sidebar />
       <div className="w-full relative">
         <Header />
-        <main className={twOverride('pt-8.5 px-4 2xs:px-6 2xl:px-10 pb-11 lg:pb-23', mainClass)}>
+        <main
+          className={twOverride('pt-8.5 px-4 2xs:px-6 2xl:px-10 pb-11 lg:pb-23', mainClass || '')}
+        >
           {children}
         </main>
       </div>

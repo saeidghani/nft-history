@@ -13,8 +13,8 @@
 /drops?isAuth=true
 /account?isAuth=true
 /account?isAuth=true&hasProfilePic=true
-/account?isAuth=true&hasProfilePic=true&myProfile=true
 /account?isAuth=true&hasProfilePic=true&follows=true
+/account?isAuth=true&hasProfilePic=true&myProfile=true
 /account/followers
 /account/edit
 /upload

@@ -7,304 +7,143 @@ import BidCardsList from '../../components/common/BidCardsList';
 import SwitchSelect from '../../components/common/SwitchSelect';
 import routes from '../../constants/routes';
 
+const bidCards = [
+  {
+    key: 1,
+    details: {
+      status: 'Fixed Price',
+      date: 'Art Dates',
+      price: '299.49 HSY',
+      stars: 22,
+      comments: 22,
+      likes: 20,
+      fixedPriceDate: { date1: '1/1/2020', date2: '01/01/2020', date3: '01/01/2020' },
+    },
+  },
+  {
+    key: 2,
+    details: {
+      status: 'Place a bid',
+      date: '20 July 1969',
+      price: '299.49 HSY',
+      stars: 22,
+      comments: 22,
+      likes: 20,
+      calendar: {
+        month: 'FEB',
+        day: 23,
+      },
+    },
+  },
+  {
+    key: 3,
+    details: {
+      status: 'Place a bid',
+      date: '20 July 1969',
+      price: '299.49 HSY',
+      stars: 22,
+      comments: 22,
+      likes: 20,
+      calendar: {
+        month: 'FEB',
+        day: 23,
+      },
+    },
+  },
+  {
+    key: 4,
+    details: {
+      status: 'On Auction',
+      date: '20 July 1969',
+      price: '299.49 HSY',
+      stars: 22,
+      comments: 22,
+      likes: 20,
+      timer: {
+        hour: 6,
+        minute: 35,
+        second: 12,
+        status: 'Till End',
+      },
+    },
+  },
+  {
+    key: 5,
+    details: {
+      status: 'On Auction',
+      date: '20 July 1969',
+      price: '299.49 HSY',
+      stars: 22,
+      comments: 22,
+      likes: 20,
+      timer: {
+        hour: 6,
+        minute: 35,
+        second: 12,
+        status: 'Till End',
+      },
+    },
+  },
+  {
+    key: 6,
+    details: {
+      status: 'On Auction',
+      date: '20 July 1969',
+      price: '299.49 HSY',
+      stars: 22,
+      comments: 22,
+      likes: 20,
+      timer: {
+        hour: 6,
+        minute: 35,
+        second: 12,
+        status: 'Till End',
+      },
+    },
+  },
+  {
+    key: 7,
+    details: {
+      status: 'Place a bid',
+      date: '20 July 1969',
+      price: '299.49 HSY',
+      stars: 22,
+      comments: 22,
+      likes: 20,
+      calendar: {
+        month: 'FEB',
+        day: 23,
+      },
+    },
+  },
+  {
+    key: 8,
+    details: {
+      status: 'On Auction',
+      date: '20 July 1969',
+      price: '299.49 HSY',
+      stars: 22,
+      comments: 22,
+      likes: 20,
+      timer: {
+        hour: 6,
+        minute: 35,
+        second: 12,
+        status: 'Till End',
+      },
+    },
+  },
+];
+
 function Account() {
   const router = useRouter();
-  const { query } = router;
-  const { isAuth, hasProfilePic, myProfile, follows } = query;
-  const [bidCards, setBidCards] = useState([]);
+  const { pathname, query } = router;
+  const { hasProfilePic, myProfile, follows } = query;
   const [activeFilter, setActiveFilter] = useState({});
 
   useEffect(() => {
     setActiveFilter(filterItems[0]);
   }, []);
-
-  useEffect(() => {
-    if (isAuth === 'true') {
-      setBidCards(authBidCards);
-    } else {
-      setBidCards(guestBidCards);
-    }
-  }, [isAuth]);
-
-  const guestBidCards = [
-    {
-      key: 1,
-      details: {
-        status: 'Fixed Price',
-        date: 'Art Dates',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        fixedPriceDate: { date1: '1/1/2020', date2: '01/01/2020', date3: '01/01/2020' },
-      },
-    },
-    {
-      key: 2,
-      details: {
-        status: 'On Auction',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-    {
-      key: 3,
-      details: {
-        status: 'On Auction',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-    {
-      key: 4,
-      details: {
-        status: 'On Auction',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-    {
-      key: 5,
-      details: {
-        status: 'On Auction',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-    {
-      key: 6,
-      details: {
-        status: 'On Auction',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-    {
-      key: 7,
-      details: {
-        status: 'On Auction',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-    {
-      key: 8,
-      details: {
-        status: 'On Auction',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-  ];
-
-  const authBidCards = [
-    {
-      key: 1,
-      details: {
-        status: 'Fixed Price',
-        date: 'Art Dates',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        fixedPriceDate: { date1: '1/1/2020', date2: '01/01/2020', date3: '01/01/2020' },
-      },
-    },
-    {
-      key: 2,
-      details: {
-        status: 'Place a bid',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        calendar: {
-          month: 'FEB',
-          day: 23,
-        },
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-    {
-      key: 3,
-      details: {
-        status: 'Place a bid',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        calendar: {
-          month: 'FEB',
-          day: 23,
-        },
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-    {
-      key: 4,
-      details: {
-        status: 'On Auction',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-    {
-      key: 5,
-      details: {
-        status: 'On Auction',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-    {
-      key: 6,
-      details: {
-        status: 'On Auction',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-    {
-      key: 7,
-      details: {
-        status: 'Place a bid',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        calendar: {
-          month: 'FEB',
-          day: 23,
-        },
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-    {
-      key: 8,
-      details: {
-        status: 'On Auction',
-        date: '20 July 1969',
-        price: '299.49 HSY',
-        stars: 22,
-        comments: 22,
-        likes: 20,
-        timer: {
-          hour: 6,
-          minute: 35,
-          second: 12,
-          status: 'Till End',
-        },
-      },
-    },
-  ];
 
   const filterItems = [
     { key: 1, title: 'Owned', value: 'owned' },
@@ -359,24 +198,35 @@ function Account() {
                   )}
                 </div>
               )}
-              <div className="order-1 lg:order-2 flex space-x-4 mt-3">
-                <div className="flex flex-col items-center">
-                  <div className="text-white text-14 font-light">Following</div>
-                  <div className="text-white text-18">2,233</div>
+              {hasProfilePic && (
+                <div className="order-1 lg:order-2 flex space-x-4 mt-3">
+                  <Link href={routes.account.followers}>
+                    <div className="flex flex-col items-center cursor-pointer">
+                      <div className="text-white text-14 font-light">Following</div>
+                      <div className="text-white text-18">2,233</div>
+                    </div>
+                  </Link>
+                  <Link href={routes.account.followers}>
+                    <div className="flex flex-col items-center cursor-pointer">
+                      <div className="text-white text-14 font-light">Followers</div>
+                      <div className="text-white text-18">2,233</div>
+                    </div>
+                  </Link>
                 </div>
-                <div className="flex flex-col items-center">
-                  <div className="text-white text-14 font-light">Followers</div>
-                  <div className="text-white text-18">2,233</div>
-                </div>
-              </div>
+              )}
               {!myProfile && (
                 <button
-                  className={`order-1 rounded-12 font-light mt-3 lg:mt-0 mb-0 lg:mb-3 rounded-12
+                  className={`order-1 rounded-12 font-light mt-8 lg:mt-0 mb-0 lg:mb-3 rounded-12
                               text-white border border-solid w-33 h-9.5 ${
-                                follows ? 'bg-primary border-transparent' : 'border-white'
+                                follows === 'true'
+                                  ? 'bg-primary border-transparent'
+                                  : 'border-white'
                               }`}
+                  onClick={() =>
+                    router.push({ pathname, query: { ...query, follows: follows !== 'true' } })
+                  }
                 >
-                  {follows ? 'Unfollow' : 'Follow'}
+                  {follows === 'true' ? 'Unfollow' : 'Follow'}
                 </button>
               )}
             </div>

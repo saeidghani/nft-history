@@ -4,6 +4,8 @@ import Layout from '../../Layout';
 
 function Followers() {
   const [activeStatus, setActiveStatus] = useState(1);
+  const [followingUsers, setFollowingUsers] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+  const [followerUsers, setFollowerUsers] = useState([2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
 
   const SearchInput = ({ wrapperClass }) => (
     <div className={wrapperClass}>
@@ -21,8 +23,8 @@ function Followers() {
     </div>
   );
 
-  const FollowStatus = ({ isFollowing = true }) => (
-    <div className="flex justify-between items-center mt-8">
+  const FollowStatus = ({ isFollowing = true, onClick }) => (
+    <div className="flex justify-between items-center">
       <div className="flex space-x-2 xs:space-x-6 items-center">
         <div className="w-15.5 h-15.5 flex justify-center items-center rounded-full">
           <Image src="/images/avatar.png" width={112} height={112} />
@@ -30,9 +32,10 @@ function Followers() {
         <div className="text-white text-18">Emilie Butler</div>
       </div>
       <button
-        className={`text-white font-light rounded-12 w-33 h-9.5 ${
+        className={`text-white font-light rounded-12 w-28 2xs:w-33 h-9.5 ${
           isFollowing ? 'bg-primary' : 'border border-solid border-white'
         }`}
+        onClick={onClick}
       >
         {isFollowing ? 'Unfollow' : 'Follow'}
       </button>
@@ -67,34 +70,92 @@ function Followers() {
           <div className="">
             <div className="text-white text-20 font-medium">Following</div>
             <SearchInput wrapperClass="mt-7" />
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
-              <FollowStatus key={i} />
-            ))}
+            <div
+              className="flex flex-col space-y-8 overflow-auto pr-4 mt-8"
+              style={{ height: 1100 }}
+            >
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
+                <FollowStatus
+                  key={i}
+                  isFollowing={followingUsers.includes(i)}
+                  onClick={() => {
+                    if (followingUsers.includes(i)) {
+                      const newFollowings = followingUsers.filter((u) => u !== i);
+                      setFollowingUsers(newFollowings);
+                    } else {
+                      setFollowingUsers([...followingUsers, i]);
+                    }
+                  }}
+                />
+              ))}
+            </div>
           </div>
         ) : (
           <div className="">
             <div className="text-white text-20 font-medium">Follower</div>
             <SearchInput wrapperClass="mt-7" />
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
-              <FollowStatus key={i} isFollowing={i !== 1} />
-            ))}
+            <div
+              className="flex flex-col space-y-8 overflow-auto pr-4 mt-8"
+              style={{ height: 1100 }}
+            >
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
+                <FollowStatus
+                  key={i}
+                  isFollowing={followerUsers.includes(i)}
+                  onClick={() => {
+                    if (followerUsers.includes(i)) {
+                      const newFollowers = followerUsers.filter((u) => u !== i);
+                      setFollowerUsers(newFollowers);
+                    } else {
+                      setFollowerUsers([...followerUsers, i]);
+                    }
+                  }}
+                />
+              ))}
+            </div>
           </div>
         )}
       </div>
-      <div className="hidden lg:grid grid-cols-2 gap-x-12 mt-0">
+      <div className="hidden lg:grid grid-cols-2 gap-x-8 mt-0">
         <div className="">
           <div className="text-white text-20 font-medium">Following</div>
-          <SearchInput wrapperClass="mt-7" />
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
-            <FollowStatus key={i} />
-          ))}
+          <SearchInput wrapperClass="pr-4 mt-7" />
+          <div className="flex flex-col space-y-8 overflow-auto pr-4 mt-8" style={{ height: 1100 }}>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
+              <FollowStatus
+                key={i}
+                isFollowing={followingUsers.includes(i)}
+                onClick={() => {
+                  if (followingUsers.includes(i)) {
+                    const newFollowings = followingUsers.filter((u) => u !== i);
+                    setFollowingUsers(newFollowings);
+                  } else {
+                    setFollowingUsers([...followingUsers, i]);
+                  }
+                }}
+              />
+            ))}
+          </div>
         </div>
         <div className="">
           <div className="text-white text-20 font-medium">Follower</div>
-          <SearchInput wrapperClass="mt-7" />
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
-            <FollowStatus key={i} isFollowing={i !== 1} />
-          ))}
+          <SearchInput wrapperClass="pr-4 mt-7" />
+          <div className="flex flex-col space-y-8 overflow-auto pr-4 mt-8" style={{ height: 1100 }}>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
+              <FollowStatus
+                key={i}
+                isFollowing={followerUsers.includes(i)}
+                onClick={() => {
+                  if (followerUsers.includes(i)) {
+                    const newFollowers = followerUsers.filter((u) => u !== i);
+                    setFollowerUsers(newFollowers);
+                  } else {
+                    setFollowerUsers([...followerUsers, i]);
+                  }
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </Layout>

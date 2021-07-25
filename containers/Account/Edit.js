@@ -45,8 +45,6 @@ export default function Edit() {
 
   const onSubmit = (data) => console.log(data);
 
-  console.log(watch('example')); // watch input value by passing the name of it
-
   return (
     <Layout>
       <form onSubmit={handleSubmit(onSubmit)} className="mx-auto" style={{ maxWidth: 373 }}>
@@ -75,7 +73,7 @@ export default function Edit() {
             />
             {!preview && (
               <div
-                className="absolute top-30 lg:top-8 left-3.5 z-30 font-semibold cursor-pointer mt-4"
+                className="absolute top-30 lg:top-9 left-3.5 z-30 font-semibold cursor-pointer mt-4"
                 style={{ color: '#377CF6', fontSize: 18 }}
                 onClick={() => avatarFileRef?.current?.click()}
               >
@@ -94,33 +92,32 @@ export default function Edit() {
           )}
         </div>
 
-        <div className="text-white text-18">Name*</div>
+        <div className="text-white text-18 mt-5">Name*</div>
         <input
           className="rounded-12 border border-solid border-fadeLightBlue5 bg-transparent
                      text-white h-14 px-3 mt-2.5 w-full"
           defaultValue="Emilie"
           placeholder="Name"
-          {...register('name')}
+          {...register('name', { required: true })}
         />
+        {errors.name && <div className="text-red-500 mt-1">Please Enter Your Name</div>}
 
         <div className="text-white text-18 mt-6">Bio</div>
         <input
           className="rounded-12 border border-solid border-fadeLightBlue5 bg-transparent
                      text-white h-14 px-3 mt-2.5 w-full"
           placeholder="Description"
-          {...register('bio', { required: true })}
+          {...register('bio')}
         />
         <div className="text-white text-18 mt-6">Email</div>
         <input
           className="rounded-12 border border-solid border-fadeLightBlue5 bg-transparent
                      text-white h-14 px-3 mt-2.5 w-full"
           placeholder="Email"
-          {...register('email', { required: true })}
+          {...register('email')}
         />
-        {/* errors will return when field validation fails  */}
-        {errors.exampleRequired && <span>This field is required</span>}
 
-        <div className="flex space-x-6.5 mt-11">
+        <div className="flex space-x-5 mt-11">
           <button
             type="submit"
             className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14"
