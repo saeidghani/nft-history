@@ -5,7 +5,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
     './containers/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    './layout/**/*.{js,ts,jsx,tsx}',
+    './Layout/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -94,11 +94,13 @@ module.exports = {
         44: '11rem',
         45: '11.25rem',
         54: '13.5rem',
-        95: '23.75rem',
         90: '22.5rem',
+        95: '23.75rem',
+        98: '24.5rem',
         100: '25rem',
         103.5: '25.875rem',
         130: '33rem',
+        158: '39.5rem',
         160: '40rem',
       },
       maxWidth: {

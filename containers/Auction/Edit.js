@@ -2,6 +2,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import Layout from '../../Layout';
 import Image from 'next/image';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import moment from 'moment';
 import Select from '../../components/UI/Select';
 import TimePicker from '../../components/UI/TimePicker';
 
@@ -19,6 +22,8 @@ export default function Edit() {
   const [loading, setLoading] = useState(true);
   const [selectedExpirationDuration, setSelectedExpirationDuration] = useState({});
   const [auctionType, setAuctionType] = useState('auction');
+  const [startDate, setStartDate] = useState(new Date('2014/02/08'));
+  const [endDate, setEndDate] = useState(new Date('2014/02/10'));
 
   useEffect(() => {
     setTimeout(() => {
@@ -50,8 +55,6 @@ export default function Edit() {
 
   const onSubmit = (data) => console.log(data);
 
-  console.log(watch('example')); // watch input value by passing the name of it
-
   const expirationDurationItems = [
     { key: 1, title: 'In 1 Day' },
     { key: 2, title: 'In 2 Days' },
@@ -67,8 +70,11 @@ export default function Edit() {
 
   return (
     <Layout>
-      <form className="grid grid-cols-2 gap-x-8" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col bg-darkGray rounded-20 p-6.5" style={{ height: 630 }}>
+      <form
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="flex flex-col bg-darkGray rounded-20 p-6.5 h-103.5 xl:h-158">
           <div className="text-white font-medium">Preview</div>
           <div className="flex-grow flex flex-col justify-center items-center py-4">
             {preview && (
@@ -93,8 +99,8 @@ export default function Edit() {
               />
               {!preview && (
                 <div
-                  className="absolute top-40 left-56 z-30 mt-4 cursor-pointer"
-                  //style={{ position: 'absolute', top: '50%', left: '50%' }}
+                  className="flex justify-center relative bottom-40 lg:bottom-44 xl:bottom-72
+                             z-30 mt-4 cursor-pointer"
                   onClick={() => avatarFileRef?.current?.click()}
                 >
                   <Image src="/icons/switchLight.svg" width={94} height={96} />
@@ -172,12 +178,41 @@ export default function Edit() {
                 Service fee 2.5%
               </div>
               <div className="text-white text-18 mt-5">Starting Date</div>
-              <Select
-                options={[]}
-                onSelect={() => {}}
-                selected={{}}
-                placeholder="Right after listing"
-              />
+              <div className="relative w-full mt-2.5">
+                <DatePicker
+                  className="custom-datepicker"
+                  dateFormat="dd/MM/yyyy"
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                  selectsEnd
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={startDate}
+                  placeholder="Right after listing"
+                />
+                {/*<div
+                  className="absolute pointer-events-none"
+                  style={{ fontSize: 12, top: 28.5, left: 64 }}
+                >
+                  {moment(startDate).format('d/MMM/yyyy').replace(/\//g, ' ')}
+                  <div className="absolute" style={{ top: 2, left: 65 }}>
+                    -
+                  </div>
+                </div>
+                <div
+                  className="absolute pointer-events-none"
+                  style={{ fontSize: 12, top: 28.5, left: 136 }}
+                >
+                  {moment(endDate).format('d/MMM/yyyy').replace(/\//g, ' ')}
+                </div>*/}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  className="absolute top-7 right-6 pointer-events-none transform rotate-180"
+                  style={{ top: 28, right: 24 }}
+                  src="/icons/arrowLight.svg"
+                  alt="arrow"
+                />
+              </div>
               <div className="text-white text-18 mt-5">Expiration Duration</div>
               <p className="text-14 font-light text-gray2 mt-1">
                 Your auction will automatically end at this time and the highest bidder will win. No
@@ -221,7 +256,7 @@ export default function Edit() {
               className="text-lightBlue text-18 font-medium rounded-12 w-full
                            border border-solid border-lightBlue h-14"
             >
-              Cansel
+              Cancel
             </button>
           </div>
         </div>

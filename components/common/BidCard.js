@@ -17,7 +17,7 @@ function BidCard({
   return (
     <div className={wrapperClass}>
       <div
-        className={`flex flex-col bg-darkGray rounded-20 pb-4 px-5 ${
+        className={`flex flex-col bg-darkGray rounded-20 pb-4 px-5 cursor-pointer ${
           calendar && timer ? 'pt-3' : 'pt-5'
         }`}
       >

@@ -22,7 +22,12 @@ export default {
     details: '/wallet-balance/details',
   },
   auctions: {
-    index: '/auctions',
-    edit: '/auctions/edit',
+    edit(id = 'id') {
+      return `/auctions/edit`;
+    },
+    view(id = 'id') {
+      return `/auctions/${id}`;
+    },
   },
+  upload: '/upload',
 };

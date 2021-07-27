@@ -138,7 +138,7 @@ const bidCards = [
 function Account() {
   const router = useRouter();
   const { pathname, query } = router;
-  const { hasProfilePic, myProfile, follows } = query;
+  const { hasProfilePic, myProfile, follows, id } = query;
   const [activeFilter, setActiveFilter] = useState({});
 
   useEffect(() => {

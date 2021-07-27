@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BidCard from '../../components/common/BidCard';
 import { useRouter } from 'next/router';
+import routes from '../../constants/routes';
 
 function BidCardsList({ wrapperClass }) {
   const router = useRouter();
@@ -301,7 +302,9 @@ function BidCardsList({ wrapperClass }) {
     <div className={wrapperClass}>
       <div className="grid grid-cols-2 xl:grid-cols-3 gap-4 2xl:gap-8 w-full">
         {bidCards.map((i) => (
-          <BidCard key={i.key} {...i.details} />
+          <div key={i.key} onClick={() => router.push(routes.auctions.view(i.key))}>
+            <BidCard {...i.details} />
+          </div>
         ))}
       </div>
     </div>

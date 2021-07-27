@@ -1,8 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import BidCard from '../../components/common/BidCard';
+import routes from '../../constants/routes';
 
 export default function Introduction() {
+  const router = useRouter();
+
   const firstBidCard = {
     status: 'On Auction',
     date: '20 July 1969',
@@ -39,7 +43,9 @@ export default function Introduction() {
           1969, at 20:17 UTC. Armstrong became the first person to step onto the lunar surface,
           Aldrin joined him 19 minutes later.
         </p>
-        <BidCard wrapperClass="lg:order-2 w-full max-w-62" {...firstBidCard} />
+        <div onClick={() => router.push(routes.auctions.view(1))}>
+          <BidCard wrapperClass="lg:order-2 w-full max-w-62" {...firstBidCard} />
+        </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center mt-9.5 lg:mt-25">
         <p
