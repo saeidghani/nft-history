@@ -38,14 +38,13 @@ export default function Introduction() {
                      max-w-62 lg:max-w-66 mt-4.5 lg:mt-20"
           style={{ letterSpacing: 1.3 }}
         >
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
           Apollo 11 was the spaceflight that first landed humans on the moon. Neil Armstrong and
           Buzz Aldrin formed the American crew that landed the Apollo Lunar Module Eagle on July 20,
           1969, at 20:17 UTC. Armstrong became the first person to step onto the lunar surface,
           Aldrin joined him 19 minutes later.
         </p>
-        <div onClick={() => router.push(routes.auctions.view(1))}>
-          <BidCard wrapperClass="lg:order-2 w-full max-w-62" {...firstBidCard} />
-        </div>
+        <BidCard wrapperClass="lg:order-2 w-full max-w-62" {...firstBidCard} />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center mt-9.5 lg:mt-25">
         <p
