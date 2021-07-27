@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Layout from '../../layout';
+import Layout from '../../Layout';
 import BidCardsList from '../../components/common/BidCardsList';
 import CalendarSlider from '../../components/common/CalendarSlider';
 import CategoryTabs from '../../components/common/CategoryTabs';

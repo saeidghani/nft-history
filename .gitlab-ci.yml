@@ -1,0 +1,39 @@
+variables:
+  GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_PROJECT_PATH
+  GIT_STRATEGY: pull
+  GIT_CLEAN_FLAGS: none
+
+stages:
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+deploy-prod:
+  stage: deploy
+  variables:
+    PORT: $MASTER_PORT
+  script:
+    - yarn
+    - yarn build
+    - pm2 delete $MASTER_NAME || true
+    - pm2 start npm --name $MASTER_NAME -- run start -- --port $PORT
+  only:
+    - master
+  tags:
+    - shared
+
+deploy-dev:
+  stage: deploy
+  variables:
+    PORT: $DEVELOP_PORT
+  script:
+    - yarn
+    - yarn build
+    - pm2 delete $DEVELOP_NAME || true
+    - pm2 start npm --name $DEVELOP_NAME -- run start -- --port $PORT
+  only:
+    - develop
+  tags:
+    - shared

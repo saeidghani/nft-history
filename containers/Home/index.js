@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Layout from '../../layout';
+import Layout from '../../Layout';
 import Introduction from './Introduction';
 import BidCardsList from '../../components/common/BidCardsList';
 import CalendarSlider from '../../components/common/CalendarSlider';
