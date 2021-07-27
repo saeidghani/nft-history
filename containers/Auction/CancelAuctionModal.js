@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Modal from '../../components/UI/Modal';
-import Layout from '../../Layout';
 
 function UploadModal({ open, onCloseModal }) {
   const title = (
@@ -22,17 +21,16 @@ function UploadModal({ open, onCloseModal }) {
         By canseling the auction people can’t bid on your date anymore, Are you sure?
       </p>
       <div className="text-white text-18 font-light text-opacity-75 mt-2.5">10 HSY fee</div>
-      <button className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14 mt-5">
+      <button
+        className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14 mt-5"
+        onClick={onCloseModal}
+      >
         Yes!
       </button>
     </div>
   );
 
-  return (
-    <Layout>
-      <Modal title={title} open={open} content={content} onCloseModal={onCloseModal} />
-    </Layout>
-  );
+  return <Modal title={title} open={open} content={content} onCloseModal={onCloseModal} />;
 }
 
 export default UploadModal;

@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Modal from '../../components/UI/Modal';
-import Layout from '../../Layout';
+import routes from '../../constants/routes';
 
 function UploadModal({ open, onCloseModal }) {
   const title = (
@@ -25,9 +26,14 @@ function UploadModal({ open, onCloseModal }) {
         To authenticate the ownership, upload a photo, Gif, etc to customize your date
       </p>
       <div className="flex space-x-6.5 mt-6.5">
-        <button className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14">
-          Upload and Assign
-        </button>
+        <Link href={routes.upload}>
+          <div
+            className="flex justify-center items-center text-white text-18
+                          font-medium bg-primary rounded-12 w-full h-14 cursor-pointer"
+          >
+            Upload and Assign
+          </div>
+        </Link>
         <button
           className="text-lightBlue text-18 font-medium rounded-12 w-full
                            border border-solid border-lightBlue h-14"
@@ -38,11 +44,7 @@ function UploadModal({ open, onCloseModal }) {
     </div>
   );
 
-  return (
-    <Layout>
-      <Modal title={title} open={open} content={content} onCloseModal={onCloseModal} />
-    </Layout>
-  );
+  return <Modal title={title} open={open} content={content} onCloseModal={onCloseModal} />;
 }
 
 export default UploadModal;

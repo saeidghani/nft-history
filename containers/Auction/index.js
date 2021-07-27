@@ -1,20 +1,36 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import Link from 'next/link';
 import Layout from '../../Layout';
+import routes from '../../constants/routes';
+import PlaceBidModal from './PlaceBidModal';
+import ConfirmBidModal from './ConfirmBidModal';
+import CancelAuctionModal from './CancelAuctionModal';
+import MakeOfferModal from './MakeOfferModal';
+import UploadModal from './UploadModal';
 
 function Auctions() {
   const [activeDetail, setActiveDetail] = useState('comments');
+  const [placeABidOpen, setPlaceABidOpen] = useState(false);
+  const [confirmABidOpen, setConfirmABidOpen] = useState(false);
+  const [cancelAuctionOpen, setCancelAuctionOpen] = useState(false);
+  const [makeOfferOpen, setMakeOfferOpen] = useState(false);
+  const [uploadOpen, setUploadOpen] = useState(false);
+
   const router = useRouter();
   const { query } = router;
+
   const {
     auctionNotStarted,
     auctionStarted,
     auctionEnded,
     fixedPrice,
     onSale,
+    auctionWon,
     dateNotAssigned,
     collection,
+    id,
   } = query;
 
   const historyItems = [
@@ -40,11 +56,11 @@ function Auctions() {
 
   const Poster = () => (
     <div
-      className={`bg-darkGray rounded-20 ${dateNotAssigned ? '' : 'p-6.5'}`}
+      className={`bg-darkGray rounded-20 ${dateNotAssigned || auctionWon ? '' : 'p-6.5'}`}
       style={{ height: 482 }}
     >
       <div className="relative" style={{ height: 430 }}>
-        {dateNotAssigned ? (
+        {dateNotAssigned || auctionWon ? (
           <div className={`flex flex-col items-center w-full`} style={{ height: 482 }}>
             <div
               className="text-primary text-center text-48 flex justify-center items-center
@@ -75,7 +91,7 @@ function Auctions() {
         )}
         <div
           className={`absolute left-8 right-8 flex justify-between items-center ${
-            dateNotAssigned ? '-bottom-1' : 'bottom-4'
+            dateNotAssigned || auctionWon ? '-bottom-1' : 'bottom-4'
           }`}
         >
           <div className="rounded-6 flex space-x-1 text-white bg-black bg-opacity-50 px-1">
@@ -121,6 +137,10 @@ function Auctions() {
             <span className="font-medium mr-1">Sport Events</span>
             <span className="text-14 font-light">(collection)</span>
           </div>
+        ) : auctionWon ? (
+          <div className="text-white font-medium mt-6">Token ID: 20600010973</div>
+        ) : onSale && auctionEnded ? (
+          <div className="text-white font-medium mt-6">Day Name</div>
         ) : (
           <div className="text-white font-medium mt-6">Day of Me</div>
         )}
@@ -141,7 +161,7 @@ function Auctions() {
             faced.” Detail of a forgotten relic, broken off from the source and lost from memory.
           </p>
         )}
-        {!collection && (
+        {!collection && !auctionWon && !onSale && !auctionEnded && (
           <div
             className="font-medium text-primary text-left flex justify-center
                       bg-primary bg-opacity-10 rounded-10 mt-2.5 py-1 w-16"
@@ -151,53 +171,83 @@ function Auctions() {
         )}
       </div>
       <div>
-        <div className="flex justify-between items-center">
-          <div className="text-white font-medium">{collection ? 'Current Bid' : 'Sold For:'}</div>
-          <div className="text-white font-medium">299.49 HSY</div>
-        </div>
-        {collection && (
-          <div className="text-white text-12 text-opacity-80 font-light mt-3">
-            You must at least bis 10% higher than current bid.
-          </div>
-        )}
-        <div className="relative mt-5">
-          <input
-            className="text-white bg-transparent rounded-12 border border-solid border-lightBlue
+        {!onSale && !auctionEnded && (
+          <>
+            <div className="flex justify-between items-center">
+              <div className="text-white font-medium">
+                {collection ? 'Current Bid' : auctionWon ? 'Winner Bid' : 'Sold For:'}
+              </div>
+              <div className="text-white font-medium">
+                {auctionWon ? '3,600 HSY' : '299.49 HSY'}
+              </div>
+            </div>
+            {collection && (
+              <div className="text-white text-12 text-opacity-80 font-light mt-3">
+                You must at least bis 10% higher than current bid.
+              </div>
+            )}
+            {!auctionWon && (
+              <div className="relative mt-5">
+                <input
+                  className="text-white bg-transparent rounded-12 border border-solid border-lightBlue
                           h-14 w-full px-16"
-          />
-          <div className="absolute top-4 left-4 text-white text-18 text-opacity-80 font-light">
-            0.00$
-          </div>
-          <div className="absolute top-4 right-4 text-white text-18 font-light">0 HSY</div>
-        </div>
+                />
+                <div className="absolute top-4 left-4 text-white text-18 text-opacity-80 font-light">
+                  0.00$
+                </div>
+                <div className="absolute top-4 right-4 text-white text-18 font-light">0 HSY</div>
+              </div>
+            )}
+          </>
+        )}
         <div className="flex items-center space-x-6.5 mt-5">
           <button
             disabled={auctionNotStarted}
             className="bg-primary text-white text-18 font-medium rounded-12 w-full h-14"
+            onClick={() => {
+              if (auctionStarted) {
+                setPlaceABidOpen(true);
+              } else if (onSale && auctionEnded) {
+                setCancelAuctionOpen(true);
+              } else if (auctionEnded) {
+                setMakeOfferOpen(true);
+              } else if (fixedPrice) {
+              } else if (onSale && auctionEnded) {
+              } else if (auctionWon) {
+              } else {
+              }
+            }}
           >
             {auctionNotStarted || auctionStarted
               ? 'Place a Bid'
-              : auctionEnded
-              ? 'Make an Offer'
-              : fixedPrice
-              ? 'Buy Now'
               : onSale && auctionEnded
               ? 'Cancel Auction'
+              : fixedPrice
+              ? 'Buy Now'
+              : auctionEnded
+              ? 'Make an Offer'
+              : auctionWon
+              ? 'Claim'
               : 'Put on Sale'}
           </button>
-          {!auctionEnded && !collection && (
+          <div className="flex items-center space-x-6.5">
+            {!auctionEnded && !collection && !auctionWon && (
+              <Link href={routes.auctions.edit(id)}>
+                <div
+                  className="h-14 w-14 rounded-18 flex justify-center items-center
+                        border border-solid border-lightBlue cursor-pointer"
+                >
+                  <Image src="/icons/editPencil.svg" width={26} height={28} />
+                </div>
+              </Link>
+            )}
             <div
-              className="h-14 w-20 rounded-18 flex justify-center items-center
-                        border border-solid border-lightBlue"
+              className="h-14 w-14 rounded-18 flex justify-center items-center
+                        border border-solid border-lightBlue cursor-pointer"
+              onClick={() => setUploadOpen(true)}
             >
-              <Image src="/icons/editPencil.svg" width={26} height={28} />
+              <Image src="/icons/switch.svg" width={26} height={26} />
             </div>
-          )}
-          <div
-            className="h-14 w-20 rounded-18 flex justify-center items-center
-                        border border-solid border-lightBlue"
-          >
-            <Image src="/icons/switch.svg" width={26} height={26} />
           </div>
         </div>
       </div>
@@ -295,6 +345,21 @@ function Auctions() {
 
   return (
     <Layout>
+      <PlaceBidModal
+        open={placeABidOpen}
+        onCloseModal={() => setPlaceABidOpen(false)}
+        onConfirmPlaceBid={() => {
+          setPlaceABidOpen(false);
+          setConfirmABidOpen(true);
+        }}
+      />
+      <ConfirmBidModal open={confirmABidOpen} onCloseModal={() => setConfirmABidOpen(false)} />
+      <CancelAuctionModal
+        open={cancelAuctionOpen}
+        onCloseModal={() => setCancelAuctionOpen(false)}
+      />
+      <MakeOfferModal open={makeOfferOpen} onCloseModal={() => setMakeOfferOpen(false)} />
+      <UploadModal open={uploadOpen} onCloseModal={() => setUploadOpen(false)} />
       <div className="bg-darkGray rounded-20 px-5 lg:px-8 py-6.5">
         <div className="flex justify-between">
           <div className="flex flex-col lg:flex-row space-x-0 lg:space-x-3">
@@ -311,7 +376,7 @@ function Auctions() {
             </div>
           </div>
           <div className="flex flex-col items-end">
-            <div className="order-1 lg:order-2 flex space-x-4 mt-3">
+            <div className="order-1 lg:order-2 flex space-x-8 mt-6">
               <div className="flex flex-col items-center">
                 <div className="text-white text-14 font-light">Following</div>
                 <div className="text-white text-18">56</div>

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 
 export default function Collapse({ collapsed, title, children }) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(collapsed);
 
   return (
-    <div className="border-b border-solid border-fadeLightBlue2 py-4 pr-12">
+    <div className="border-b border-solid border-fadeLightBlue2 py-4 pr-2 lg:pr-12">
       <button className="w-full" onClick={() => setIsCollapsed(!isCollapsed)}>
         <div className="flex justify-between items-center w-full">
           <div className="text-white font-medium">{title}</div>

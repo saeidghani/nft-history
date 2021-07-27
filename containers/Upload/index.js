@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import Layout from '../../Layout';
 import Image from 'next/image';
+import Layout from '../../Layout';
 
 export default function Upload() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const avatarFileRef = useRef(null);
@@ -45,12 +44,13 @@ export default function Upload() {
 
   const onSubmit = (data) => console.log(data);
 
-  console.log(watch('example')); // watch input value by passing the name of it
-
   return (
     <Layout>
-      <form className="grid grid-cols-2 gap-x-8" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col bg-darkGray rounded-20 p-6.5" style={{ height: 630 }}>
+      <form
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="flex flex-col bg-darkGray rounded-20 p-6.5 h-98 xl:h-158">
           <div className="text-white font-medium">Preview</div>
           <div className="flex-grow flex flex-col justify-center items-center py-4">
             {preview && (
@@ -70,7 +70,8 @@ export default function Upload() {
               />
               {!preview && (
                 <div
-                  className="absolute top-40 left-56 z-30 mt-4 cursor-pointer"
+                  className="flex justify-center relative bottom-40 lg:bottom-44 xl:bottom-72
+                             z-30 mt-4 cursor-pointer"
                   onClick={() => avatarFileRef?.current?.click()}
                 >
                   <Image src="/icons/switchLight.svg" width={94} height={96} />

@@ -87,11 +87,7 @@ function MakeOfferModal({ open, onCloseModal }) {
     </div>
   );
 
-  return (
-    <Layout>
-      <Modal title={title} open={open} content={content} onCloseModal={onCloseModal} />
-    </Layout>
-  );
+  return <Modal title={title} open={open} content={content} onCloseModal={onCloseModal} />;
 }
 
 export default MakeOfferModal;
