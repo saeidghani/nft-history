@@ -2,78 +2,82 @@ import React from 'react';
 import Image from 'next/image';
 import Layout from '../../Layout';
 
-function Details() {
-  const historyItems = [
-    {
-      key: 1,
-      src: '/images/avatar3.png',
-      text: (
-        <div className="text-14 text-white">
-          The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
-        </div>
-      ),
-    },
-    {
-      key: 2,
-      src: '/images/avatar4.png',
-      text: (
-        <div className="text-14 text-white">
-          The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
-        </div>
-      ),
-    },
-    {
-      key: 3,
-      src: '/images/avatar5.png',
-      text: (
-        <div className="text-14 text-white">
-          The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
-        </div>
-      ),
-    },
-    {
-      key: 4,
-      src: '/images/avatar6.png',
-      text: (
-        <div className="text-14 text-white">
-          The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
-        </div>
-      ),
-    },
-  ];
-  const offersItems = [
-    {
-      key: 1,
-      src: '/images/avatar.png',
-      text: <div className="text-14 text-white">you offered 15 HSY on 14 Jan, 2000</div>,
-      date: '2 days ago',
-    },
-    {
-      key: 2,
-      src: '/images/avatar.png',
-      text: <div className="text-14 text-white">you offered 15 HSY on 14 Jan, 2000</div>,
-      date: '21 Jan,2020',
-    },
-    {
-      key: 3,
-      src: '/images/avatar.png',
-      text: <div className="text-14 text-white">you offered 15 HSY on 14 Jan, 2000</div>,
-      date: '12 Dec, 2020',
-    },
-    {
-      key: 4,
-      src: '/images/avatar.png',
-      text: <div className="text-14 text-white">you offered 15 HSY on 14 Jan, 2000</div>,
-      date: '6 Dec, 2020',
-    },
-  ];
-  const claimingItems = [
-    { key: 1, status: 'Claim', timer: '6h 35m 12s', timerStatus: 'Till End', date: '2 days ago' },
-    { key: 2, status: 'Claimed', date: '21 Jan,2020' },
-    { key: 3, status: 'Lost', date: '12 Dec, 2020' },
-    { key: 4, status: 'Claimed', date: '6 Dec, 2020' },
-  ];
+const historyItems = [
+  {
+    key: 1,
+    src: '/images/avatar3.png',
+    text: (
+      <div className="text-14 text-white">
+        The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
+      </div>
+    ),
+    date: <div className="text-14 text-white text-opacity-50">2 days ago</div>,
+  },
+  {
+    key: 2,
+    src: '/images/avatar4.png',
+    text: (
+      <div className="text-14 text-white">
+        The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
+      </div>
+    ),
+    date: <div className="text-14 text-white text-opacity-50">21 Jan,2020</div>,
+  },
+  {
+    key: 3,
+    src: '/images/avatar5.png',
+    text: (
+      <div className="text-14 text-white">
+        The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
+      </div>
+    ),
+    date: <div className="text-14 text-white text-opacity-50">12 Dec, 2020</div>,
+  },
+  {
+    key: 4,
+    src: '/images/avatar6.png',
+    text: (
+      <div className="text-14 text-white">
+        The Bitcoin Angel#61321 <span className="text-12">sold</span> 1.02HSY
+      </div>
+    ),
+    date: <div className="text-14 text-white text-opacity-50">6 Dec, 2020</div>,
+  },
+];
+const offersItems = [
+  {
+    key: 1,
+    src: '/images/avatar.png',
+    text: <div className="text-14 text-white">you offered 15 HSY on 14 Jan, 2000</div>,
+    date: '2 days ago',
+  },
+  {
+    key: 2,
+    src: '/images/avatar.png',
+    text: <div className="text-14 text-white">you offered 15 HSY on 14 Jan, 2000</div>,
+    date: '21 Jan,2020',
+  },
+  {
+    key: 3,
+    src: '/images/avatar.png',
+    text: <div className="text-14 text-white">you offered 15 HSY on 14 Jan, 2000</div>,
+    date: '12 Dec, 2020',
+  },
+  {
+    key: 4,
+    src: '/images/avatar.png',
+    text: <div className="text-14 text-white">you offered 15 HSY on 14 Jan, 2000</div>,
+    date: '6 Dec, 2020',
+  },
+];
+const claimingItems = [
+  { key: 1, status: 'Claim', timer: '6h 35m 12s', timerStatus: 'Till End', date: '2 days ago' },
+  { key: 2, status: 'Claimed', date: '21 Jan,2020' },
+  { key: 3, status: 'Lost', date: '12 Dec, 2020' },
+  { key: 4, status: 'Claimed', date: '6 Dec, 2020' },
+];
 
+function Details() {
   const Balance = () => (
     <div className="flex flex-col justify-between bg-darkGray rounded-20 p-6.5 h-103.5">
       <div className="">
@@ -146,12 +150,14 @@ function Details() {
           >
             <div className="flex justify-between">
               <div className="text-white">Congratulation, you won the auction claim your nft.</div>
-              <div className={index === 0 ? 'text-primary' : 'text-lightBlue'}>{i.status}</div>
+              <div className={index === 0 ? 'text-primary font-medium' : 'text-lightBlue'}>
+                {i.status}
+              </div>
             </div>
             <div className="flex justify-between">
               <div className="text-white text-opacity-50">{i.date}</div>
               {i.timer && (
-                <div className="text-white">
+                <div className="text-white text-14">
                   {i.timer} <span className="text-12 opacity-80">{i.timerStatus}</span>
                 </div>
               )}

@@ -1,10 +1,10 @@
 import React from 'react';
+import Image from 'next/image';
 
-function SwitchSelect({ wrapperClass, items, activeFilter, onSetActiveFilter, title }) {
+function CheckboxSelect({ wrapperClass, items, onSetActiveFilter, activeFilter }) {
   return (
     <div className={wrapperClass}>
       <div className="bg-darkGray py-5 pl-6.5 rounded-20 w-full">
-        {title && <div className="text-white mb-4.5">{title}</div>}
         <div className="flex flex-col space-y-5">
           {items.map((i) => (
             <div
@@ -13,16 +13,18 @@ function SwitchSelect({ wrapperClass, items, activeFilter, onSetActiveFilter, ti
               onClick={() => onSetActiveFilter(i)}
             >
               <div
-                className={`w-4 h-4 rounded-full flex justify-center items-center
+                className={`w-4 h-4 rounded flex justify-center items-center
                               border border-solid ${
-                                i.key === activeFilter.key ? 'border-primary' : 'border-lightBlue'
+                                i.key === activeFilter.key
+                                  ? 'bg-primary border-primary'
+                                  : 'border-lightBlue'
                               }`}
               >
-                <div
-                  className={`w-2 h-2 rounded-full ${
-                    i.key === activeFilter.key ? 'bg-primary' : 'bg-transparent'
-                  }`}
-                />
+                {i.key === activeFilter.key && (
+                  <div className="pb-1 bg-transparent">
+                    <Image src="/icons/tick.svg" width={8} height={6} />
+                  </div>
+                )}
               </div>
               <div className={`text-white ${i.key === activeFilter.key ? '' : 'text-opacity-40'}`}>
                 {i.title}
@@ -35,4 +37,4 @@ function SwitchSelect({ wrapperClass, items, activeFilter, onSetActiveFilter, ti
   );
 }
 
-export default SwitchSelect;
+export default CheckboxSelect;

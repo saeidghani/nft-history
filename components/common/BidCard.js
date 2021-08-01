@@ -70,7 +70,7 @@ function BidCard({
           </div>
           <div className={`flex justify-between ${timer && calendar ? 'mt-2' : 'mt-3'}`}>
             <div className="text-white">{date}</div>
-            <div className="text-white">{price}</div>
+            <div className="text-white font-medium">{price}</div>
           </div>
           <div
             className={`flex justify-between items-center text-white text-12 font-light h-8 ${

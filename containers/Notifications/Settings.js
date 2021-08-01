@@ -28,11 +28,11 @@ export default function Settings() {
       <div className="text-white text-14 font-light mt-1.5">
         Select which notification would you like to receive
       </div>
-      <div className="flex flex-col space-y-5 mt-9">
-        {checkBoxItems.map((i) => (
+      <div className="flex flex-col mt-4">
+        {checkBoxItems.map((i, index) => (
           <div
             key={i.key}
-            className="flex space-x-2.5 cursor-pointer"
+            className={`flex space-x-2.5 cursor-pointer ${index === 5 ? 'mt-11' : 'mt-5'}`}
             onClick={() => {
               if (selectedItems.includes(i.key)) {
                 const newItems = selectedItems.filter((s) => s !== i.key);

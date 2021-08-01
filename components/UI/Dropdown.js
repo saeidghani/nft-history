@@ -4,7 +4,7 @@ import { twOverride } from '../../utils';
 
 export default function Dropdown({
   selected,
-  onSelect,
+  onSelect = () => {},
   width = 'w-56',
   title,
   items,

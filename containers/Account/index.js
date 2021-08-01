@@ -185,7 +185,7 @@ function Account() {
               {myProfile && (
                 <div className="order-2 lg:order-1 flex mt-10 lg:mt-0">
                   <Link href={routes.account.edit}>
-                    <div className="cursor-pointer mr-4">
+                    <div className={`cursor-pointer ${hasProfilePic ? '' : 'mr-4'}`}>
                       <Image src="/icons/edit.svg" width={30} height={30} />
                     </div>
                   </Link>

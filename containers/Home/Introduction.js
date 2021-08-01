@@ -1,12 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import BidCard from '../../components/common/BidCard';
-import routes from '../../constants/routes';
 
 export default function Introduction() {
-  const router = useRouter();
-
   const firstBidCard = {
     status: 'On Auction',
     date: '20 July 1969',

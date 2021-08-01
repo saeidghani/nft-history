@@ -77,8 +77,8 @@ function Navigation({ wrapperClass = '' }) {
               <div className="flex space-x-2.5 items-center cursor-pointer">
                 <div>{i.icon}</div>
                 <div
-                  className={`text-15 font-semibold ${
-                    findActiveNavItem(i.activeHrefs) ? 'text-white' : 'text-lightBlue'
+                  className={`text-15 ${
+                    findActiveNavItem(i.activeHrefs) ? 'text-white' : 'text-lightBlue font-light'
                   }`}
                 >
                   {i.title}

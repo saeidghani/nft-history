@@ -83,7 +83,9 @@ function Auctions() {
                 <div className="text-84 font-Ubuntu mr-2">SPORT</div>
                 <Image src="/icons/sport.svg" width={97} height={100} />
               </div>
-              <div className="text-84 font-Ubuntu">EVENTS</div>
+              <div className="text-84 font-Ubuntu" style={{ letterSpacing: 15 }}>
+                EVENTS
+              </div>
             </div>
           </div>
         ) : (
@@ -142,7 +144,9 @@ function Auctions() {
         ) : onSale && auctionEnded ? (
           <div className="text-white font-medium mt-6">Day Name</div>
         ) : (
-          <div className="text-white font-medium mt-6">Day of Me</div>
+          <div className={`text-white font-medium ${auctionNotStarted ? 'mt-3' : 'mt-6'}`}>
+            Day of Me
+          </div>
         )}
         {collection ? (
           <div className="text-white mt-1.5">
@@ -161,7 +165,7 @@ function Auctions() {
             faced.” Detail of a forgotten relic, broken off from the source and lost from memory.
           </p>
         )}
-        {!collection && !auctionWon && !onSale && !auctionEnded && (
+        {!collection && (auctionStarted || auctionNotStarted || auctionEnded || fixedPrice) && (
           <div
             className="font-medium text-primary text-left flex justify-center
                       bg-primary bg-opacity-10 rounded-10 mt-2.5 py-1 w-16"
@@ -171,22 +175,31 @@ function Auctions() {
         )}
       </div>
       <div>
-        {!onSale && !auctionEnded && (
+        {(auctionStarted || auctionNotStarted || auctionEnded || auctionWon || fixedPrice) && (
           <>
             <div className="flex justify-between items-center">
               <div className="text-white font-medium">
-                {collection ? 'Current Bid' : auctionWon ? 'Winner Bid' : 'Sold For:'}
+                {auctionStarted
+                  ? 'Current Bid'
+                  : auctionNotStarted
+                  ? 'Minimum Bid:'
+                  : fixedPrice
+                  ? 'Price'
+                  : auctionWon
+                  ? 'Winner Bid'
+                  : 'Sold For:'}
               </div>
               <div className="text-white font-medium">
                 {auctionWon ? '3,600 HSY' : '299.49 HSY'}
               </div>
             </div>
-            {collection && (
-              <div className="text-white text-12 text-opacity-80 font-light mt-3">
-                You must at least bis 10% higher than current bid.
-              </div>
-            )}
-            {!auctionWon && (
+            {auctionStarted ||
+              (auctionNotStarted && (
+                <div className="text-white text-12 text-opacity-80 font-light mt-3">
+                  You must at least bis 10% higher than current bid.
+                </div>
+              ))}
+            {!auctionWon && !fixedPrice && (
               <div className="relative mt-5">
                 <input
                   className="text-white bg-transparent rounded-12 border border-solid border-lightBlue
@@ -207,9 +220,9 @@ function Auctions() {
             onClick={() => {
               if (auctionStarted) {
                 setPlaceABidOpen(true);
-              } else if (onSale && auctionEnded) {
+              } else if (onSale && auctionEnded && !dateNotAssigned) {
                 setCancelAuctionOpen(true);
-              } else if (auctionEnded) {
+              } else if (!onSale && auctionEnded) {
                 setMakeOfferOpen(true);
               } else if (fixedPrice) {
               } else if (onSale && auctionEnded) {
@@ -220,18 +233,18 @@ function Auctions() {
           >
             {auctionNotStarted || auctionStarted
               ? 'Place a Bid'
-              : onSale && auctionEnded
+              : onSale && auctionEnded && !dateNotAssigned
               ? 'Cancel Auction'
               : fixedPrice
               ? 'Buy Now'
-              : auctionEnded
+              : !onSale && auctionEnded
               ? 'Make an Offer'
               : auctionWon
               ? 'Claim'
               : 'Put on Sale'}
           </button>
           <div className="flex items-center space-x-6.5">
-            {!auctionEnded && !collection && !auctionWon && (
+            {onSale && (
               <Link href={routes.auctions.edit(id)}>
                 <div
                   className="h-14 w-14 rounded-18 flex justify-center items-center

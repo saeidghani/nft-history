@@ -95,17 +95,22 @@ function Header() {
     },
   ];
 
+  const NotificationHeader = ({ title }) => (
+    <div
+      className="flex justify-between items-center text-18 bg-white bg-opacity-10 rounded-18
+                    h-14 px-4 mt-6.5 w-full"
+    >
+      <div className="text-white text-18">{title}</div>
+      <div className="cursor-pointer pt-2">
+        <Image src="/icons/close.svg" width={20} height={20} />
+      </div>
+    </div>
+  );
+
   const basicNotifications = [
     {
       key: 1,
-      title: (
-        <div
-          className="flex justify-between items-center text-18 bg-white bg-opacity-10 rounded-18
-                    h-14 px-4 mt-6.5 w-full"
-        >
-          <div className="text-white text-18">Notifications</div>
-        </div>
-      ),
+      title: <NotificationHeader title="Notifications" />,
     },
     {
       key: 2,
@@ -154,14 +159,7 @@ function Header() {
   const wonAuctionNotifications = [
     {
       key: 1,
-      title: (
-        <div
-          className="flex justify-between items-center text-18 bg-white bg-opacity-10 rounded-18
-                    h-14 px-4 mt-6.5 w-full"
-        >
-          <div className="text-white text-18">You Won the Auction</div>
-        </div>
-      ),
+      title: <NotificationHeader title="You Won the Auction" />,
     },
     {
       key: 2,
@@ -184,14 +182,7 @@ function Header() {
   const newOfferNotifications = [
     {
       key: 1,
-      title: (
-        <div
-          className="flex justify-between items-center text-18 bg-white bg-opacity-10 rounded-18
-                    h-14 px-4 mt-6.5 w-full"
-        >
-          <div className="text-white text-18">New Offer!</div>
-        </div>
-      ),
+      title: <NotificationHeader title="New Offer!" />,
     },
     {
       key: 2,
@@ -265,7 +256,7 @@ function Header() {
             height={25}
           />
         ) : (
-          <div className="w-full" style={{ maxWidth: 380 }}>
+          <div className="w-full relative left-2" style={{ maxWidth: 380 }}>
             <SearchInput isSm />
           </div>
         )}

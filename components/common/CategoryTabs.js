@@ -21,7 +21,7 @@ export default function CategoryTabs() {
       <div className="hidden lg:block text-20 text-white">The Premier Marketplace for Dates</div>
       <div
         className="flex items-center justify-between bg-white bg-opacity-10 rounded-18 border
-         border-solid border-fadeLightBlue1 px-2 xs:px-3.5 lg:pl-5.5 lg:pr-3.5 py-2 mt-4.5"
+         border-solid border-fadeLightBlue1 px-2 xs:px-3.5 lg:pl-3.5 lg:pr-3.5 py-2 mt-4.5"
       >
         <div className="flex space-x-0 lg:space-x-6">
           {categories?.map((c) => (
@@ -29,7 +29,7 @@ export default function CategoryTabs() {
               <div
                 className={`text-14 lg:text-16 cursor-pointer ${
                   c.key === category
-                    ? 'text-primary bg-primary bg-opacity-10 rounded-10 px-2.5 py-2'
+                    ? 'text-primary bg-primary bg-opacity-10 rounded-10 font-medium px-2.5 py-2'
                     : 'text-secondary text-opacity-80 px-2.5 py-2'
                 }`}
               >

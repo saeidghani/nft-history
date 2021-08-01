@@ -68,7 +68,7 @@ function Followers() {
       <div className="lg:hidden mt-6">
         {activeStatus === 2 ? (
           <div className="">
-            <div className="text-white text-20 font-medium">Following</div>
+            <div className="text-white text-20 font-medium text-gray3">Following</div>
             <SearchInput wrapperClass="mt-7" />
             <div
               className="flex flex-col space-y-8 overflow-auto pr-4 mt-8"
@@ -92,7 +92,7 @@ function Followers() {
           </div>
         ) : (
           <div className="">
-            <div className="text-white text-20 font-medium">Follower</div>
+            <div className="text-white text-20 font-medium text-gray3">Follower</div>
             <SearchInput wrapperClass="mt-7" />
             <div
               className="flex flex-col space-y-8 overflow-auto pr-4 mt-8"
