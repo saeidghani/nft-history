@@ -7,7 +7,7 @@ import Drawer from '../components/UI/Drawer';
 import Dropdown from '../components/UI/Dropdown';
 import routes from '../constants/routes';
 
-function Header() {
+function Header({ isHome }) {
   const router = useRouter();
   const { query } = router;
   const { pathname, isAuth, notification } = query;
@@ -116,7 +116,8 @@ function Header() {
       key: 2,
       title: (
         <div className="text-white pr-8 mt-2">
-          Serati Ma has made an offer of 10 HSY for your “Faces” collection
+          Serati Ma has made an offer of 10 HSY for your
+          <span className="font-medium mx-1">“Faces”</span> collection
         </div>
       ),
     },
@@ -124,7 +125,8 @@ function Header() {
       key: 3,
       title: (
         <div className="text-white pr-8">
-          Serati Ma has made an offer of 10 HSY for your “Faces” collection
+          Serati Ma has made an offer of 10 HSY for your{' '}
+          <span className="font-medium mx-1">“Faces”</span> collection
         </div>
       ),
     },
@@ -132,7 +134,8 @@ function Header() {
       key: 4,
       title: (
         <div className="text-white pr-8">
-          Serati Ma has made an offer of 10 HSY for your “Faces” collection
+          Serati Ma has made an offer of 10 HSY for your
+          <span className="font-medium mx-1">“Faces”</span> collection
         </div>
       ),
     },
@@ -140,7 +143,8 @@ function Header() {
       key: 5,
       title: (
         <div className="text-white pr-8">
-          Serati Ma has made an offer of 10 HSY for your “Faces” collection
+          Serati Ma has made an offer of 10 HSY for your
+          <span className="font-medium mx-1">“Faces”</span> collection
         </div>
       ),
     },
@@ -247,6 +251,7 @@ function Header() {
         </div>
       </Drawer>
       <div className="hidden lg:flex justify-end items-center w-full px-10 pt-10">
+        {isHome && <Navigation isHome={isHome} wrapperClass="mr-12" />}
         {!displaySearch ? (
           <Image
             className="cursor-pointer"

@@ -8,7 +8,8 @@ export default function PremierMarketplace() {
         <div className="absolute top-5 left-5 text-19 text-white font-light z-10">
           The Premier <br /> Marketplace for <br /> Dates
         </div>
-        <Image src="/images/calendarIllustrationSm.svg" width={327} height={128} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/calendarIllustrationSm.svg" />
       </div>
     </div>
   );

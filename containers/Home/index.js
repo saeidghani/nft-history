@@ -1,310 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import Layout from '../../Layout';
-import Introduction from './Introduction';
-import BidCardsList from '../../components/common/BidCardsList';
-import CalendarSlider from '../../components/common/CalendarSlider';
 import CategoryTabs from '../../components/common/CategoryTabs';
 import PremierMarketplace from '../../components/common/PremierMarketplace';
-
-const guestBidCards = [
-  {
-    key: 1,
-    details: {
-      status: 'Fixed Price',
-      date: 'Art Dates',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      fixedPriceDate: { date1: '1/1/2020', date2: '01/01/2020', date3: '01/01/2020' },
-    },
-  },
-  {
-    key: 2,
-    details: {
-      status: 'On Auction',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      timer: {
-        hour: 6,
-        minute: 35,
-        second: 12,
-        status: 'Till End',
-      },
-    },
-  },
-  {
-    key: 3,
-    details: {
-      status: 'On Auction',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      timer: {
-        hour: 6,
-        minute: 35,
-        second: 12,
-        status: 'Till End',
-      },
-    },
-  },
-  {
-    key: 4,
-    details: {
-      status: 'On Auction',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      timer: {
-        hour: 6,
-        minute: 35,
-        second: 12,
-        status: 'Till End',
-      },
-    },
-  },
-  {
-    key: 5,
-    details: {
-      status: 'On Auction',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      timer: {
-        hour: 6,
-        minute: 35,
-        second: 12,
-        status: 'Till End',
-      },
-    },
-  },
-  {
-    key: 6,
-    details: {
-      status: 'On Auction',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      timer: {
-        hour: 6,
-        minute: 35,
-        second: 12,
-        status: 'Till End',
-      },
-    },
-  },
-  {
-    key: 7,
-    details: {
-      status: 'On Auction',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      timer: {
-        hour: 6,
-        minute: 35,
-        second: 12,
-        status: 'Till End',
-      },
-    },
-  },
-  {
-    key: 8,
-    details: {
-      status: 'On Auction',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      timer: {
-        hour: 6,
-        minute: 35,
-        second: 12,
-        status: 'Till End',
-      },
-    },
-  },
-];
-
-const authBidCards = [
-  {
-    key: 1,
-    details: {
-      status: 'Fixed Price',
-      date: 'Art Dates',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      fixedPriceDate: { date1: '1/1/2020', date2: '01/01/2020', date3: '01/01/2020' },
-    },
-  },
-  {
-    key: 2,
-    details: {
-      status: 'Place a bid',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      calendar: {
-        month: 'FEB',
-        day: 23,
-      },
-    },
-  },
-  {
-    key: 3,
-    details: {
-      status: 'Place a bid',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      calendar: {
-        month: 'FEB',
-        day: 23,
-      },
-    },
-  },
-  {
-    key: 4,
-    details: {
-      status: 'On Auction',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      timer: {
-        hour: 6,
-        minute: 35,
-        second: 12,
-        status: 'Till End',
-      },
-    },
-  },
-  {
-    key: 5,
-    details: {
-      status: 'On Auction',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      timer: {
-        hour: 6,
-        minute: 35,
-        second: 12,
-        status: 'Till End',
-      },
-    },
-  },
-  {
-    key: 6,
-    details: {
-      status: 'On Auction',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      timer: {
-        hour: 6,
-        minute: 35,
-        second: 12,
-        status: 'Till End',
-      },
-    },
-  },
-  {
-    key: 7,
-    details: {
-      status: 'Place a bid',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      calendar: {
-        month: 'FEB',
-        day: 23,
-      },
-    },
-  },
-  {
-    key: 8,
-    details: {
-      status: 'On Auction',
-      date: '20 July 1969',
-      price: '299.49 HSY',
-      stars: 22,
-      comments: 22,
-      likes: 20,
-      timer: {
-        hour: 6,
-        minute: 35,
-        second: 12,
-        status: 'Till End',
-      },
-    },
-  },
-];
+import Offers from './Offers';
+import routes from '../../constants/routes';
 
 export default function Home() {
-  const router = useRouter();
-  const { query } = router;
-  const { category, displayCalendar, isAuth, calendarType } = query;
-  const [bidCards, setBidCards] = useState([]);
-
-  useEffect(() => {
-    if (isAuth === 'true') {
-      setBidCards(authBidCards);
-    } else {
-      setBidCards(guestBidCards);
-    }
-  }, [isAuth]);
+  const Banner = () => (
+    <div className="hidden lg:flex bg-darkGray rounded-18 px-9.5 mt-13.5">
+      <div className="py-9.5">
+        <Image src="/images/miniLogo.png" width={174} height={30} />
+        <p className="text-18 text-white font-light mt-3">
+          Everybody can own a house, a car, a shoe or a business. But how about being the only owner
+          of something unique? We made it possible to own, sell and buy dates a.k.a. any moment of
+          human history from discovering America through your birthday to creating Bitcoin.
+        </p>
+        <Link href={routes.marketPlace.index}>
+          <span
+            className="inline-flex items-center text-18 text-white bg-primary
+                           rounded-12 h-13.5 px-7 mt-6.5"
+          >
+            GO TO MARKETPLACE
+          </span>
+        </Link>
+      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/images/calendarIllustrationLg.svg" />
+    </div>
+  );
 
   return (
-    <Layout>
-      <div className="relative">
+    <Layout isHome mainClass="flex justify-center">
+      <div className="" style={{ maxWidth: 1088 }}>
         <div className="lg:hidden">
           <PremierMarketplace />
         </div>
-        <CategoryTabs />
-        {displayCalendar && (
-          <div className="mt-12 w-full">
-            <CalendarSlider />
-          </div>
-        )}
-        {displayCalendar || category || isAuth === 'true' ? (
-          <BidCardsList
-            bidCards={bidCards}
-            wrapperClass="mt-7 lg:mt-8"
-            contentClass="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4
-                          2xl:gap-8"
-          />
-        ) : (
-          <Introduction />
-        )}
+        <Banner />
+        <CategoryTabs wrapperClass="mt-9" />
+        <Offers />
       </div>
     </Layout>
   );

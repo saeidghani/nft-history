@@ -30,4 +30,5 @@ export default {
     },
   },
   upload: '/upload',
+  faq: '/faq',
 };

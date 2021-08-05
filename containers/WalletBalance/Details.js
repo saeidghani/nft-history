@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Layout from '../../Layout';
+import PremierMarketplace from '../../components/common/PremierMarketplace';
 
 const historyItems = [
   {
@@ -79,8 +80,8 @@ const claimingItems = [
 
 function Details() {
   const Balance = () => (
-    <div className="flex flex-col justify-between bg-darkGray rounded-20 p-6.5 h-103.5">
-      <div className="">
+    <div className="flex flex-col justify-between bg-darkGray rounded-20 p-6.5 lg:h-103.5">
+      <div className="flex flex-col">
         <div className="flex justify-between items-center">
           <div className="">
             <div className="text-white font-medium">Balance</div>
@@ -92,7 +93,7 @@ function Details() {
           </div>
         </div>
         <div
-          className="flex items-center bg-primary bg-opacity-20 rounded-12 w-43
+          className="self-center lg:self-start flex items-center bg-primary bg-opacity-20 rounded-12 w-43
                             py-2.5 px-4.5 mt-4"
         >
           <div className="text-white text-14 font-light mr-2">0x4A34639...5a81</div>
@@ -100,8 +101,8 @@ function Details() {
         </div>
       </div>
       <button
-        className="text-lightBlue text-18 font-medium rounded-12 h-14 w-44
-                            border border-solid border-lightBlue"
+        className="self-center lg:self-start text-lightBlue text-18 font-medium rounded-12
+                   h-14 w-44 border border-solid border-lightBlue mt-6"
       >
         Disconnect
       </button>
@@ -110,7 +111,10 @@ function Details() {
 
   const History = ({ title, items }) => (
     <div className="bg-darkGray rounded-20 py-6.5 overflow-hidden h-103.5">
-      <div className="text-white bg-white bg-opacity-10 rounded-18 font-medium p-4 mx-6.5">
+      <div
+        className="text-center lg:text-left text-white bg-white bg-opacity-10 rounded-18
+                      font-medium p-4 mx-4 lg:mx-6.5"
+      >
         {title}
       </div>
       <div
@@ -138,8 +142,13 @@ function Details() {
   );
 
   const Claiming = ({ items }) => (
-    <div className="bg-darkGray rounded-20 p-6.5 h-103.5 overflow-hidden">
-      <div className="text-white bg-white bg-opacity-10 rounded-18 font-medium p-4">Claiming</div>
+    <div className="bg-darkGray rounded-20 p-4 lg:p-6.5 h-103.5 overflow-hidden">
+      <div
+        className="text-center lg:text-left text-white bg-white bg-opacity-10 rounded-18
+                   font-medium p-4"
+      >
+        Claiming
+      </div>
       <div className="mt-3.5 h-100 overflow-auto">
         {items.map((i, index) => (
           <div
@@ -149,7 +158,9 @@ function Details() {
             }`}
           >
             <div className="flex justify-between">
-              <div className="text-white">Congratulation, you won the auction claim your nft.</div>
+              <div className="text-white text-14">
+                Congratulation, you won the auction claim your nft.
+              </div>
               <div className={index === 0 ? 'text-primary font-medium' : 'text-lightBlue'}>
                 {i.status}
               </div>
@@ -170,7 +181,10 @@ function Details() {
 
   return (
     <Layout>
-      <div className="grid grid-cols-2 gap-8">
+      <div className="lg:hidden mb-6.5">
+        <PremierMarketplace />
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <Balance />
         <History title="Transaction History" items={historyItems} />
         <Claiming items={claimingItems} />

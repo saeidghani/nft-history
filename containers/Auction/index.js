@@ -56,16 +56,16 @@ function Auctions() {
 
   const Poster = () => (
     <div
-      className={`bg-darkGray rounded-20 ${dateNotAssigned || auctionWon ? '' : 'p-6.5'}`}
-      style={{ height: 482 }}
+      className={`order-1 bg-darkGray rounded-20 lg:h-482px ${
+        dateNotAssigned || auctionWon ? '' : 'p-4 lg:p-6.5'
+      }`}
     >
-      <div className="relative" style={{ height: 430 }}>
+      <div className="relative h-430px">
         {dateNotAssigned || auctionWon ? (
-          <div className={`flex flex-col items-center w-full`} style={{ height: 482 }}>
+          <div className={`flex flex-col items-center w-full h-482px`}>
             <div
-              className="text-primary text-center text-48 flex justify-center items-center
-                         font-bold bg-white w-full rounded-t-20 border border-solid border-white"
-              style={{ height: 130 }}
+              className="text-primary text-center text-48 flex justify-center items-center font-bold
+                         bg-white w-full rounded-t-20 border border-solid border-white h-130px"
             >
               FEB
             </div>
@@ -80,8 +80,8 @@ function Auctions() {
           <div className="flex justify-center items-center bg-white rounded-10 h-full">
             <div>
               <div className="flex">
-                <div className="text-84 font-Ubuntu mr-2">SPORT</div>
-                <Image src="/icons/sport.svg" width={97} height={100} />
+                <div className="text-84 font-Ubuntu mr-6">SPORT</div>
+                <Image src="/icons/sport.svg" layout="fill" />
               </div>
               <div className="text-84 font-Ubuntu" style={{ letterSpacing: 15 }}>
                 EVENTS
@@ -92,7 +92,7 @@ function Auctions() {
           <Image src="/images/poster1.png" layout="fill" />
         )}
         <div
-          className={`absolute left-8 right-8 flex justify-between items-center ${
+          className={`absolute left-4 right-4 flex justify-between items-center ${
             dateNotAssigned || auctionWon ? '-bottom-1' : 'bottom-4'
           }`}
         >
@@ -113,10 +113,7 @@ function Auctions() {
   );
 
   const Offer = () => (
-    <div
-      className="flex flex-col justify-between bg-darkGray rounded-20 p-6.5"
-      style={{ height: 482 }}
-    >
+    <div className="order-3 lg:order-2 flex flex-col justify-between bg-darkGray rounded-20 h-482px p-6.5">
       <div>
         <div className="flex justify-between items-center bg-white bg-opacity-10 rounded-18 p-4">
           <div className="text-white">{collection ? 'Sport Events' : '23 Feb, 2021'}</div>
@@ -193,12 +190,11 @@ function Auctions() {
                 {auctionWon ? '3,600 HSY' : '299.49 HSY'}
               </div>
             </div>
-            {auctionStarted ||
-              (auctionNotStarted && (
-                <div className="text-white text-12 text-opacity-80 font-light mt-3">
-                  You must at least bis 10% higher than current bid.
-                </div>
-              ))}
+            {(auctionStarted || auctionNotStarted) && (
+              <div className="text-white text-12 text-opacity-80 font-light mt-3">
+                You must at least bis 10% higher than current bid.
+              </div>
+            )}
             {!auctionWon && !fixedPrice && (
               <div className="relative mt-5">
                 <input
@@ -268,7 +264,7 @@ function Auctions() {
   );
 
   const Details = () => (
-    <div className="bg-darkGray rounded-20 py-6.5 overflow-hidden" style={{ height: 549 }}>
+    <div className="order-2 lg:order-3 bg-darkGray rounded-20 py-6.5 overflow-hidden lg:h-549px">
       <div
         className="flex items-center space-x-6 bg-white bg-opacity-10 rounded-18 px-4 mx-6.5"
         style={{ height: 58 }}
@@ -285,10 +281,7 @@ function Auctions() {
           </div>
         ))}
       </div>
-      <div
-        className="flex flex-col mt-6.5 overflow-auto ml-6.5 mr-4.5 pr-2"
-        style={{ height: 330 }}
-      >
+      <div className="hidden lg:flex flex-col mt-6.5 overflow-auto ml-6.5 mr-4.5 pr-2 h-330px">
         {detailItems.map((i, index) => (
           <div
             key={i.key}
@@ -308,7 +301,7 @@ function Auctions() {
           </div>
         ))}
       </div>
-      <div className="relative mt-5 mx-6.5">
+      <div className="hidden lg:block relative mt-5 mx-6.5">
         <input
           placeholder="Put a Comment"
           className="text-white bg-transparent rounded-12 border border-solid border-lightBlue
@@ -322,7 +315,7 @@ function Auctions() {
   );
 
   const History = () => (
-    <div className="bg-darkGray rounded-20 py-6.5 overflow-hidden" style={{ height: 549 }}>
+    <div className="order-4 bg-darkGray rounded-20 py-6.5 overflow-hidden h-549px">
       <div
         className="flex items-center text-white bg-white bg-opacity-10
                    rounded-18 font-medium px-4 mx-6.5"
@@ -402,7 +395,7 @@ function Auctions() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-8 mt-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
         <Poster />
         <Offer />
         <Details />

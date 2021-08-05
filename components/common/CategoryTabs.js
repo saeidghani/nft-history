@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { filterQuery } from '../../utils';
 
-export default function CategoryTabs() {
+export default function CategoryTabs({ wrapperClass }) {
   const router = useRouter();
   const { pathname, query } = router;
   const { category, displayCalendar } = query;
@@ -17,7 +17,7 @@ export default function CategoryTabs() {
   ];
 
   return (
-    <div>
+    <div className={wrapperClass}>
       <div className="hidden lg:block text-20 text-white">The Premier Marketplace for Dates</div>
       <div
         className="flex items-center justify-between bg-white bg-opacity-10 rounded-18 border

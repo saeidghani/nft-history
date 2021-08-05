@@ -21,7 +21,6 @@
 /account/edit/1
 /notifications
 /notifications/settings
-/help
 /upload
 /auctions/edit/1
 /auctions/1?onSale=true
@@ -33,4 +32,5 @@
 /auctions/1?auctionEnded=true
 /auctions/1?fixedPrice=true
 /auctions/1?auctionWon=true
+/faq
 /xxx

@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../../Layout';
 import Collapse from '../../components/UI/Collapse';
 
-function Help() {
+function Faq() {
   const items = [
     {
       key: 1,
@@ -80,7 +80,7 @@ function Help() {
 
   return (
     <Layout>
-      <div className="text-white text-20">Need Some Help ?</div>
+      <div className="text-white text-20">Need Some Faq ?</div>
       <div className="text-white text-14 font-light mt-2.5">
         “I don’t know. But, I’ll find out for you.”
       </div>
@@ -95,4 +95,4 @@ function Help() {
   );
 }
 
-export default Help;
+export default Faq;

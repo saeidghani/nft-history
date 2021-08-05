@@ -3,10 +3,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { HomeIcon, AccountIcon, DropsIcon, MarketPlaceIcon, WalletBalanceIcon } from './Icons';
 import routes from '../../constants/routes';
+import { useWindowSize } from '../../utils';
 
-function Navigation({ wrapperClass = '' }) {
+function Navigation({ wrapperClass = '', isHome }) {
   const router = useRouter();
   const { pathname } = router;
+  const { width } = useWindowSize();
 
   const findActiveNavItem = (arr) => {
     if (arr.includes(pathname)) return true;
@@ -66,32 +68,47 @@ function Navigation({ wrapperClass = '' }) {
       href: routes.account.index,
       activeHrefs: [routes.account.index, routes.account.followers],
     },
+    {
+      key: 6,
+      title: 'FAQ',
+      icon: <AccountIcon fill={findActiveNavItem([routes.faq]) ? '#fff' : '#B9C0DE'} />,
+      href: routes.faq,
+      activeHrefs: [routes.faq],
+    },
   ];
 
   return (
     <div className={wrapperClass}>
-      <div className="flex flex-col space-y-10 mt-15">
-        {navItems?.map((i) => (
-          <div key={i.key} className="flex justify-between">
-            <Link href={i.href}>
-              <div className="flex space-x-2.5 items-center cursor-pointer">
-                <div>{i.icon}</div>
-                <div
-                  className={`text-15 ${
-                    findActiveNavItem(i.activeHrefs) ? 'text-white' : 'text-lightBlue font-light'
-                  }`}
-                >
-                  {i.title}
+      <div className={`flex ${isHome ? 'flex-row space-x-10' : 'flex-col space-y-10 mt-15'}`}>
+        {navItems?.map((i) =>
+          width > 1024 && i.key === 6 ? null : (
+            <div
+              key={i.key}
+              className={`flex justify-between ${isHome ? 'flex-col items-center' : ''}`}
+            >
+              <Link href={i.href}>
+                <div className="flex space-x-2.5 items-center cursor-pointer">
+                  <div className={isHome ? 'hidden' : ''}>{i.icon}</div>
+                  <div
+                    className={`text-15 ${
+                      findActiveNavItem(i.activeHrefs) ? 'text-white' : 'text-lightBlue font-light'
+                    }`}
+                  >
+                    {i.title}
+                  </div>
                 </div>
-              </div>
-            </Link>
-            {findActiveNavItem(i.activeHrefs) && (
-              <div className="flex justify-center -mb-1">
-                <div className="bg-primary rounded-l-6" style={{ width: 3, height: 30 }} />
-              </div>
-            )}
-          </div>
-        ))}
+              </Link>
+              {findActiveNavItem(i.activeHrefs) && (
+                <div className={`flex justify-center -mb-1 ${isHome ? 'ml-2' : ''}`}>
+                  <div
+                    className={`bg-primary ${isHome ? 'rounded-b-6' : 'rounded-l-6'}`}
+                    style={{ width: isHome ? 30 : 3, height: isHome ? 3 : 30 }}
+                  />
+                </div>
+              )}
+            </div>
+          ),
+        )}
       </div>
     </div>
   );

@@ -29,7 +29,7 @@ function Followers() {
         <div className="w-15.5 h-15.5 flex justify-center items-center rounded-full">
           <Image src="/images/avatar.png" width={112} height={112} />
         </div>
-        <div className="text-white text-18">Emilie Butler</div>
+        <div className="text-white text-16 lg:text-18">Emilie Butler</div>
       </div>
       <button
         className={`text-white font-light rounded-12 w-28 2xs:w-33 h-9.5 ${
@@ -46,6 +46,8 @@ function Followers() {
     { key: 1, title: 'Followers' },
     { key: 2, title: 'Following' },
   ];
+
+  const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   return (
     <Layout>
@@ -71,10 +73,12 @@ function Followers() {
             <div className="text-white text-20 font-medium text-gray3">Following</div>
             <SearchInput wrapperClass="mt-7" />
             <div
-              className="flex flex-col space-y-8 overflow-auto pr-4 mt-8"
+              className={`flex flex-col space-y-8 overflow-auto mt-8 ${
+                items.length > 12 ? 'pr-4' : ''
+              }`}
               style={{ height: 1100 }}
             >
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
+              {items.map((i) => (
                 <FollowStatus
                   key={i}
                   isFollowing={followingUsers.includes(i)}
@@ -95,10 +99,12 @@ function Followers() {
             <div className="text-white text-20 font-medium text-gray3">Follower</div>
             <SearchInput wrapperClass="mt-7" />
             <div
-              className="flex flex-col space-y-8 overflow-auto pr-4 mt-8"
+              className={`flex flex-col space-y-8 overflow-auto mt-8 ${
+                items.length > 12 ? 'pr-4' : ''
+              }`}
               style={{ height: 1100 }}
             >
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
+              {items.map((i) => (
                 <FollowStatus
                   key={i}
                   isFollowing={followerUsers.includes(i)}
@@ -118,10 +124,15 @@ function Followers() {
       </div>
       <div className="hidden lg:grid grid-cols-2 gap-x-8 mt-0">
         <div className="">
-          <div className="text-white text-20 font-medium">Following</div>
+          <div className="text-gray3 text-20 font-medium">Following</div>
           <SearchInput wrapperClass="pr-4 mt-7" />
-          <div className="flex flex-col space-y-8 overflow-auto pr-4 mt-8" style={{ height: 1100 }}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
+          <div
+            className={`flex flex-col space-y-8 overflow-auto mt-8 ${
+              items.length > 12 ? 'pr-4' : ''
+            }`}
+            style={{ height: 1100 }}
+          >
+            {items.map((i) => (
               <FollowStatus
                 key={i}
                 isFollowing={followingUsers.includes(i)}
@@ -138,10 +149,15 @@ function Followers() {
           </div>
         </div>
         <div className="">
-          <div className="text-white text-20 font-medium">Follower</div>
+          <div className="text-gray3 text-20 font-medium">Follower</div>
           <SearchInput wrapperClass="pr-4 mt-7" />
-          <div className="flex flex-col space-y-8 overflow-auto pr-4 mt-8" style={{ height: 1100 }}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
+          <div
+            className={`flex flex-col space-y-8 overflow-auto mt-8 ${
+              items.length > 12 ? 'pr-4' : ''
+            }`}
+            style={{ height: 1100 }}
+          >
+            {items.map((i) => (
               <FollowStatus
                 key={i}
                 isFollowing={followerUsers.includes(i)}

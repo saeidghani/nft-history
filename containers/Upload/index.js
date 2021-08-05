@@ -100,7 +100,7 @@ export default function Upload() {
         </div>
         <div className="flex flex-col justify-between">
           <div className="">
-            <div className="text-white text-18">Name Your Date</div>
+            <div className="text-white text-18 font-medium">Name Your Date</div>
             <input
               className="rounded-12 border border-solid border-fadeLightBlue5 bg-transparent
                      text-white h-14 px-3 mt-2.5 w-full"
@@ -108,7 +108,7 @@ export default function Upload() {
               {...register('title')}
             />
 
-            <div className="text-white text-18 mt-6">Description</div>
+            <div className="text-white text-18 font-medium mt-6">Description</div>
             <textarea
               rows={7}
               className="rounded-12 border border-solid border-fadeLightBlue5 bg-transparent

@@ -202,13 +202,13 @@ function Account() {
                 <div className="order-1 lg:order-2 flex space-x-4 mt-3">
                   <Link href={routes.account.followers}>
                     <div className="flex flex-col items-center cursor-pointer">
-                      <div className="text-white text-14 font-light">Following</div>
+                      <div className="text-gray3 text-14 font-light">Following</div>
                       <div className="text-white text-18">2,233</div>
                     </div>
                   </Link>
                   <Link href={routes.account.followers}>
                     <div className="flex flex-col items-center cursor-pointer">
-                      <div className="text-white text-14 font-light">Followers</div>
+                      <div className="text-gray3 text-14 font-light">Followers</div>
                       <div className="text-white text-18">2,233</div>
                     </div>
                   </Link>
