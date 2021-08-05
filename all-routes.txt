@@ -24,12 +24,12 @@
 /upload
 /auctions/edit/1
 /auctions/1?onSale=true
-/auctions/1?onSale=true&auctionEnded=true
-/auctions/1?onSale=true&auctionEnded=true&dateNotAssigned=true
+/auctions/1?onSale=true&cancel=true
+/auctions/1?onSale=true&dateNotAssigned=true
 /auctions/1?auctionStarted=true&collection=true
 /auctions/1?auctionStarted=true
-/auctions/1?auctionNotStarted=true
 /auctions/1?auctionEnded=true
+/auctions/1?auctionNotStarted=true
 /auctions/1?fixedPrice=true
 /auctions/1?auctionWon=true
 /faq

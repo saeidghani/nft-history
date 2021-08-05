@@ -30,6 +30,7 @@ function Auctions() {
     auctionWon,
     dateNotAssigned,
     collection,
+    cancel,
     id,
   } = query;
 
@@ -70,7 +71,7 @@ function Auctions() {
               FEB
             </div>
             <div
-              className="flex justify-center items-center text-white text-center text-96
+              className="flex justify-center items-center text-white text-center text-146
                          font-light rounded-b-20 w-full h-full border border-solid border-white"
             >
               23
@@ -81,7 +82,7 @@ function Auctions() {
             <div>
               <div className="flex">
                 <div className="text-84 font-Ubuntu mr-6">SPORT</div>
-                <Image src="/icons/sport.svg" layout="fill" />
+                <Image src="/icons/sport.svg" width={97} height={100} />
               </div>
               <div className="text-84 font-Ubuntu" style={{ letterSpacing: 15 }}>
                 EVENTS
@@ -96,17 +97,21 @@ function Auctions() {
             dateNotAssigned || auctionWon ? '-bottom-1' : 'bottom-4'
           }`}
         >
-          <div className="rounded-6 flex space-x-1 text-white bg-black bg-opacity-50 px-1">
-            <div className="">Token ID:</div>
-            <div className="">20600010973</div>
-          </div>
-          <div
-            className="flex space-x-1 items-center
+          {!auctionWon && (
+            <>
+              <div className="rounded-6 flex space-x-1 text-white bg-black bg-opacity-50 px-1">
+                <div className="">Token ID:</div>
+                <div className="">20600010973</div>
+              </div>
+              <div
+                className="flex space-x-1 items-center
                         rounded-6 bg-black bg-opacity-60 px-2 py-1"
-          >
-            <Image src="/icons/like.svg" width={18} height={16} />
-            <div className="text-white text-12 text-opacity-75">20</div>
-          </div>
+              >
+                <Image src="/icons/like.svg" width={18} height={16} />
+                <div className="text-white text-12 text-opacity-75">20</div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
@@ -116,8 +121,8 @@ function Auctions() {
     <div className="order-3 lg:order-2 flex flex-col justify-between bg-darkGray rounded-20 h-482px p-6.5">
       <div>
         <div className="flex justify-between items-center bg-white bg-opacity-10 rounded-18 p-4">
-          <div className="text-white">{collection ? 'Sport Events' : '23 Feb, 2021'}</div>
-          {collection && (
+          <div className="text-white text-18">{collection ? 'Sport Events' : '23 Feb, 2021'}</div>
+          {(collection || auctionStarted || auctionWon) && (
             <div className="flex items-center">
               <div className="flex space-x-4.5 mr-1">
                 <div className="text-white text-18">6h</div>
@@ -127,7 +132,17 @@ function Auctions() {
               <div className="text-white text-opacity-70 text-14 font-light">Till End</div>
             </div>
           )}
-          {auctionEnded && (
+          {auctionNotStarted && (
+            <div className="flex items-center">
+              <div className="flex space-x-4.5 mr-1">
+                <div className="text-white text-18">56h</div>
+                <div className="text-white text-18">35m</div>
+                <div className="text-white text-18">12s</div>
+              </div>
+              <div className="text-white text-opacity-70 text-14 font-light">To Start</div>
+            </div>
+          )}
+          {(auctionEnded || dateNotAssigned) && (
             <div className="text-white text-opacity-70 text-14 font-light">Auction Ended</div>
           )}
         </div>
@@ -174,8 +189,8 @@ function Auctions() {
       <div>
         {(auctionStarted || auctionNotStarted || auctionEnded || auctionWon || fixedPrice) && (
           <>
-            <div className="flex justify-between items-center">
-              <div className="text-white font-medium">
+            <div className="flex justify-between items-center mt-1">
+              <div className="text-white font-medium ">
                 {auctionStarted
                   ? 'Current Bid'
                   : auctionNotStarted
@@ -195,7 +210,7 @@ function Auctions() {
                 You must at least bis 10% higher than current bid.
               </div>
             )}
-            {!auctionWon && !fixedPrice && (
+            {!auctionWon && !fixedPrice && !dateNotAssigned && (
               <div className="relative mt-5">
                 <input
                   className="text-white bg-transparent rounded-12 border border-solid border-lightBlue
@@ -216,7 +231,7 @@ function Auctions() {
             onClick={() => {
               if (auctionStarted) {
                 setPlaceABidOpen(true);
-              } else if (onSale && auctionEnded && !dateNotAssigned) {
+              } else if (onSale && cancel) {
                 setCancelAuctionOpen(true);
               } else if (!onSale && auctionEnded) {
                 setMakeOfferOpen(true);
@@ -229,7 +244,7 @@ function Auctions() {
           >
             {auctionNotStarted || auctionStarted
               ? 'Place a Bid'
-              : onSale && auctionEnded && !dateNotAssigned
+              : onSale && cancel
               ? 'Cancel Auction'
               : fixedPrice
               ? 'Buy Now'
@@ -240,7 +255,7 @@ function Auctions() {
               : 'Put on Sale'}
           </button>
           <div className="flex items-center space-x-6.5">
-            {onSale && (
+            {onSale && !cancel && (
               <Link href={routes.auctions.edit(id)}>
                 <div
                   className="h-14 w-14 rounded-18 flex justify-center items-center
