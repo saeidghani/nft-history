@@ -11,6 +11,7 @@ function Header({ isHome }) {
   const router = useRouter();
   const { query } = router;
   const { pathname, isAuth, notification } = query;
+  console.log({ notification });
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [displaySearch, setDisplaySearch] = useState(false);

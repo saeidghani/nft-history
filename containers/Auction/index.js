@@ -16,7 +16,7 @@ function Auctions() {
   const [confirmABidOpen, setConfirmABidOpen] = useState(false);
   const [cancelAuctionOpen, setCancelAuctionOpen] = useState(false);
   const [makeOfferOpen, setMakeOfferOpen] = useState(false);
-  const [uploadOpen, setUploadOpen] = useState(true);
+  const [uploadOpen, setUploadOpen] = useState(false);
 
   const router = useRouter();
   const { query } = router;
