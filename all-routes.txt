@@ -1,9 +1,9 @@
-/home
-/home?isAuth=true
-/home?isAuth=true&calendarType=month
-/home?isAuth=true&calendarType=year
-/home?isAuth=true&calendarType=years
-/home?isAuth=true&calendarType=days
+/
+/?isAuth=true
+/?isAuth=true&calendarType=month
+/?isAuth=true&calendarType=year
+/?isAuth=true&calendarType=years
+/?isAuth=true&calendarType=days
 /market-place?isAuth=true&calendarType=month
 /market-place?isAuth=true&calendarType=year
 /market-place?isAuth=true&calendarType=years

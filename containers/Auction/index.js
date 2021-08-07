@@ -16,7 +16,7 @@ function Auctions() {
   const [confirmABidOpen, setConfirmABidOpen] = useState(false);
   const [cancelAuctionOpen, setCancelAuctionOpen] = useState(false);
   const [makeOfferOpen, setMakeOfferOpen] = useState(false);
-  const [uploadOpen, setUploadOpen] = useState(false);
+  const [uploadOpen, setUploadOpen] = useState(true);
 
   const router = useRouter();
   const { query } = router;
@@ -57,11 +57,11 @@ function Auctions() {
 
   const Poster = () => (
     <div
-      className={`order-1 bg-darkGray rounded-20 lg:h-482px ${
+      className={`order-1 bg-darkGray rounded-20 w-full lg:h-482px ${
         dateNotAssigned || auctionWon ? '' : 'p-4 lg:p-6.5'
       }`}
     >
-      <div className="relative h-430px">
+      <div className="relative w-full h-full">
         {dateNotAssigned || auctionWon ? (
           <div className={`flex flex-col items-center w-full h-482px`}>
             <div
@@ -78,23 +78,27 @@ function Auctions() {
             </div>
           </div>
         ) : collection ? (
-          <div className="flex justify-center items-center bg-white rounded-10 h-full">
+          <div className="flex justify-center items-center bg-white rounded-10 h-full px-4 py-12 lg:p-0">
             <div>
-              <div className="flex">
-                <div className="text-84 font-Ubuntu mr-6">SPORT</div>
-                <Image src="/icons/sport.svg" width={97} height={100} />
+              <div className="flex justify-between">
+                <div className="text-48 lg:text-84 font-Ubuntu mr-6 mt-2">SPORT</div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/icons/sport.svg" className="w-15 lg:w-24 mr-4" />
               </div>
-              <div className="text-84 font-Ubuntu" style={{ letterSpacing: 15 }}>
+              <div className="text-48 lg:text-84 font-Ubuntu" style={{ letterSpacing: 15 }}>
                 EVENTS
               </div>
             </div>
           </div>
         ) : (
-          <Image src="/images/poster1.png" layout="fill" />
+          <div className="flex items-center h-full">
+            {/* eslint-disable-next-line @next/next/no-img-element*/}
+            <img src="/images/poster1.png" className="object-cover h-full" />
+          </div>
         )}
         <div
           className={`absolute left-4 right-4 flex justify-between items-center ${
-            dateNotAssigned || auctionWon ? '-bottom-1' : 'bottom-4'
+            dateNotAssigned || auctionWon ? 'bottom-10' : 'bottom-6 lg:bottom-10'
           }`}
         >
           {!auctionWon && (
@@ -118,32 +122,41 @@ function Auctions() {
   );
 
   const Offer = () => (
-    <div className="order-3 lg:order-2 flex flex-col justify-between bg-darkGray rounded-20 h-482px p-6.5">
+    <div
+      className="order-3 lg:order-2 flex flex-col justify-between bg-darkGray rounded-20
+                    lg:h-482px p-4 lg:p-6.5"
+    >
       <div>
         <div className="flex justify-between items-center bg-white bg-opacity-10 rounded-18 p-4">
           <div className="text-white text-18">{collection ? 'Sport Events' : '23 Feb, 2021'}</div>
           {(collection || auctionStarted || auctionWon) && (
             <div className="flex items-center">
-              <div className="flex space-x-4.5 mr-1">
-                <div className="text-white text-18">6h</div>
-                <div className="text-white text-18">35m</div>
-                <div className="text-white text-18">12s</div>
+              <div className="flex space-x-2 lg:space-x-4.5 mr-1">
+                <div className="text-white text-15 lg:text-18">6h</div>
+                <div className="text-white text-15 lg:text-18">35m</div>
+                <div className="text-white text-15 lg:text-18">12s</div>
               </div>
-              <div className="text-white text-opacity-70 text-14 font-light">Till End</div>
+              <div className="text-white text-opacity-70 text-12 lg:text-14 font-light">
+                Till End
+              </div>
             </div>
           )}
           {auctionNotStarted && (
             <div className="flex items-center">
-              <div className="flex space-x-4.5 mr-1">
-                <div className="text-white text-18">56h</div>
-                <div className="text-white text-18">35m</div>
-                <div className="text-white text-18">12s</div>
+              <div className="flex space-x-2 lg:space-x-4.5 mr-1">
+                <div className="text-white text-15 lg:text-18">56h</div>
+                <div className="text-white text-15 lg:text-18">35m</div>
+                <div className="text-white text-15 lg:text-18">12s</div>
               </div>
-              <div className="text-white text-opacity-70 text-14 font-light">To Start</div>
+              <div className="text-white text-opacity-70 text-12 lg:text-14 font-light">
+                To Start
+              </div>
             </div>
           )}
           {(auctionEnded || dateNotAssigned) && (
-            <div className="text-white text-opacity-70 text-14 font-light">Auction Ended</div>
+            <div className="text-white text-opacity-70 text-12 lg:text-14 font-light">
+              Auction Ended
+            </div>
           )}
         </div>
         {collection ? (
@@ -153,7 +166,7 @@ function Auctions() {
           </div>
         ) : auctionWon ? (
           <div className="text-white font-medium mt-6">Token ID: 20600010973</div>
-        ) : onSale && auctionEnded ? (
+        ) : (onSale && auctionEnded) || dateNotAssigned ? (
           <div className="text-white font-medium mt-6">Day Name</div>
         ) : (
           <div className={`text-white font-medium ${auctionNotStarted ? 'mt-3' : 'mt-6'}`}>
@@ -224,10 +237,11 @@ function Auctions() {
             )}
           </>
         )}
-        <div className="flex items-center space-x-6.5 mt-5">
+        <div className="flex items-center space-x-3 lg:space-x-6.5 mt-5">
           <button
-            disabled={auctionNotStarted}
-            className="bg-primary text-white text-18 font-medium rounded-12 w-full h-14"
+            className={`bg-primary text-white text-18 font-medium rounded-12 w-full h-14 ${
+              auctionNotStarted ? 'opacity-40 cursor-not-allowed' : ''
+            }`}
             onClick={() => {
               if (auctionStarted) {
                 setPlaceABidOpen(true);
@@ -254,7 +268,7 @@ function Auctions() {
               ? 'Claim'
               : 'Put on Sale'}
           </button>
-          <div className="flex items-center space-x-6.5">
+          <div className="flex items-center space-x-3 lg:space-x-6.5">
             {onSale && !cancel && (
               <Link href={routes.auctions.edit(id)}>
                 <div
@@ -387,7 +401,7 @@ function Auctions() {
             <div className="w-23 h-23 flex justify-center items-center rounded-full">
               <Image src="/images/avatar.png" width={112} height={112} />
             </div>
-            <div className="flex flex-col mt-2">
+            <div className="flex flex-col mt-7 lg:mt-2">
               <div className="text-white text-18 font-medium">Emilie Butler</div>
               <div className="text-white text-14 font-light mt-2">The future is coming.</div>
               <div className="flex mt-1">
@@ -396,21 +410,29 @@ function Auctions() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-end">
-            <div className="order-1 lg:order-2 flex space-x-8 mt-6">
-              <div className="flex flex-col items-center">
-                <div className="text-white text-14 font-light">Following</div>
-                <div className="text-white text-18">56</div>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="text-white text-14 font-light">Followers</div>
-                <div className="text-white text-18">2,233</div>
+          <div
+            className="flex flex-col lg:flex-row items-center space-y-12 lg:space-y-0
+                       space-x-0 lg:space-x-6.5 mt-6 lg:mt-0"
+          >
+            <div className="flex flex-col">
+              <div className="order-1 lg:order-2 flex space-x-8">
+                <div className="flex flex-col items-center">
+                  <div className="text-white text-14 font-light">Following</div>
+                  <div className="text-white text-18">56</div>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="text-white text-14 font-light">Followers</div>
+                  <div className="text-white text-18">2,233</div>
+                </div>
               </div>
             </div>
+            <button className="border border-white border-solid rounded-12 text-white w-33 h-9.5">
+              Follow
+            </button>
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-8 mt-8">
         <Poster />
         <Offer />
         <Details />

@@ -18,7 +18,9 @@ function ConfirmBidModal({ open, onCloseModal }) {
 
   const content = (
     <div className="p-6.5">
-      <p className="text-white text-18 font-light">You Placed a bid worth $20 are you sure?</p>
+      <p className="text-white text-opacity-80 text-18 font-light">
+        You Placed a bid worth $20 are you sure?
+      </p>
       <button
         className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14 mt-20"
         onClick={onCloseModal}

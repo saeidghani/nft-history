@@ -172,7 +172,7 @@ function Account() {
                   <Image src="/icons/user.svg" width={54} height={54} />
                 </div>
               )}
-              <div className="flex flex-col mt-2">
+              <div className="flex flex-col mt-4">
                 <div className="text-white text-18 font-medium">Emilie Butler</div>
                 <div className="text-white text-14 font-light mt-2">The future is coming.</div>
                 <div className="flex mt-1">
@@ -216,7 +216,7 @@ function Account() {
               )}
               {!myProfile && (
                 <button
-                  className={`order-1 rounded-12 font-light mt-8 lg:mt-0 mb-0 lg:mb-3 rounded-12
+                  className={`order-1 rounded-12 font-light mt-13 lg:mt-0 mb-0 lg:mb-3 rounded-12
                               text-white border border-solid w-33 h-9.5 ${
                                 follows === 'true'
                                   ? 'bg-primary border-transparent'

@@ -190,22 +190,6 @@ export default function Edit() {
                   minDate={startDate}
                   placeholder="Right after listing"
                 />
-                {/*<div
-                  className="absolute pointer-events-none"
-                  style={{ fontSize: 12, top: 28.5, left: 64 }}
-                >
-                  {moment(startDate).format('d/MMM/yyyy').replace(/\//g, ' ')}
-                  <div className="absolute" style={{ top: 2, left: 65 }}>
-                    -
-                  </div>
-                </div>
-                <div
-                  className="absolute pointer-events-none"
-                  style={{ fontSize: 12, top: 28.5, left: 136 }}
-                >
-                  {moment(endDate).format('d/MMM/yyyy').replace(/\//g, ' ')}
-                </div>*/}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   className="absolute top-7 right-6 pointer-events-none transform rotate-180"
                   style={{ top: 28, right: 24 }}

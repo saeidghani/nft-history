@@ -87,7 +87,7 @@ function Details() {
             <div className="text-white font-medium">Balance</div>
             <div className="text-white text-14 font-medium mt-2">164,942.56 HSY</div>
           </div>
-          <div className="mr-10">
+          <div className="lg:mr-10">
             <div className="text-white font-medium">Bidding Balance</div>
             <div className="text-white text-14 font-medium mt-2">164,942.56 HSY</div>
           </div>
@@ -142,14 +142,14 @@ function Details() {
   );
 
   const Claiming = ({ items }) => (
-    <div className="bg-darkGray rounded-20 p-4 lg:p-6.5 h-103.5 overflow-hidden">
+    <div className="bg-darkGray rounded-20 pt-4 px-4 lg:p-6.5 lg:h-103.5 overflow-hidden">
       <div
         className="text-center lg:text-left text-white bg-white bg-opacity-10 rounded-18
                    font-medium p-4"
       >
         Claiming
       </div>
-      <div className="mt-3.5 h-100 overflow-auto">
+      <div className="mt-3.5 h-92 lg:h-100 overflow-auto">
         {items.map((i, index) => (
           <div
             key={i.key}

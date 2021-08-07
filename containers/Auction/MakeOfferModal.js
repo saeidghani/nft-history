@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Modal from '../../components/UI/Modal';
-import Layout from '../../Layout';
 import TimePicker from '../../components/UI/TimePicker';
 import Select from '../../components/UI/Select';
 
@@ -38,29 +37,35 @@ function MakeOfferModal({ open, onCloseModal }) {
 
   const content = (
     <div className="px-6.5 pb-6.5 pt-7.5">
-      <div className="flex space-x-8 items-end">
+      <div
+        className="flex flex-col md:flex-row space-y-8 md:space-y-0 space-x-0 md:space-x-8
+       items-end"
+      >
         <div className="w-full">
           <div className="text-white font-medium">Price:</div>
           <div className="relative w-full mt-3 mr-8">
             <input
               className="text-white text-opacity-80 bg-transparent rounded-12 px-4 h-14 w-full
-                              border border-solid border-lightBlue"
-              style={{ maxWidth: 222 }}
+                              border border-solid border-lightBlue lg:max-w-222px"
             />
-            <div className="absolute top-4 right-4 text-white text-opacity-80">HSY</div>
+            <div className="text-18 absolute top-4 right-4 md:right-4 text-white text-opacity-80">
+              HSY
+            </div>
           </div>
         </div>
         <div className="relative w-full">
           <input
             placeholder="0.00"
             className="text-white text-opacity-80 bg-transparent rounded-12 px-4 h-14 w-full
-                       border border-solid border-lightBlue"
-            style={{ maxWidth: 222 }}
+                       border border-solid border-lightBlue lg:max-w-222px"
           />
-          <div className="absolute top-4 right-4 text-white text-opacity-80">$</div>
+          <div className="text-18 absolute top-4 right-4 text-white text-opacity-80">$</div>
         </div>
       </div>
-      <div className="flex space-x-8 items-end mt-6.5">
+      <div
+        className="flex flex-col md:flex-row space-y-8 md:space-y-0 space-x-0 md:space-x-8
+      items-end mt-6.5"
+      >
         <div className="w-full">
           <div className="text-white font-medium">Offer Expiration:</div>
           <div className="w-full border border-solid border-lightBlue rounded-12 mt-3">
@@ -71,8 +76,8 @@ function MakeOfferModal({ open, onCloseModal }) {
               placeholder="Right after listing"
               width="w-full"
               buttonClass="h-14 px-4"
-              selectedClass="text-white text-opacity-80"
-              optionClass="text-white bg-darkGray3"
+              selectedClass="text-18 text-white text-opacity-80"
+              optionClass="text-18 text-white font-light bg-darkGray3"
             />
           </div>
         </div>

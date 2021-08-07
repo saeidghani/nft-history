@@ -115,7 +115,7 @@ function Header({ isHome }) {
     {
       key: 2,
       title: (
-        <div className="text-white pr-8 mt-2">
+        <div className="text-white text-16 pr-8 mt-2">
           Serati Ma has made an offer of 10 HSY for your
           <span className="font-medium mx-1">“Faces”</span> collection
         </div>
@@ -124,7 +124,7 @@ function Header({ isHome }) {
     {
       key: 3,
       title: (
-        <div className="text-white pr-8">
+        <div className="text-white text-16 pr-8">
           Serati Ma has made an offer of 10 HSY for your{' '}
           <span className="font-medium mx-1">“Faces”</span> collection
         </div>
@@ -133,7 +133,7 @@ function Header({ isHome }) {
     {
       key: 4,
       title: (
-        <div className="text-white pr-8">
+        <div className="text-white text-16 pr-8">
           Serati Ma has made an offer of 10 HSY for your
           <span className="font-medium mx-1">“Faces”</span> collection
         </div>
@@ -142,7 +142,7 @@ function Header({ isHome }) {
     {
       key: 5,
       title: (
-        <div className="text-white pr-8">
+        <div className="text-white text-16 pr-8">
           Serati Ma has made an offer of 10 HSY for your
           <span className="font-medium mx-1">“Faces”</span> collection
         </div>
@@ -250,72 +250,84 @@ function Header({ isHome }) {
           </div>
         </div>
       </Drawer>
-      <div className="hidden lg:flex justify-end items-center w-full px-10 pt-10">
-        {isHome && <Navigation isHome={isHome} wrapperClass="mr-12" />}
-        {!displaySearch ? (
-          <Image
-            className="cursor-pointer"
-            onClick={() => setDisplaySearch(true)}
-            src="/icons/magnifier.svg"
-            width={25}
-            height={25}
-          />
-        ) : (
-          <div className="w-full relative left-2" style={{ maxWidth: 380 }}>
-            <SearchInput isSm />
+      <div className="hidden lg:flex justify-between items-center w-full px-10 pt-10">
+        {isHome && (
+          <div className="flex space-x-4 pr-4 2xl:pr-6.5">
+            <div className="w-7.5">
+              <Image src="/icons/logo.svg" width={30} height={30} />
+            </div>
+            <div className="text-white text-26 font-semibold" style={{ whiteSpace: 'nowrap' }}>
+              NFT HISTORY
+            </div>
           </div>
         )}
-        <div className="flex justify-between items-center w-full" style={{ maxWidth: 160 }}>
-          <div className="w-full flex justify-end">
-            <Dropdown
-              title={
-                <div className="cursor-pointer">
-                  <Image src="/icons/help.svg" width={24} height={24} />
-                </div>
-              }
-              items={helpItems}
-              width="w-6"
-              menuItemClass="justify-start"
-              menuItemsClass="pl-4 pb-5 -left-100 -mt-7 w-95"
+        <div className="flex justify-end items-center w-full">
+          {isHome && <Navigation isHome={isHome} wrapperClass="mr-12" />}
+          {!displaySearch ? (
+            <Image
+              className="cursor-pointer"
+              onClick={() => setDisplaySearch(true)}
+              src="/icons/magnifier.svg"
+              width={25}
+              height={25}
             />
-          </div>
-          <div className="w-full flex justify-end">
-            <Dropdown
-              title={
-                <div className="w-full flex justify-end cursor-pointer">
-                  <Image src="/icons/bell.svg" width={22} height={25} />
-                </div>
-              }
-              items={
-                notification === 'won-auction'
-                  ? wonAuctionNotifications
-                  : notification === 'new-offer'
-                  ? newOfferNotifications
-                  : basicNotifications
-              }
-              width="w-6"
-              menuItemClass="justify-start text-left"
-              menuItemsClass="-left-130 mt-5 w-95 px-4 w-130 bg-darkGray"
-            />
-          </div>
-          <div className="w-full flex justify-end cursor-pointer pl-3">
-            <div className="bg-white bg-opacity-20 rounded-full w-9.5 h-9.5 flex justify-center">
-              {isAuth === 'true' ? (
-                <Dropdown
-                  title={
-                    <div className="cursor-pointer">
-                      <Image src="/images/avatar.png" width={38} height={38} />
-                    </div>
-                  }
-                  items={logoutItems}
-                  width="w-10"
-                  menuItemClass="justify-start text-left py-4.5"
-                  menuItemsClass="-left-48 mt-8 px-4 w-56 bg-darkGray"
-                  onSelect={() => {}}
-                />
-              ) : (
-                <Image src="/icons/user.svg" width={20} height={20} />
-              )}
+          ) : (
+            <div className="w-full relative left-2" style={{ maxWidth: 380 }}>
+              <SearchInput isSm />
+            </div>
+          )}
+          <div className="flex justify-between items-center w-full" style={{ maxWidth: 160 }}>
+            <div className="w-full flex justify-end">
+              <Dropdown
+                title={
+                  <div className="cursor-pointer">
+                    <Image src="/icons/help.svg" width={24} height={24} />
+                  </div>
+                }
+                items={helpItems}
+                width="w-6"
+                menuItemClass="justify-start"
+                menuItemsClass="pl-4 pb-5 -left-100 -mt-7 w-95"
+              />
+            </div>
+            <div className="w-full flex justify-end">
+              <Dropdown
+                title={
+                  <div className="w-full flex justify-end cursor-pointer">
+                    <Image src="/icons/bell.svg" width={22} height={25} />
+                  </div>
+                }
+                items={
+                  notification === 'won-auction'
+                    ? wonAuctionNotifications
+                    : notification === 'new-offer'
+                    ? newOfferNotifications
+                    : basicNotifications
+                }
+                width="w-6"
+                menuItemClass="justify-start text-left"
+                menuItemsClass="-left-130 mt-5 w-95 px-4 w-130 bg-darkGray"
+              />
+            </div>
+            <div className="w-full flex justify-end cursor-pointer pl-3">
+              <div className="bg-white bg-opacity-20 rounded-full w-9.5 h-9.5 flex justify-center">
+                {isAuth === 'true' ? (
+                  <Dropdown
+                    title={
+                      <div className="cursor-pointer">
+                        <Image src="/images/avatar.png" width={38} height={38} />
+                      </div>
+                    }
+                    items={logoutItems}
+                    width="w-10"
+                    menuItemClass="justify-start text-left py-4.5"
+                    menuItemsClass="-left-48 mt-8 px-4 w-56 bg-darkGray"
+                    onSelect={() => {}}
+                  />
+                ) : (
+                  <Image src="/icons/user.svg" width={20} height={20} />
+                )}
+              </div>
             </div>
           </div>
         </div>

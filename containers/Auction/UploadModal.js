@@ -35,7 +35,7 @@ function UploadModal({ open, onCloseModal }) {
           </div>
         </Link>
         <button
-          className="text-lightBlue text-18 font-medium rounded-12 w-full
+          className="hidden lg:block text-lightBlue text-18 font-medium rounded-12 w-full
                            border border-solid border-lightBlue h-14"
         >
           Later
