@@ -130,30 +130,30 @@ function Auctions() {
           <div className="text-white text-18">{collection ? 'Sport Events' : '23 Feb, 2021'}</div>
           {(collection || auctionStarted || auctionWon) && (
             <div className="flex items-center">
-              <div className="flex space-x-2 lg:space-x-4.5 mr-1">
-                <div className="text-white text-15 lg:text-18">6h</div>
-                <div className="text-white text-15 lg:text-18">35m</div>
-                <div className="text-white text-15 lg:text-18">12s</div>
+              <div className="flex space-x-2 xl:space-x-4.5 mr-1">
+                <div className="text-white text-15 xl:text-18">6h</div>
+                <div className="text-white text-15 xl:text-18">35m</div>
+                <div className="text-white text-15 xl:text-18">12s</div>
               </div>
-              <div className="text-white text-opacity-70 text-12 lg:text-14 font-light">
+              <div className="text-white text-opacity-70 text-12 xl:text-14 font-light">
                 Till End
               </div>
             </div>
           )}
           {auctionNotStarted && (
             <div className="flex items-center">
-              <div className="flex space-x-2 lg:space-x-4.5 mr-1">
-                <div className="text-white text-15 lg:text-18">56h</div>
-                <div className="text-white text-15 lg:text-18">35m</div>
-                <div className="text-white text-15 lg:text-18">12s</div>
+              <div className="flex space-x-2 xl:space-x-4.5 mr-1">
+                <div className="text-white text-15 xl:text-18">56h</div>
+                <div className="text-white text-15 xl:text-18">35m</div>
+                <div className="text-white text-15 xl:text-18">12s</div>
               </div>
-              <div className="text-white text-opacity-70 text-12 lg:text-14 font-light">
+              <div className="text-white text-opacity-70 text-12 xl:text-14 font-light">
                 To Start
               </div>
             </div>
           )}
           {(auctionEnded || dateNotAssigned) && (
-            <div className="text-white text-opacity-70 text-12 lg:text-14 font-light">
+            <div className="text-white text-opacity-70 text-12 xl:text-14 font-light">
               Auction Ended
             </div>
           )}
@@ -168,7 +168,7 @@ function Auctions() {
         ) : (onSale && auctionEnded) || dateNotAssigned ? (
           <div className="text-white font-medium mt-6">Day Name</div>
         ) : (
-          <div className={`text-white font-medium ${auctionNotStarted ? 'mt-3' : 'mt-6'}`}>
+          <div className={`text-white font-medium ${auctionNotStarted ? 'mt-2 xl:mt-3' : 'mt-6'}`}>
             Day of Me
           </div>
         )}
@@ -192,7 +192,7 @@ function Auctions() {
         {!collection && (auctionStarted || auctionNotStarted || auctionEnded || fixedPrice) && (
           <div
             className="font-medium text-primary text-left flex justify-center
-                      bg-primary bg-opacity-10 rounded-10 mt-2.5 py-1 w-16"
+                      bg-primary bg-opacity-10 rounded-10 mt-1 xl:mt-2.5 py-1 w-16"
           >
             Sport
           </div>
@@ -218,7 +218,7 @@ function Auctions() {
               </div>
             </div>
             {(auctionStarted || auctionNotStarted) && (
-              <div className="text-white text-12 text-opacity-80 font-light mt-2 xl:mt-3">
+              <div className="text-white text-12 text-opacity-80 font-light mt-1.5 xl:mt-3">
                 You must at least bis 10% higher than current bid.
               </div>
             )}
@@ -236,7 +236,7 @@ function Auctions() {
             )}
           </>
         )}
-        <div className="flex items-center space-x-3 lg:space-x-6.5 mt-4 xl:mt-5">
+        <div className="flex items-center space-x-3 lg:space-x-6.5 mt-3 xl:mt-5">
           <button
             className={`bg-primary text-white text-18 font-medium rounded-12 w-full h-14 ${
               auctionNotStarted ? 'opacity-40 cursor-not-allowed' : ''

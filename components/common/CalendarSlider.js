@@ -115,7 +115,17 @@ function CalendarSlider() {
 
   return (
     <div className="">
-      <div className="text-white text-20 font-medium">{title}</div>
+      <div
+        className="text-white text-20 font-medium"
+        onClick={() =>
+          router.push({
+            pathname,
+            query: { calendarType: calendarType === 'month' ? 'years' : 'days' },
+          })
+        }
+      >
+        {title}
+      </div>
       <div className="slick-slides-gap relative grid grid-cols-1 sm:mr-2 lg:mx-5 mt-8">
         <div
           className="hidden lg:block absolute top-7.5 -left-6 z-10 cursor-pointer"
