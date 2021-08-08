@@ -57,9 +57,8 @@ function Auctions() {
 
   const Poster = () => (
     <div
-      className={`order-1 bg-darkGray rounded-20 max-w-508px lg:max-w-1000px w-full lg:h-482px ${
-        dateNotAssigned || auctionWon ? '' : 'p-4 lg:p-6.5'
-      }`}
+      className={`justify-self-center order-1 bg-darkGray rounded-20 
+                  w-full lg:h-482px ${dateNotAssigned || auctionWon ? '' : 'p-4 lg:p-6.5'}`}
     >
       <div className="relative w-full h-full">
         {dateNotAssigned || auctionWon ? (
@@ -81,11 +80,11 @@ function Auctions() {
           <div className="flex justify-center items-center bg-white rounded-10 h-full px-4 py-12 lg:p-0">
             <div>
               <div className="flex justify-between">
-                <div className="text-48 lg:text-84 font-Ubuntu mr-6 mt-2">SPORT</div>
+                <div className="text-48 xl:text-84 font-Ubuntu mr-6 mt-2">SPORT</div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/icons/sport.svg" className="w-15 lg:w-24 mr-4" />
+                <img src="/icons/sport.svg" className="w-15 xl:w-24 mr-4" />
               </div>
-              <div className="text-48 lg:text-84 font-Ubuntu" style={{ letterSpacing: 15 }}>
+              <div className="text-48 xl:text-84 font-Ubuntu" style={{ letterSpacing: 15 }}>
                 EVENTS
               </div>
             </div>
@@ -93,7 +92,7 @@ function Auctions() {
         ) : (
           <div className="flex items-center h-full">
             {/* eslint-disable-next-line @next/next/no-img-element*/}
-            <img src="/images/poster1.png" className="object-cover h-full" />
+            <img src="/images/poster1.png" className="object-cover w-full h-full" />
           </div>
         )}
         <div
@@ -160,7 +159,7 @@ function Auctions() {
           )}
         </div>
         {collection ? (
-          <div className="text-white mt-6">
+          <div className="text-white mt-2 xl:mt-6">
             <span className="font-medium mr-1">Sport Events</span>
             <span className="text-14 font-light">(collection)</span>
           </div>
@@ -219,12 +218,12 @@ function Auctions() {
               </div>
             </div>
             {(auctionStarted || auctionNotStarted) && (
-              <div className="text-white text-12 text-opacity-80 font-light mt-3">
+              <div className="text-white text-12 text-opacity-80 font-light mt-2 xl:mt-3">
                 You must at least bis 10% higher than current bid.
               </div>
             )}
             {!auctionWon && !fixedPrice && !dateNotAssigned && (
-              <div className="relative mt-5">
+              <div className="relative mt-2 xl:mt-5">
                 <input
                   className="text-white bg-transparent rounded-12 border border-solid border-lightBlue
                           h-14 w-full px-16"
@@ -237,7 +236,7 @@ function Auctions() {
             )}
           </>
         )}
-        <div className="flex items-center space-x-3 lg:space-x-6.5 mt-5">
+        <div className="flex items-center space-x-3 lg:space-x-6.5 mt-4 xl:mt-5">
           <button
             className={`bg-primary text-white text-18 font-medium rounded-12 w-full h-14 ${
               auctionNotStarted ? 'opacity-40 cursor-not-allowed' : ''
@@ -432,7 +431,7 @@ function Auctions() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 xl:gap-8 mt-8">
         <Poster />
         <Offer />
         <Details />
