@@ -57,13 +57,13 @@ function Auctions() {
 
   const Poster = () => (
     <div
-      className={`order-1 bg-darkGray rounded-20 w-full lg:h-482px ${
+      className={`order-1 bg-darkGray rounded-20 max-w-508px lg:max-w-1000px w-full lg:h-482px ${
         dateNotAssigned || auctionWon ? '' : 'p-4 lg:p-6.5'
       }`}
     >
       <div className="relative w-full h-full">
         {dateNotAssigned || auctionWon ? (
-          <div className={`flex flex-col items-center w-full h-482px`}>
+          <div className={`flex flex-col items-center w-full h-296px lg:h-482px`}>
             <div
               className="text-primary text-center text-48 flex justify-center items-center font-bold
                          bg-white w-full rounded-t-20 border border-solid border-white h-130px"
@@ -98,7 +98,7 @@ function Auctions() {
         )}
         <div
           className={`absolute left-4 right-4 flex justify-between items-center ${
-            dateNotAssigned || auctionWon ? 'bottom-10' : 'bottom-6 lg:bottom-10'
+            dateNotAssigned || auctionWon ? 'bottom-4' : 'bottom-6 lg:bottom-10'
           }`}
         >
           {!auctionWon && (
@@ -432,7 +432,7 @@ function Auctions() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 justify-items-center gap-8 mt-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
         <Poster />
         <Offer />
         <Details />

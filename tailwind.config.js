@@ -108,6 +108,7 @@ module.exports = {
         160: '40rem',
         '130px': '130px',
         '222px': '222px',
+        '296px': '296px',
         '330px': '330px',
         '430px': '430px',
         '482px': '482px',
@@ -118,6 +119,8 @@ module.exports = {
         66: '16.5rem',
         56: '14rem',
         '190px': '190px',
+        '508px': '508px',
+        '1000px': '1000px',
       },
       borderRadius: {
         6: '6px',

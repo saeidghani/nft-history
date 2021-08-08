@@ -178,7 +178,7 @@ function Header({ isHome }) {
               6h 35m 2s <span className="text-12 opacity-80 ml-1">Till End</span>
             </div>
           </div>
-          <div className="text-primary font-medium">Claim</div>
+          <div className="text-primary font-medium text-16">Claim</div>
         </div>
       ),
     },
@@ -192,7 +192,7 @@ function Header({ isHome }) {
     {
       key: 2,
       title: (
-        <div className="text-white text-14 mb-4">
+        <div className="text-white text-16 font-medium mb-4">
           <span className="font-medium text-blue mr-1">@Serati</span> Ma has made an offer of 10 HSY
           for your “Faces” collection
         </div>
