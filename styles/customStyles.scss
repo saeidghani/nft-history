@@ -3,6 +3,17 @@
   //display: flex !important;
 }
 
+.slick-slide{
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: .5s;
+
+}
+.slick-active{
+  transform: translate(0);
+  opacity: 1;
+}
+
 .slick-prev:before, .slick-next:before {
   font-size: 40px;
   opacity: 1;

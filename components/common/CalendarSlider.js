@@ -17,6 +17,24 @@ const daysSliderDates = [
   { key: 19, title1: 19 },
   { key: 20, title1: 20 },
   { key: 21, title1: 21 },
+  { key: 22, title1: 22 },
+  { key: 23, title1: 23 },
+  { key: 24, title1: 24 },
+  { key: 25, title1: 25 },
+  { key: 26, title1: 26 },
+  { key: 27, title1: 27 },
+  { key: 28, title1: 28 },
+  { key: 29, title1: 29 },
+  { key: 30, title1: 30 },
+  { key: 31, title1: 31 },
+  { key: 32, title1: 32 },
+  { key: 33, title1: 33 },
+  { key: 34, title1: 34 },
+  { key: 35, title1: 35 },
+  { key: 36, title1: 36 },
+  { key: 37, title1: 37 },
+  { key: 38, title1: 38 },
+  { key: 39, title1: 39 },
 ];
 
 const monthSliderDates = [
@@ -97,10 +115,13 @@ function CalendarSlider() {
 
   const settings = {
     arrows: false,
-    infinite: true,
+    infinite: false,
+
     swipeToSlide: true,
     speed: 500,
-    variableWidth: true,
+    // variableWidth: true,
+    slidesToShow: 13,
+    slidesToScroll: 13,
   };
 
   const handlePrevArrow = () => {
