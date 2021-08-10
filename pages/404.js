@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import routes from '../constants/routes';
 
 export default function Custom404() {
   return (
@@ -25,9 +27,14 @@ export default function Custom404() {
           mistyped the link.
         </p>
         <div className="flex justify-center lg:justify-start">
-          <button className="text-white text-18 bg-primary rounded-12 h-14 w-80 lg:w-60 mt-9">
-            Go to Home
-          </button>
+          <Link href={routes.home.index}>
+            <div
+              className="text-white text-18 bg-primary rounded-12 h-14 w-80 lg:w-60
+                             cursor-pointer flex justify-center items-center mt-9"
+            >
+              Go to Home
+            </div>
+          </Link>
         </div>
       </div>
     </div>

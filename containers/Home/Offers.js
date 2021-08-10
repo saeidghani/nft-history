@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useWindowSize } from '../../utils';
+import Link from 'next/link';
 import Slider from 'react-slick';
+import routes from '../../constants/routes';
 
 const text = `Apollo 11 was the spaceflight that first landed humans on the moon. 
            Neil Armstrong and Buzz Aldrin formed the American crew that landed the Apollo 
@@ -194,12 +195,14 @@ function Offers() {
                 <div className="text-white font-medium">299.49 HSY</div>
               </div>
               <div className="flex space-x-3 mt-4">
-                <button
-                  className="text-18 font-medium text-white bg-primary
-                                 rounded-12 h-14 px-7 w-full"
-                >
-                  Make an Offer
-                </button>
+                <Link href={`${routes.auctions.view(1)}?auctionEnded=true`}>
+                  <div
+                    className="text-18 font-medium text-white bg-primary rounded-12
+                               h-14 px-7 w-full flex justify-center items-center cursor-pointer"
+                  >
+                    Make an Offer
+                  </div>
+                </Link>
                 <div>
                   <div
                     className="h-14 w-14 rounded-12 flex justify-center items-center

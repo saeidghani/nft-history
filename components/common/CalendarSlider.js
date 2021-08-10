@@ -68,7 +68,7 @@ const yearsSliderDates = [
 
 function CalendarSlider() {
   const router = useRouter();
-  const { query } = router;
+  const { pathname, query } = router;
   const { calendarType } = query;
   const sliderRef = React.createRef();
 
@@ -116,17 +116,27 @@ function CalendarSlider() {
   return (
     <div className="">
       <div
-        className="text-white text-20 font-medium"
+        className="text-white text-20 font-medium cursor-pointer"
         onClick={() =>
           router.push({
             pathname,
-            query: { calendarType: calendarType === 'month' ? 'years' : 'days' },
+            query: {
+              ...query,
+              calendarType:
+                calendarType === 'month'
+                  ? 'year'
+                  : calendarType === 'year'
+                  ? 'years'
+                  : calendarType === 'years'
+                  ? 'days'
+                  : 'month',
+            },
           })
         }
       >
         {title}
       </div>
-      <div className="slick-slides-gap relative grid grid-cols-1 sm:mr-2 lg:mx-5 mt-8">
+      <div className="animated-slider slick-slides-gap relative grid grid-cols-1 sm:mr-2 lg:mx-5 mt-8">
         <div
           className="hidden lg:block absolute top-7.5 -left-6 z-10 cursor-pointer"
           onClick={handlePrevArrow}
@@ -137,8 +147,8 @@ function CalendarSlider() {
           {dates.map((d) => (
             <div
               key={d.key}
-              className="bg-white bg-opacity-10 border border-solid border-fadeLightBlue1
-                         rounded-20"
+              className={`bg-white bg-opacity-10 border border-solid border-fadeLightBlue1
+                         rounded-20 active`}
             >
               <div
                 className="flex flex-col items-center"

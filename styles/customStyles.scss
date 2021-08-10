@@ -1,6 +1,6 @@
 /* custom slider */
 .slick-track {
-  display: flex !important;
+  //display: flex !important;
 }
 
 .slick-prev:before, .slick-next:before {
@@ -17,6 +17,12 @@
   @media (max-width: 1024px) {
     .slick-list {margin: 0 -4px;}
     .slick-slide>div {padding: 0 4px;}
+  }
+}
+
+.animated-slider {
+  .active {
+
   }
 }
 

@@ -9,8 +9,8 @@ import routes from '../../constants/routes';
 
 export default function Home() {
   const Banner = () => (
-    <div className="hidden lg:flex bg-darkGray rounded-18 px-9.5 mt-13.5">
-      <div className="py-9.5">
+    <div className="hidden lg:flex bg-darkGray rounded-18 pl-9.5 mt-13.5">
+      <div className="py-9.5 flex flex-col justify-between items-start">
         <Image src="/images/miniLogo.png" width={174} height={30} />
         <p className="text-18 text-white font-light mt-3">
           Everybody can own a house, a car, a shoe or a business. But how about being the only owner
@@ -20,7 +20,7 @@ export default function Home() {
         <Link href={routes.marketPlace.index}>
           <span
             className="inline-flex items-center text-18 text-white bg-primary
-                           rounded-12 h-13.5 px-7 mt-6.5"
+                           rounded-12 h-13.5 px-7 mt-6.5 cursor-pointer"
           >
             GO TO MARKETPLACE
           </span>

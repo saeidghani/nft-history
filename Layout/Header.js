@@ -253,14 +253,16 @@ function Header({ isHome }) {
       </Drawer>
       <div className="hidden lg:flex justify-between items-center w-full px-10 pt-10">
         {isHome && (
-          <div className="flex space-x-4 pr-4 2xl:pr-6.5">
-            <div className="w-7.5">
-              <Image src="/icons/logo.svg" width={30} height={30} />
+          <Link href={routes.home.index}>
+            <div className="flex space-x-4 pr-4 2xl:pr-6.5 cursor-pointer">
+              <div className="w-7.5">
+                <Image src="/icons/logo.svg" width={30} height={30} />
+              </div>
+              <div className="text-white text-26 font-semibold" style={{ whiteSpace: 'nowrap' }}>
+                NFT HISTORY
+              </div>
             </div>
-            <div className="text-white text-26 font-semibold" style={{ whiteSpace: 'nowrap' }}>
-              NFT HISTORY
-            </div>
-          </div>
+          </Link>
         )}
         <div className="flex justify-end items-center w-full">
           {isHome && <Navigation isHome={isHome} wrapperClass="mr-12" />}
