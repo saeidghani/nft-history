@@ -328,7 +328,9 @@ function Header({ isHome }) {
                     onSelect={() => {}}
                   />
                 ) : (
-                  <Image src="/icons/user.svg" width={20} height={20} />
+                  <Link href={routes.walletBalance.index}>
+                    <Image src="/icons/user.svg" width={20} height={20} />
+                  </Link>
                 )}
               </div>
             </div>
