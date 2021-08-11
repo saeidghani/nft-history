@@ -56,17 +56,53 @@ const items = [
     text,
     price: '299.49 HSY',
   },
+  {
+    key: 6,
+    date: '25 July 1969',
+    status: 'Sold',
+    title: 'First man on the moon',
+    category: 'History',
+    text,
+    price: '299.49 HSY',
+  },
+  {
+    key: 7,
+    date: '26 July 1969',
+    status: 'Sold',
+    title: 'First man on the moon',
+    category: 'History',
+    text,
+    price: '299.49 HSY',
+  },
+  {
+    key: 8,
+    date: '27 July 1969',
+    status: 'Sold',
+    title: 'First man on the moon',
+    category: 'History',
+    text,
+    price: '299.49 HSY',
+  },
+  {
+    key: 9,
+    date: '28 July 1969',
+    status: 'Sold',
+    title: 'First man on the moon',
+    category: 'History',
+    text,
+    price: '299.49 HSY',
+  },
 ];
 
 function Offers() {
   const router = useRouter();
   const { pathname, query } = router;
   const { category } = query;
-  const [dateOrderKeys, setLogoOrderKeys] = useState([1, 2, 3, 4, 5]);
   const [dateOrders, setDateOrders] = useState({});
   const [activeSlide, setActiveSlide] = useState(2);
-  const positions = [0, 100, 210, 320, 440];
+  const [positions, setPositions] = useState([]);
   const sliderRef = React.createRef();
+  const [dateOrderKeys, setDateOrderKeys] = useState([]);
 
   const settings = {
     arrows: false,
@@ -79,6 +115,14 @@ function Offers() {
   };
 
   useEffect(() => {
+    const orderKeys = items.map((i, index) => i.key);
+    console.log(orderKeys);
+    setDateOrderKeys(orderKeys);
+  }, []);
+
+  useEffect(() => {
+    const positions = items.map((i, index) => index * 110);
+    setPositions(positions);
     const dateOrders = {};
     items?.forEach((logo, index) => {
       dateOrders[logo.key] = positions[index];
@@ -117,7 +161,7 @@ function Offers() {
           ))}
         </Slider>
       </div>
-      <div className="hidden lg:block  w-full max-w-190px">
+      <div className="hidden lg:block w-full max-w-190px flex items-center overflow-hidden">
         <div className="relative justify-between w-full">
           {items.map(({ key, date }, index) => (
             <div
@@ -125,26 +169,25 @@ function Offers() {
               className={`flex flex-row items-center justify-center cursor-pointer text-white 
                         absolute left-0 right-0 mx-auto transition-all duration-200`}
               style={{
-                transform: `translateY(${dateOrders[key]}px)`,
-                opacity: [0, 4].includes(dateOrderKeys.indexOf(key))
+                transform: `translateY(${dateOrders[index + 1]}px)`,
+                opacity: [0, 4].includes(dateOrderKeys.indexOf(index + 1))
                   ? 0.3
-                  : [1, 3].includes(dateOrderKeys.indexOf(key))
+                  : [1, 3].includes(dateOrderKeys.indexOf(index + 1))
                   ? 0.45
                   : 1,
               }}
               onClick={() => {
+                const num = index + 1;
                 setActiveSlide(index);
-                if (dateOrderKeys.indexOf(key) === 2) {
-                }
                 const newLogoOrderKeys = shift(
                   dateOrderKeys,
-                  dateOrderKeys.indexOf(key) > 2 ? 0 : 1,
-                  Math.abs(dateOrderKeys.indexOf(key) - 2),
+                  dateOrderKeys.indexOf(num) > 2 ? 0 : 1,
+                  Math.abs(dateOrderKeys.indexOf(num) - 2),
                 );
-                setLogoOrderKeys(newLogoOrderKeys);
+                setDateOrderKeys(newLogoOrderKeys);
                 const newDateOrders = {};
-                newLogoOrderKeys.forEach((key, index) => {
-                  newDateOrders[key] = positions[index];
+                newLogoOrderKeys.forEach((num, index) => {
+                  newDateOrders[num] = positions[index];
                 });
                 setDateOrders(newDateOrders);
               }}

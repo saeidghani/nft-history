@@ -1,9 +1,10 @@
 /* custom slider */
 .slick-track {
   //display: flex !important;
+  //flex-direction: column !important;
 }
 
-.custom-slider .bg-white{
+.custom-slider .bg-white {
   opacity: 0;
   transform: translateY(-100px);
 }
@@ -14,7 +15,7 @@
   transition: .5s !important;
 }
 
-.custom-slider .fadeOutLeft{
+.custom-slider .fadeOutLeft {
   // position:absolute; 
   opacity: 1;
   transform: translate(0);
@@ -24,6 +25,7 @@
 .custom-slider{
   margin-bottom: -100px
 }
+
 .custom-slider .slick-list{
   padding-top: 100px;
   transform: translateY(-100px);
@@ -35,13 +37,14 @@
   max-height: 1px;
 }
 
-
 .nextArrow{
   transform: translateX(20px);
 }
+
 .prevArrow{
   transform: translateX(-20px);
 }
+
 .Arrow{
   opacity: 0;
   transition: .5s;
@@ -52,11 +55,8 @@
   }
 }
 
-
-.calender-slider.display-none{
-}
-.calender-slider.display-block{
-  max-height: 150px;
+.calender-slider.display-block {
+  max-height: 250px;
 }
 
 #calender-title{
@@ -71,7 +71,6 @@
     opacity: 1;
   }
 }
-
 
 .slick-prev:before, .slick-next:before {
   font-size: 40px;
@@ -89,14 +88,6 @@
     .slick-slide>div {padding: 0 4px;}
   }
 }
-
-.animated-slider {
-  .active {
-
-  }
-}
-
-
 
 .rc-time-picker {
   &-input {

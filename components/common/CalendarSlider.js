@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { filterQuery } from '../../utils';
+import { filterQuery, useWindowSize } from '../../utils';
 
 const daysSliderDates = [
   { key: 12, title1: 1 },
@@ -195,6 +195,8 @@ function CalendarSlider({ wrapperClass }) {
   const [dates, setDates] = useState([]);
   const [title, setTitle] = useState('');
   const [selectedItem, setSelectedItem] = useState(5);
+  const [count, setCount] = useState(13);
+  const { width } = useWindowSize();
 
   useEffect(() => {
     let dates = [];
@@ -216,6 +218,120 @@ function CalendarSlider({ wrapperClass }) {
     setTitle(title);
   }, [calendarType]);
 
+  useEffect(() => {
+    if (width < 430) {
+      setCount(4);
+    } else if (width < 520) {
+      setCount(5);
+    } else if (width < 700) {
+      setCount(6);
+    } else if (width < 850) {
+      setCount(8);
+    } else if (width < 1024) {
+      setCount(10);
+    } else if (width < 1200) {
+      setCount(8);
+    } else if (width < 1400) {
+      setCount(10);
+    } else {
+      setCount(13);
+    }
+  }, [width]);
+
+  const settings = {
+    arrows: false,
+    infinite: false,
+    swipeToSlide: true,
+    speed: 900,
+    slidesToShow: 13,
+    slidesToScroll: 13,
+    responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 10,
+          slidesToScroll: 10,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 8,
+          slidesToScroll: 8,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 10,
+          slidesToScroll: 10,
+        },
+      },
+      {
+        breakpoint: 850,
+        settings: {
+          slidesToShow: 8,
+          slidesToScroll: 8,
+        },
+      },
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 6,
+        },
+      },
+      {
+        breakpoint: 520,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+        },
+      },
+      {
+        breakpoint: 430,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+    ],
+    beforeChange: function (currentSlide, nextSlide) {
+      console.log('before change', { currentSlide, nextSlide });
+
+      if (currentSlide !== nextSlide) {
+        removeFadeClass();
+
+        let startSlide = currentSlide < nextSlide ? currentSlide : currentSlide;
+        let endSlide = currentSlide < nextSlide ? nextSlide : currentSlide + count;
+
+        console.log({ startSlide });
+        console.log({ endSlide });
+
+        for (let i = startSlide; i < endSlide; i++) {
+          let el = document.getElementById(`slide-${i}`);
+          el?.classList.add('fadeOutLeft');
+        }
+      }
+    },
+
+    afterChange: function (currentSlide) {
+      let startSlide = currentSlide;
+      let endSlide = currentSlide + count;
+
+      let time = 0;
+      for (let i = startSlide; i < endSlide; i++) {
+        time++;
+        setTimeout(() => {
+          let el = document.getElementById(`slide-${i}`);
+          el?.classList.add('fadeInDown');
+        }, time * 50);
+      }
+
+      console.log(currentSlide);
+    },
+  };
+
   const addFadeClass = () => {
     console.log('addFadeClass');
     removeFadeClass();
@@ -234,51 +350,6 @@ function CalendarSlider({ wrapperClass }) {
       all[i].classList.remove('fadeInDown');
       all[i].classList.remove('fadeOutLeft');
     }
-  };
-
-  const settings = {
-    arrows: false,
-    infinite: false,
-
-    swipeToSlide: true,
-    speed: 900,
-    // variableWidth: true,
-    slidesToShow: 13,
-    slidesToScroll: 13,
-    beforeChange: function (currentSlide, nextSlide) {
-      console.log('before change', { currentSlide, nextSlide });
-
-      if (currentSlide !== nextSlide) {
-        removeFadeClass();
-
-        let startSlide = currentSlide < nextSlide ? currentSlide : currentSlide;
-        let endSlide = currentSlide < nextSlide ? nextSlide : currentSlide + 13;
-
-        console.log({ startSlide });
-        console.log({ endSlide });
-
-        for (let i = startSlide; i < endSlide; i++) {
-          let el = document.getElementById(`slide-${i}`);
-          el?.classList.add('fadeOutLeft');
-        }
-      }
-    },
-
-    afterChange: function (currentSlide) {
-      let startSlide = currentSlide;
-      let endSlide = currentSlide + 13;
-
-      let time = 0;
-      for (let i = startSlide; i < endSlide; i++) {
-        time++;
-        setTimeout(() => {
-          let el = document.getElementById(`slide-${i}`);
-          el?.classList.add('fadeInDown');
-        }, time * 50);
-      }
-
-      console.log(currentSlide);
-    },
   };
 
   const handlePrevArrow = () => {
@@ -337,8 +408,8 @@ function CalendarSlider({ wrapperClass }) {
   };
 
   return (
-    <>
-      <div className={wrapperClass}>
+    <div className={wrapperClass}>
+      <div>
         <div className="hidden lg:block text-20 text-white">The Premier Marketplace for Dates</div>
         <div
           className="flex items-center justify-between bg-white bg-opacity-10 rounded-18 border
@@ -382,7 +453,6 @@ function CalendarSlider({ wrapperClass }) {
           </div>
         </div>
       </div>
-
       <div
         className={`mt-12 calender-slider px-4 2xs:px-6 2xl:px-10 -mx-4 2xs:-mx-6 2xl:-mx-10`}
         id="calenderSlider"
@@ -435,7 +505,7 @@ function CalendarSlider({ wrapperClass }) {
           </div>
         </div>
         <div className="lg:hidden flex justify-center items-center space-x-11 mt-4">
-          <div className="cursor-pointer " id="prevArrow" onClick={handlePrevArrow}>
+          <div className="text-white cursor-pointer " id="prevArrow" onClick={handlePrevArrow}>
             <Image src="/icons/prevArrow.svg" width={10} height={20} alt="arrow" />
           </div>
           <div className="cursor-pointer " id="nextArrow" onClick={handleNextArrow}>
@@ -443,7 +513,7 @@ function CalendarSlider({ wrapperClass }) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
