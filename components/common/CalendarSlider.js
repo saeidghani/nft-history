@@ -7,6 +7,14 @@ import { useRouter } from 'next/router';
 import { filterQuery } from '../../utils';
 
 const daysSliderDates = [
+  { key: 12, title1: 1 },
+  { key: 13, title1: 2, displayPointer: true },
+  { key: 14, title1: 3 },
+  { key: 15, title1: 4 },
+  { key: 16, title1: 5 },
+  { key: 17, title1: 6 },
+  { key: 18, title1: 7 },
+  { key: 19, title1: 8 },
   { key: 9, title1: 9 },
   { key: 10, title1: 10 },
   { key: 11, title1: 11 },
@@ -29,28 +37,44 @@ const daysSliderDates = [
   { key: 28, title1: 28 },
   { key: 29, title1: 29 },
   { key: 30, title1: 30 },
-  { key: 31, title1: 31 },
-  { key: 32, title1: 32 },
-  { key: 33, title1: 33 },
-  { key: 34, title1: 34 },
-  { key: 35, title1: 35 },
-  { key: 36, title1: 36 },
-  { key: 37, title1: 37 },
-  { key: 38, title1: 38 },
-  { key: 39, title1: 39 },
-  { key: 40, title1: 40 },
-  { key: 41, title1: 41 },
-  { key: 42, title1: 42 },
-  { key: 43, title1: 43 },
-  { key: 44, title1: 44 },
-  { key: 45, title1: 45 },
-  { key: 46, title1: 46 },
-  { key: 47, title1: 47 },
-  { key: 48, title1: 48 },
-  { key: 49, title1: 49 },
+  { key: 31, title1: 1 },
+  { key: 32, title1: 2 },
+  { key: 33, title1: 3 },
+  { key: 34, title1: 4 },
+  { key: 35, title1: 5 },
+  { key: 36, title1: 6 },
+  { key: 37, title1: 7 },
+  { key: 38, title1: 8 },
+  { key: 39, title1: 9 },
 ];
 
 const monthSliderDates = [
+  { key: 1, title1: 'Mon', title2: 22 },
+  { key: 2, title1: 'Tue', title2: 23 },
+  { key: 3, title1: 'Wed', title2: 24 },
+  { key: 4, title1: 'thu', title2: 25 },
+  { key: 5, title1: 'Fri', title2: 26, displayPointer: true },
+  { key: 6, title1: 'Sat', title2: 27 },
+  { key: 7, title1: 'Sun', title2: 28 },
+  { key: 8, title1: 'Mon', title2: 29 },
+  { key: 9, title1: 'Tue', title2: 30 },
+  { key: 10, title1: 'Wed', title2: 31 },
+  { key: 11, title1: 'Thu', title2: 1 },
+  { key: 12, title1: 'Fri', title2: 2 },
+  { key: 13, title1: 'Sat', title2: 3 },
+  { key: 1, title1: 'Mon', title2: 22 },
+  { key: 2, title1: 'Tue', title2: 23 },
+  { key: 3, title1: 'Wed', title2: 24 },
+  { key: 4, title1: 'thu', title2: 25 },
+  { key: 5, title1: 'Fri', title2: 26, displayPointer: true },
+  { key: 6, title1: 'Sat', title2: 27 },
+  { key: 7, title1: 'Sun', title2: 28 },
+  { key: 8, title1: 'Mon', title2: 29 },
+  { key: 9, title1: 'Tue', title2: 30 },
+  { key: 10, title1: 'Wed', title2: 31 },
+  { key: 11, title1: 'Thu', title2: 1 },
+  { key: 12, title1: 'Fri', title2: 2 },
+  { key: 13, title1: 'Sat', title2: 3 },
   { key: 1, title1: 'Mon', title2: 22 },
   { key: 2, title1: 'Tue', title2: 23 },
   { key: 3, title1: 'Wed', title2: 24 },
@@ -79,9 +103,62 @@ const yearSliderDates = [
   { key: 10, title1: 'Oct' },
   { key: 11, title1: 'Nov' },
   { key: 12, title1: 'Dec' },
+  { key: 1, title1: 'Jan' },
+  { key: 2, title1: 'Feb' },
+  { key: 3, title1: 'Mar' },
+  { key: 4, title1: 'Apr' },
+  { key: 5, title1: 'May', displayPointer: true },
+  { key: 6, title1: 'Jun' },
+  { key: 7, title1: 'Jul' },
+  { key: 8, title1: 'Aug' },
+  { key: 9, title1: 'Sep' },
+  { key: 10, title1: 'Oct' },
+  { key: 11, title1: 'Nov' },
+  { key: 12, title1: 'Dec' },
+  { key: 1, title1: 'Jan' },
+  { key: 2, title1: 'Feb' },
+  { key: 3, title1: 'Mar' },
+  { key: 4, title1: 'Apr' },
+  { key: 5, title1: 'May', displayPointer: true },
+  { key: 6, title1: 'Jun' },
+  { key: 7, title1: 'Jul' },
+  { key: 8, title1: 'Aug' },
+  { key: 9, title1: 'Sep' },
+  { key: 10, title1: 'Oct' },
+  { key: 11, title1: 'Nov' },
+  { key: 12, title1: 'Dec' },
+  { key: 1, title1: 'Jan' },
+  { key: 2, title1: 'Feb' },
+  { key: 3, title1: 'Mar' },
 ];
 
 const yearsSliderDates = [
+  { key: 1, title1: 2009 },
+  { key: 2, title1: 2010 },
+  { key: 3, title1: 2011 },
+  { key: 4, title1: 2012 },
+  { key: 5, title1: 2013 },
+  { key: 6, title1: 2014, displayPointer: true },
+  { key: 7, title1: 2015 },
+  { key: 8, title1: 2016 },
+  { key: 9, title1: 2017 },
+  { key: 10, title1: 2018 },
+  { key: 11, title1: 2019 },
+  { key: 12, title1: 2020 },
+  { key: 13, title1: 2021 },
+  { key: 1, title1: 2009 },
+  { key: 2, title1: 2010 },
+  { key: 3, title1: 2011 },
+  { key: 4, title1: 2012 },
+  { key: 5, title1: 2013 },
+  { key: 6, title1: 2014, displayPointer: true },
+  { key: 7, title1: 2015 },
+  { key: 8, title1: 2016 },
+  { key: 9, title1: 2017 },
+  { key: 10, title1: 2018 },
+  { key: 11, title1: 2019 },
+  { key: 12, title1: 2020 },
+  { key: 13, title1: 2021 },
   { key: 1, title1: 2009 },
   { key: 2, title1: 2010 },
   { key: 3, title1: 2011 },
@@ -168,15 +245,15 @@ function CalendarSlider({ wrapperClass }) {
     slidesToShow: 13,
     slidesToScroll: 13,
     beforeChange: function (currentSlide, nextSlide) {
-      console.log('before change', currentSlide, nextSlide);
+      console.log('before change', { currentSlide, nextSlide });
 
       removeFadeClass();
 
       let startSlide = currentSlide < nextSlide ? currentSlide : currentSlide;
       let endSlide = currentSlide < nextSlide ? nextSlide : currentSlide + 13;
 
-      console.log('---------- startSlide', startSlide);
-      console.log('---------- startSlide', endSlide);
+      console.log({ startSlide });
+      console.log({ endSlide });
 
       for (let i = startSlide; i < endSlide; i++) {
         let el = document.getElementById(`slide-${i}`);
@@ -203,29 +280,26 @@ function CalendarSlider({ wrapperClass }) {
 
   const handlePrevArrow = () => {
     sliderRef.current.slickPrev();
-    console.log(sliderRef.current);
   };
 
   const handleNextArrow = () => {
     sliderRef.current.slickNext();
-    console.log(sliderRef.current);
   };
 
   const showCalender = () => {
     setTimeout(() => {
-      if(displayCalendar){
-        console.log("🚀 open")
-        document.getElementById('calenderSlider').classList.add('display-block')
+      if (!displayCalendar) {
+        console.log('🚀 open');
+        document.getElementById('calenderSlider').classList.add('display-block');
         document.getElementById('calender-title').classList.add('show');
         document.getElementById('calender-title').classList.add('show');
         addFadeClass();
       } else {
-        console.log("🚀 close")
+        console.log('🚀 close');
         removeFadeClass();
         document.getElementById('calender-title').classList.remove('show');
-        document.getElementById('calenderSlider').classList.remove('display-block')
+        document.getElementById('calenderSlider').classList.remove('display-block');
       }
-      
     }, 500);
   };
 
@@ -235,6 +309,7 @@ function CalendarSlider({ wrapperClass }) {
       document.getElementById('calender-title').classList.add('show');
     }, 500);
   };
+
   const changeCalendar = () => {
     addFadeClass();
     titleAnimation();
@@ -263,7 +338,7 @@ function CalendarSlider({ wrapperClass }) {
         <div className="hidden lg:block text-20 text-white">The Premier Marketplace for Dates</div>
         <div
           className="flex items-center justify-between bg-white bg-opacity-10 rounded-18 border
-         border-solid border-fadeLightBlue1 px-2 xs:px-3.5 lg:pl-3.5 lg:pr-3.5 py-2 mt-4.5"
+         border-solid border-fadeLightBlue1 px-2 xs:px-3.5 lg:pl-2.5 lg:pr-1 py-2 mt-4.5"
         >
           <div className="flex space-x-0 lg:space-x-6">
             {categories?.map((c) => (
@@ -303,8 +378,11 @@ function CalendarSlider({ wrapperClass }) {
           </div>
         </div>
       </div>
-      
-      <div className={`mt-12 calender-slider px-4 2xs:px-6 2xl:px-10 -mx-4 2xs:-mx-6 2xl:-mx-10`} id="calenderSlider">
+
+      <div
+        className={`mt-12 calender-slider px-4 2xs:px-6 2xl:px-10 -mx-4 2xs:-mx-6 2xl:-mx-10`}
+        id="calenderSlider"
+      >
         <div
           className="text-white text-20 font-medium cursor-pointer show"
           id="calender-title"
