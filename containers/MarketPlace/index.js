@@ -146,12 +146,7 @@ export default function MarketPlace() {
   return (
     <Layout>
       <div className="relative">
-        <CategoryTabs />
-        {displayCalendar && (
-          <div className="mt-12 w-full">
-            <CalendarSlider />
-          </div>
-        )}
+        <CalendarSlider />
         <div className="market-place-grid mt-8">
           <div className="hidden lg:flex flex-col space-y-8">
             <SwitchSelect

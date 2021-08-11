@@ -3,16 +3,76 @@
   //display: flex !important;
 }
 
-.slick-slide{
+.custom-slider .bg-white{
   opacity: 0;
   transform: translateY(-100px);
-  transition: .5s;
-
 }
-.slick-active{
+
+
+.custom-slider .fadeInDown{
   transform: translate(0);
   opacity: 1;
+  transition: .5s !important;
 }
+
+.custom-slider .fadeOutLeft{
+  // position:absolute; 
+  opacity: 1;
+  transform: translate(0);
+  transition: 0s !important;
+}
+
+.custom-slider{
+  margin-bottom: -100px
+}
+.custom-slider .slick-list{
+  padding-top: 100px;
+  transform: translateY(-100px);
+}
+
+.calender-slider{
+  overflow: hidden;
+  transition: .5s;
+  max-height: 1px;
+}
+
+
+.nextArrow{
+  transform: translateX(20px);
+}
+.prevArrow{
+  transform: translateX(-20px);
+}
+.Arrow{
+  opacity: 0;
+  transition: .5s;
+  transition-delay: .2s;
+  .display-block & {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+
+.calender-slider.display-none{
+}
+.calender-slider.display-block{
+  max-height: 150px;
+}
+
+#calender-title{
+  transition: .5s;
+  z-index:10;
+  position:relative;
+  display:inline-block;
+  opacity:0;
+  transform:translateX(-30px);
+  &.show{
+    transform:translateX(0);
+    opacity: 1;
+  }
+}
+
 
 .slick-prev:before, .slick-next:before {
   font-size: 40px;
@@ -36,6 +96,8 @@
 
   }
 }
+
+
 
 .rc-time-picker {
   &-input {

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Slider from 'react-slick';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+
+import { filterQuery } from '../../utils';
 
 const daysSliderDates = [
   { key: 9, title1: 9 },
@@ -35,6 +38,16 @@ const daysSliderDates = [
   { key: 37, title1: 37 },
   { key: 38, title1: 38 },
   { key: 39, title1: 39 },
+  { key: 40, title1: 40 },
+  { key: 41, title1: 41 },
+  { key: 42, title1: 42 },
+  { key: 43, title1: 43 },
+  { key: 44, title1: 44 },
+  { key: 45, title1: 45 },
+  { key: 46, title1: 46 },
+  { key: 47, title1: 47 },
+  { key: 48, title1: 48 },
+  { key: 49, title1: 49 },
 ];
 
 const monthSliderDates = [
@@ -84,10 +97,22 @@ const yearsSliderDates = [
   { key: 13, title1: 2021 },
 ];
 
-function CalendarSlider() {
+const categories = [
+  { key: 'sport', name: 'Sport' },
+  { key: 'art', name: 'Art' },
+  { key: 'history', name: 'History' },
+  { key: 'personal', name: 'Personal' },
+];
+
+function CalendarSlider({ wrapperClass }) {
   const router = useRouter();
   const { pathname, query } = router;
-  const { calendarType } = query;
+  const { category, displayCalendar, calendarType } = query;
+  console.log(
+    '🚀 ~ file: CalendarSlider.js ~ line 113 ~ CalendarSlider ~ displayCalendar',
+    displayCalendar,
+  );
+
   const sliderRef = React.createRef();
 
   const [dates, setDates] = useState([]);
@@ -113,15 +138,67 @@ function CalendarSlider() {
     setTitle(title);
   }, [calendarType]);
 
+  const addFadeClass = () => {
+    console.log('addFadeClass');
+    removeFadeClass();
+    for (let i = 0; i < 13; i++) {
+      setTimeout(() => {
+        let el = document.getElementById(`slide-${i}`);
+        el?.classList.add('fadeInDown');
+      }, i * 50 + 1000);
+    }
+  };
+
+  const removeFadeClass = () => {
+    let all = document.querySelectorAll(`.my-slide`);
+
+    for (let i = 0; i < all.length; i++) {
+      all[i].classList.remove('fadeInDown');
+      all[i].classList.remove('fadeOutLeft');
+    }
+  };
+
   const settings = {
     arrows: false,
     infinite: false,
 
     swipeToSlide: true,
-    speed: 500,
+    speed: 900,
     // variableWidth: true,
     slidesToShow: 13,
     slidesToScroll: 13,
+    beforeChange: function (currentSlide, nextSlide) {
+      console.log('before change', currentSlide, nextSlide);
+
+      removeFadeClass();
+
+      let startSlide = currentSlide < nextSlide ? currentSlide : currentSlide;
+      let endSlide = currentSlide < nextSlide ? nextSlide : currentSlide + 13;
+
+      console.log('---------- startSlide', startSlide);
+      console.log('---------- startSlide', endSlide);
+
+      for (let i = startSlide; i < endSlide; i++) {
+        let el = document.getElementById(`slide-${i}`);
+        el?.classList.add('fadeOutLeft');
+      }
+    },
+
+    afterChange: function (currentSlide) {
+      let startSlide = currentSlide;
+      let endSlide = currentSlide + 13;
+
+      let time = 0;
+      for (let i = startSlide; i < endSlide; i++) {
+        time++;
+        setTimeout(() => {
+          let el = document.getElementById(`slide-${i}`);
+          el?.classList.add('fadeInDown');
+        }, time * 50);
+      }
+
+      console.log(currentSlide);
+    },
   };
 
   const handlePrevArrow = () => {
@@ -134,76 +211,156 @@ function CalendarSlider() {
     console.log(sliderRef.current);
   };
 
+  const showCalender = () => {
+    setTimeout(() => {
+      if(displayCalendar){
+        console.log("🚀 open")
+        document.getElementById('calenderSlider').classList.add('display-block')
+        document.getElementById('calender-title').classList.add('show');
+        document.getElementById('calender-title').classList.add('show');
+        addFadeClass();
+      } else {
+        console.log("🚀 close")
+        removeFadeClass();
+        document.getElementById('calender-title').classList.remove('show');
+        document.getElementById('calenderSlider').classList.remove('display-block')
+      }
+      
+    }, 500);
+  };
+
+  const titleAnimation = () => {
+    document.getElementById('calender-title').classList.remove('show');
+    setTimeout(() => {
+      document.getElementById('calender-title').classList.add('show');
+    }, 500);
+  };
+  const changeCalendar = () => {
+    addFadeClass();
+    titleAnimation();
+
+    setTimeout(() => {
+      router.push({
+        pathname,
+        query: {
+          ...query,
+          calendarType:
+            calendarType === 'month'
+              ? 'year'
+              : calendarType === 'year'
+              ? 'years'
+              : calendarType === 'years'
+              ? 'days'
+              : 'month',
+        },
+      });
+    }, 500);
+  };
+
   return (
-    <div className="">
-      <div
-        className="text-white text-20 font-medium cursor-pointer"
-        onClick={() =>
-          router.push({
-            pathname,
-            query: {
-              ...query,
-              calendarType:
-                calendarType === 'month'
-                  ? 'year'
-                  : calendarType === 'year'
-                  ? 'years'
-                  : calendarType === 'years'
-                  ? 'days'
-                  : 'month',
-            },
-          })
-        }
-      >
-        {title}
-      </div>
-      <div className="animated-slider slick-slides-gap relative grid grid-cols-1 sm:mr-2 lg:mx-5 mt-8">
+    <>
+      <div className={wrapperClass}>
+        <div className="hidden lg:block text-20 text-white">The Premier Marketplace for Dates</div>
         <div
-          className="hidden lg:block absolute top-7.5 -left-6 z-10 cursor-pointer"
-          onClick={handlePrevArrow}
+          className="flex items-center justify-between bg-white bg-opacity-10 rounded-18 border
+         border-solid border-fadeLightBlue1 px-2 xs:px-3.5 lg:pl-3.5 lg:pr-3.5 py-2 mt-4.5"
         >
-          <Image src="/icons/prevArrow.svg" width={10} height={20} alt="arrow" />
+          <div className="flex space-x-0 lg:space-x-6">
+            {categories?.map((c) => (
+              <Link key={c.key} href={{ pathname, query: { ...query, category: c.key } }}>
+                <div
+                  className={`text-14 lg:text-16 cursor-pointer ${
+                    c.key === category
+                      ? 'text-primary bg-primary bg-opacity-10 rounded-10 font-medium px-2.5 py-2'
+                      : 'text-secondary text-opacity-80 px-2.5 py-2'
+                  }`}
+                >
+                  {c.name}
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div
+            className="cursor-pointer"
+            onClick={() => {
+              showCalender();
+              if (displayCalendar) {
+                router.push({ pathname, query: filterQuery(query, 'displayCalendar') });
+              } else {
+                router.push({ pathname, query: { ...query, displayCalendar: !displayCalendar } });
+              }
+            }}
+          >
+            {displayCalendar ? (
+              <div className="bg-primary bg-opacity-10 rounded-10 px-4 pt-2 pb-1">
+                <Image src="/icons/calendarColorful.svg" width={25} height={22} />
+              </div>
+            ) : (
+              <div className="px-4 pt-2 pb-1">
+                <Image src="/icons/calendar.svg" width={25} height={22} />
+              </div>
+            )}
+          </div>
         </div>
-        <Slider className="" {...settings} ref={sliderRef}>
-          {dates.map((d) => (
-            <div
-              key={d.key}
-              className={`bg-white bg-opacity-10 border border-solid border-fadeLightBlue1
-                         rounded-20 active`}
-            >
+      </div>
+      
+      <div className={`mt-12 calender-slider px-4 2xs:px-6 2xl:px-10 -mx-4 2xs:-mx-6 2xl:-mx-10`} id="calenderSlider">
+        <div
+          className="text-white text-20 font-medium cursor-pointer show"
+          id="calender-title"
+          onClick={changeCalendar}
+        >
+          {title}
+        </div>
+        <div className="animated-slider slick-slides-gap relative grid grid-cols-1 sm:mr-2 lg:mx-5 mt-8">
+          <div
+            className="hidden lg:block absolute top-7.5 -left-6 z-10 cursor-pointer prevArrow Arrow"
+            onClick={handlePrevArrow}
+          >
+            <Image src="/icons/prevArrow.svg" width={10} height={20} alt="arrow" />
+          </div>
+          <Slider className="custom-slider" {...settings} ref={sliderRef}>
+            {dates.map((d, index) => (
               <div
-                className="flex flex-col items-center"
-                style={{ width: 76, height: 76, paddingTop: d.title2 ? 13 : 28 }}
+                key={d.key}
+                id={`slide-${index}`}
+                className={`my-slide bg-white bg-opacity-10 border border-solid border-fadeLightBlue1
+                          rounded-20 active`}
               >
-                <div className="text-white font-light text-center">{d.title1}</div>
-                {d.title2 && (
-                  <div className="text-20 text-white font-medium text-center">{d.title2}</div>
+                <div
+                  className="flex flex-col items-center"
+                  style={{ width: 76, height: 76, paddingTop: d.title2 ? 13 : 28 }}
+                >
+                  <div className="text-white font-light text-center">{d.title1}</div>
+                  {d.title2 && (
+                    <div className="text-20 text-white font-medium text-center">{d.title2}</div>
+                  )}
+                </div>
+                {d.displayPointer && (
+                  <div className="flex justify-center -mb-1">
+                    <div className="bg-primary rounded-b-6" style={{ width: 30, height: 3 }} />
+                  </div>
                 )}
               </div>
-              {d.displayPointer && (
-                <div className="flex justify-center -mb-1">
-                  <div className="bg-primary rounded-b-6" style={{ width: 30, height: 3 }} />
-                </div>
-              )}
-            </div>
-          ))}
-        </Slider>
-        <div
-          className="hidden lg:block absolute top-7.5 -right-6 z-10 cursor-pointer"
-          onClick={handleNextArrow}
-        >
-          <Image src="/icons/nextArrow.svg" width={10} height={20} alt="arrow" />
+            ))}
+          </Slider>
+          <div
+            className="hidden lg:block absolute top-7.5 -right-6 z-10 cursor-pointer nextArrow Arrow"
+            onClick={handleNextArrow}
+          >
+            <Image src="/icons/nextArrow.svg" width={10} height={20} alt="arrow" />
+          </div>
+        </div>
+        <div className="lg:hidden flex justify-center items-center space-x-11 mt-4">
+          <div className="cursor-pointer " id="prevArrow" onClick={handlePrevArrow}>
+            <Image src="/icons/prevArrow.svg" width={10} height={20} alt="arrow" />
+          </div>
+          <div className="cursor-pointer " id="nextArrow" onClick={handleNextArrow}>
+            <Image src="/icons/nextArrow.svg" width={10} height={20} alt="arrow" />
+          </div>
         </div>
       </div>
-      <div className="lg:hidden flex justify-center items-center space-x-11 mt-4">
-        <div className="cursor-pointer" onClick={handlePrevArrow}>
-          <Image src="/icons/prevArrow.svg" width={10} height={20} alt="arrow" />
-        </div>
-        <div className="cursor-pointer" onClick={handleNextArrow}>
-          <Image src="/icons/nextArrow.svg" width={10} height={20} alt="arrow" />
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
 
