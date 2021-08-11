@@ -60,6 +60,7 @@ module.exports = {
         darkGray: '#373D48',
         darkGray2: '#434953',
         darkGray3: '#40444F',
+        darkGray4: '#464A54',
         fadeWhite1: 'rgba(255, 255, 255, 0.1)',
         fadeWhite2: 'rgba(255, 255, 255, 0.2)',
       },

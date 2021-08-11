@@ -311,6 +311,7 @@ function CalendarSlider({ wrapperClass }) {
   };
 
   const changeCalendar = () => {
+    sliderRef.current.slickGoTo(0);
     addFadeClass();
     titleAnimation();
 

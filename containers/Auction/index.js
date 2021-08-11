@@ -281,7 +281,7 @@ function Auctions() {
             <div
               className="h-14 w-14 rounded-18 flex justify-center items-center
                         border border-solid border-lightBlue cursor-pointer"
-              onClick={() => setUploadOpen(true)}
+              //onClick={() => setUploadOpen(true)}
             >
               <Image src="/icons/switch.svg" width={26} height={26} />
             </div>

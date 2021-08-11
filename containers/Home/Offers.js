@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Slider from 'react-slick';
 import routes from '../../constants/routes';
+import { useRouter } from 'next/router';
 
 const text = `Apollo 11 was the spaceflight that first landed humans on the moon. 
            Neil Armstrong and Buzz Aldrin formed the American crew that landed the Apollo 
@@ -58,9 +59,12 @@ const items = [
 ];
 
 function Offers() {
+  const router = useRouter();
+  const { pathname, query } = router;
+  const { category } = query;
   const [dateOrderKeys, setLogoOrderKeys] = useState([1, 2, 3, 4, 5]);
   const [dateOrders, setDateOrders] = useState({});
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(2);
   const positions = [0, 100, 210, 320, 440];
   const sliderRef = React.createRef();
 
@@ -178,8 +182,11 @@ function Offers() {
               </div>
               <div className="flex justify-between items-center mt-4">
                 <div className="text-white font-medium">First man on the moon</div>
-                <div className="text-primary font-medium rounded-10 py-1 px-2 bg-primary bg-opacity-10">
-                  History
+                <div
+                  className="text-primary font-medium rounded-10 py-1 px-2
+                                bg-primary bg-opacity-10 capitalize"
+                >
+                  {category}
                 </div>
               </div>
               <p className="text-white mt-3">
