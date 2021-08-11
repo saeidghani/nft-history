@@ -247,18 +247,23 @@ function CalendarSlider({ wrapperClass }) {
     beforeChange: function (currentSlide, nextSlide) {
       console.log('before change', { currentSlide, nextSlide });
 
-      removeFadeClass();
 
-      let startSlide = currentSlide < nextSlide ? currentSlide : currentSlide;
-      let endSlide = currentSlide < nextSlide ? nextSlide : currentSlide + 13;
+      if(currentSlide !== nextSlide){
 
-      console.log({ startSlide });
-      console.log({ endSlide });
+        removeFadeClass();
 
-      for (let i = startSlide; i < endSlide; i++) {
-        let el = document.getElementById(`slide-${i}`);
-        el?.classList.add('fadeOutLeft');
+        let startSlide = currentSlide < nextSlide ? currentSlide : currentSlide;
+        let endSlide = currentSlide < nextSlide ? nextSlide : currentSlide + 13;
+
+        console.log({ startSlide });
+        console.log({ endSlide });
+
+        for (let i = startSlide; i < endSlide; i++) {
+          let el = document.getElementById(`slide-${i}`);
+          el?.classList.add('fadeOutLeft');
+        }
       }
+
     },
 
     afterChange: function (currentSlide) {
@@ -311,9 +316,10 @@ function CalendarSlider({ wrapperClass }) {
   };
 
   const changeCalendar = () => {
+
+    sliderRef.current.slickGoTo(0)
     addFadeClass();
     titleAnimation();
-
     setTimeout(() => {
       router.push({
         pathname,
