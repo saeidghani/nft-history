@@ -10,8 +10,8 @@ function BidCardsList({ bidCards, wrapperClass, contentClass }) {
     <div className={wrapperClass}>
       <div className={contentClass}>
         {bidCards.map((i) => (
-          <div key={i.key} onClick={() => router.push(routes.auctions.view(i.key))}>
-            <BidCard {...i.details} />
+          <div key={i.key}>
+            <BidCard {...i.details} id={i.key} />
           </div>
         ))}
       </div>

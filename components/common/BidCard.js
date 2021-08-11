@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { CommentIcon, LikeIcon, StarIcon } from './Icons';
+import routes from '../../constants/routes';
+import { useRouter } from 'next/router';
 
 function BidCard({
   wrapperClass = '',
@@ -13,13 +15,17 @@ function BidCard({
   stars,
   timer,
   fixedPriceDate,
+  id,
 }) {
+  const router = useRouter();
+
   return (
     <div className={wrapperClass}>
       <div
         className={`flex flex-col bg-darkGray rounded-20 pb-4 px-5 cursor-pointer ${
           calendar && timer ? 'pt-3' : 'pt-5'
         }`}
+        onClick={() => router.push(routes.auctions.view(id))}
       >
         <div className="relative flex flex-col items-center w-full" style={{ height: 218 }}>
           {calendar ? (
@@ -83,15 +89,27 @@ function BidCard({
             <div className="border-b border-solid border-white">More</div>
           </div>
           <div className="flex justify-between border-t border-solid border-fadeWhite1 pt-3">
-            <div className="flex items-center space-x-1">
+            <div
+              className="flex items-center space-x-1 cursor-pointer-none"
+              style={{ pointerEvents: 'none' }}
+              onClick={(e) => e.stopPropagation()}
+            >
               <StarIcon fill="transparent" />
               <div className="text-white opacity-80 text-12">{stars}</div>
             </div>
-            <div className="flex items-center space-x-1">
+            <div
+              className="flex items-center space-x-1"
+              style={{ pointerEvents: 'none' }}
+              onClick={(e) => e.stopPropagation()}
+            >
               <CommentIcon />
               <div className="text-white opacity-80 text-12">{comments}</div>
             </div>
-            <div className="flex items-center space-x-1">
+            <div
+              className="flex items-center space-x-1"
+              style={{ pointerEvents: 'none' }}
+              onClick={(e) => e.stopPropagation()}
+            >
               <LikeIcon />
               <div className="text-white opacity-80 text-12">{likes}</div>
             </div>
