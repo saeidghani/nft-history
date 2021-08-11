@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Layout from '../../Layout';
 import BidCardsList from '../../components/common/BidCardsList';
 import SwitchSelect from '../../components/common/SwitchSelect';
@@ -177,7 +178,11 @@ function Account() {
                 <div className="text-white text-14 font-light mt-2">The future is coming.</div>
                 <div className="flex mt-1">
                   <div className="text-white text-14 font-light mr-2">0x4A34639...5a81</div>
-                  <Image src="/icons/walletAddress.svg" width={18} height={18} />
+                  <CopyToClipboard text="0x4A34639...5a81">
+                    <div className="cursor-pointer">
+                      <Image src="/icons/walletAddress.svg" width={18} height={18} />
+                    </div>
+                  </CopyToClipboard>
                 </div>
               </div>
             </div>
@@ -219,7 +224,7 @@ function Account() {
                   className={`order-1 rounded-12 font-light mt-13 lg:mt-0 mb-0 lg:mb-3 rounded-12
                               text-white border border-solid w-33 h-9.5 ${
                                 follows === 'true'
-                                  ? 'bg-primary border-transparent'
+                                  ? 'btn-primary border-transparent'
                                   : 'border-white'
                               }`}
                   onClick={() =>
@@ -260,8 +265,8 @@ function Account() {
       <BidCardsList
         bidCards={bidCards}
         wrapperClass="mt-7 lg:mt-8"
-        contentClass="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4
-                          2xl:gap-8"
+        contentClass="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4
+                      3xl:grid-cols-5 gap-4 2xl:gap-8"
       />
     </Layout>
   );

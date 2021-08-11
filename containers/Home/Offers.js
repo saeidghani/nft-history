@@ -204,7 +204,7 @@ function Offers() {
               <div className="flex space-x-3 mt-4">
                 <Link href={`${routes.auctions.view(1)}?auctionEnded=true`}>
                   <div
-                    className="text-18 font-medium text-white bg-primary rounded-12
+                    className="text-18 font-medium text-white btn-primary rounded-12
                                h-14 px-7 w-full flex justify-center items-center cursor-pointer"
                   >
                     Make an Offer

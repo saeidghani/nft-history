@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Layout from '../../Layout';
 import routes from '../../constants/routes';
 import PlaceBidModal from './PlaceBidModal';
@@ -17,6 +18,7 @@ function Auctions() {
   const [cancelAuctionOpen, setCancelAuctionOpen] = useState(false);
   const [makeOfferOpen, setMakeOfferOpen] = useState(false);
   const [uploadOpen, setUploadOpen] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(false);
 
   const router = useRouter();
   const { query } = router;
@@ -192,7 +194,7 @@ function Auctions() {
         {!collection && (auctionStarted || auctionNotStarted || auctionEnded || fixedPrice) && (
           <div
             className="font-medium text-primary text-left flex justify-center
-                      bg-primary bg-opacity-10 rounded-10 mt-1 xl:mt-2.5 py-1 w-16"
+                      btn-primary bg-opacity-10 rounded-10 mt-1 xl:mt-2.5 py-1 w-16"
           >
             Sport
           </div>
@@ -238,7 +240,7 @@ function Auctions() {
         )}
         <div className="flex items-center space-x-3 lg:space-x-6.5 mt-3 xl:mt-5">
           <button
-            className={`bg-primary text-white text-18 font-medium rounded-12 w-full h-14 ${
+            className={`btn-primary text-white text-18 font-medium rounded-12 w-full h-14 ${
               auctionNotStarted ? 'opacity-40 cursor-not-allowed' : ''
             }`}
             onClick={() => {
@@ -405,7 +407,11 @@ function Auctions() {
               <div className="text-white text-14 font-light mt-2">The future is coming.</div>
               <div className="flex mt-1">
                 <div className="text-white text-14 font-light mr-2">0x4A34639...5a81</div>
-                <Image src="/icons/walletAddress.svg" width={18} height={18} />
+                <CopyToClipboard text="0x4A34639...5a81">
+                  <div className="cursor-pointer">
+                    <Image src="/icons/walletAddress.svg" width={18} height={18} />
+                  </div>
+                </CopyToClipboard>
               </div>
             </div>
           </div>
@@ -425,8 +431,13 @@ function Auctions() {
                 </div>
               </div>
             </div>
-            <button className="border border-white border-solid rounded-12 text-white w-33 h-9.5">
-              Follow
+            <button
+              className={`border border-solid rounded-12 text-white w-33 h-9.5 ${
+                isFollowing ? 'bg-primary border-transparent' : 'border-white'
+              }`}
+              onClick={() => setIsFollowing(!isFollowing)}
+            >
+              {isFollowing ? 'Unfollow' : 'Follow'}
             </button>
           </div>
         </div>

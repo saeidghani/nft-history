@@ -29,7 +29,7 @@ function UploadModal({ open, onCloseModal }) {
         <Link href={routes.upload}>
           <div
             className="flex justify-center items-center text-white text-18
-                          font-medium bg-primary rounded-12 w-full h-14 cursor-pointer"
+                          font-medium btn-primary rounded-12 w-full h-14 cursor-pointer"
           >
             Upload and Assign
           </div>

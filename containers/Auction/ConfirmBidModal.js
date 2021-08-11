@@ -22,7 +22,7 @@ function ConfirmBidModal({ open, onCloseModal }) {
         You Placed a bid worth $20 are you sure?
       </p>
       <button
-        className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14 mt-20"
+        className="text-white text-18 font-medium btn-primary rounded-12 w-full h-14 mt-20"
         onClick={onCloseModal}
       >
         Confirm

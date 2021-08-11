@@ -120,7 +120,7 @@ export default function Upload() {
           <div className="flex space-x-6.5 mt-11">
             <button
               type="submit"
-              className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14"
+              className="text-white text-18 font-medium btn-primary rounded-12 w-full h-14"
             >
               Upload
             </button>

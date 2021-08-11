@@ -120,7 +120,7 @@ export default function Edit() {
         <div className="flex space-x-5 mt-11">
           <button
             type="submit"
-            className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14"
+            className="text-white text-18 font-medium btn-primary rounded-12 w-full h-14"
           >
             Save
           </button>

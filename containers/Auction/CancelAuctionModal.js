@@ -22,7 +22,7 @@ function UploadModal({ open, onCloseModal }) {
       </p>
       <div className="text-white text-18 font-light text-opacity-75 mt-2.5">10 HSY fee</div>
       <button
-        className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14 mt-5"
+        className="text-white text-18 font-medium btn-primary rounded-12 w-full h-14 mt-5"
         onClick={onCloseModal}
       >
         Yes!

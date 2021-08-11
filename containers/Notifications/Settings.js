@@ -91,7 +91,7 @@ export default function Settings() {
         </div>
       </div>
       <button
-        className="text-white text-18 font-medium bg-primary rounded-12
+        className="text-white text-18 font-medium btn-primary rounded-12
                    h-14 mt-5 w-full xs:max-w-56"
         onClick={handleSave}
       >

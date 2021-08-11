@@ -55,3 +55,28 @@ input, button, select {
 .file-upload-btn-hidden::-webkit-file-upload-button {
   visibility: hidden;
 }
+
+.btn-primary {
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: #9A64E0;
+  border: 1px solid #8848dd;
+  box-shadow: 0px 2px 0 #9A64E0, 2px 4px 6px #9A64E0;
+  font-weight: 900;
+  letter-spacing: 1px;
+  transition: all 150ms linear;
+
+  &:hover {
+    background: #9A64E0;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+    color: #ac84df;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 #9A64E0;
+    transition: all 250ms linear;
+  }
+}
+

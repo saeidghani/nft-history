@@ -412,7 +412,7 @@ function CalendarSlider({ wrapperClass }) {
               >
                 <div
                   className="flex flex-col items-center"
-                  style={{ width: 76, height: 76, paddingTop: d.title2 ? 13 : 28 }}
+                  style={{ height: 76, paddingTop: d.title2 ? 13 : 28 }}
                 >
                   <div className="text-white font-light text-center">{d.title1}</div>
                   {d.title2 && (

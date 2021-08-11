@@ -84,7 +84,7 @@ function MakeOfferModal({ open, onCloseModal }) {
         <TimePicker />
       </div>
       <button
-        className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14 mt-8"
+        className="text-white text-18 font-medium btn-primary rounded-12 w-full h-14 mt-8"
         onClick={onCloseModal}
       >
         Make an Offer

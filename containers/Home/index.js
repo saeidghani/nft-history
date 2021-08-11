@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Layout from '../../Layout';
-import CategoryTabs from '../../components/common/CategoryTabs';
 import PremierMarketplace from '../../components/common/PremierMarketplace';
 import Offers from './Offers';
 import routes from '../../constants/routes';
@@ -20,7 +19,7 @@ export default function Home() {
         </p>
         <Link href={routes.marketPlace.index}>
           <span
-            className="inline-flex items-center text-18 text-white bg-primary
+            className="inline-flex items-center text-18 text-white btn-primary
                            rounded-12 h-13.5 px-7 mt-6.5 cursor-pointer"
           >
             GO TO MARKETPLACE

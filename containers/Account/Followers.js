@@ -33,7 +33,7 @@ function Followers() {
       </div>
       <button
         className={`text-white font-light rounded-12 w-28 2xs:w-33 h-9.5 ${
-          isFollowing ? 'bg-primary' : 'border border-solid border-white'
+          isFollowing ? 'btn-primary' : 'border border-solid border-white'
         }`}
         onClick={onClick}
       >

@@ -25,7 +25,7 @@ function WalletBalance() {
         <Link href={routes.walletBalance.details}>
           <div
             className="text-18 text-white flex justify-center items-center rounded-12
-                          w-45 h-13.5 bg-primary mt-10 cursor-pointer"
+                          w-45 h-13.5 btn-primary mt-10 cursor-pointer"
           >
             Connect
           </div>

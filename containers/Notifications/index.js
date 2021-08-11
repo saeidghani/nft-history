@@ -29,7 +29,7 @@ function Notifications() {
             key={b.key}
             className={`text-18 font-medium rounded-12 w-full h-14 ${
               acceptedOffers[id] === b.key
-                ? 'text-white bg-primary'
+                ? 'text-white btn-primary'
                 : `text-lightBlue border border-solid border-lightBlue`
             }`}
             onClick={() =>
@@ -126,7 +126,7 @@ function Notifications() {
           </div>
           <div className="text-white text-14 font-light mt-1">{timer}</div>
           <button
-            className="hidden xl:block text-white text-18 font-medium bg-primary rounded-12 w-full h-14"
+            className="hidden xl:block text-white text-18 font-medium btn-primary rounded-12 w-full h-14"
             style={{ maxWidth: 332 }}
           >
             Claim
@@ -134,7 +134,7 @@ function Notifications() {
         </div>
       </div>
       <button
-        className="xl:hidden text-white text-18 font-medium bg-primary rounded-12 w-full h-14 mt-4"
+        className="xl:hidden text-white text-18 font-medium btn-primary rounded-12 w-full h-14 mt-4"
         style={{ maxWidth: 332 }}
       >
         Claim

@@ -22,7 +22,7 @@ function PlaceBidModal({ open, onCloseModal, onConfirmPlaceBid }) {
         You Placed the first bid. auction will last for 24 hours Good Luck!
       </p>
       <button
-        className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14 mt-12"
+        className="text-white text-18 font-medium btn-primary rounded-12 w-full h-14 mt-12"
         onClick={onConfirmPlaceBid}
       >
         Confirm

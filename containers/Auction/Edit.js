@@ -149,7 +149,7 @@ export default function Edit() {
                 key={i.key}
                 className={`text-18 font-medium  rounded-12 w-full h-14 ${
                   i.key === auctionType
-                    ? 'text-white bg-primary'
+                    ? 'text-white btn-primary'
                     : 'text-lightBlue border border-solid border-lightBlue'
                 }`}
                 onClick={() => setAuctionType(i.key)}
@@ -232,7 +232,7 @@ export default function Edit() {
           <div className="flex space-x-6.5 mt-7">
             <button
               type="submit"
-              className="text-white text-18 font-medium bg-primary rounded-12 w-full h-14"
+              className="text-white text-18 font-medium btn-primary rounded-12 w-full h-14"
             >
               Put on Sale
             </button>

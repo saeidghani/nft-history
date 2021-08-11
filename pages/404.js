@@ -29,7 +29,7 @@ export default function Custom404() {
         <div className="flex justify-center lg:justify-start">
           <Link href={routes.home.index}>
             <div
-              className="text-white text-18 bg-primary rounded-12 h-14 w-80 lg:w-60
+              className="btn-primary text-white text-18 rounded-12 h-14 w-80 lg:w-60
                              cursor-pointer flex justify-center items-center mt-9"
             >
               Go to Home
