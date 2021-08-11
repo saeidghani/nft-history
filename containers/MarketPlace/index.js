@@ -182,8 +182,8 @@ export default function MarketPlace() {
           <BidCardsList
             bidCards={bidCards}
             wrapperClass="lg:col-start-2 lg:col-span-3"
-            contentClass="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4
-                          2xl:gap-8"
+            contentClass="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4
+                          gap-4 2xl:gap-8"
           />
         </div>
       </div>
