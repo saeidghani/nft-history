@@ -25,7 +25,7 @@ function SearchInput({ isSm, onHideSearch }) {
   );
 
   return (
-    <div className="relative">
+    <div className="relative z-30">
       <div className="relative w-full">
         <input
           type="text"

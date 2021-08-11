@@ -194,6 +194,7 @@ function CalendarSlider({ wrapperClass }) {
 
   const [dates, setDates] = useState([]);
   const [title, setTitle] = useState('');
+  const [selectedItem, setSelectedItem] = useState(5);
 
   useEffect(() => {
     let dates = [];
@@ -247,9 +248,7 @@ function CalendarSlider({ wrapperClass }) {
     beforeChange: function (currentSlide, nextSlide) {
       console.log('before change', { currentSlide, nextSlide });
 
-
-      if(currentSlide !== nextSlide){
-
+      if (currentSlide !== nextSlide) {
         removeFadeClass();
 
         let startSlide = currentSlide < nextSlide ? currentSlide : currentSlide;
@@ -263,7 +262,6 @@ function CalendarSlider({ wrapperClass }) {
           el?.classList.add('fadeOutLeft');
         }
       }
-
     },
 
     afterChange: function (currentSlide) {
@@ -316,8 +314,8 @@ function CalendarSlider({ wrapperClass }) {
   };
 
   const changeCalendar = () => {
-
-    sliderRef.current.slickGoTo(0)
+    sliderRef.current.slickGoTo(0);
+    setSelectedItem(5);
     addFadeClass();
     titleAnimation();
     setTimeout(() => {
@@ -409,7 +407,8 @@ function CalendarSlider({ wrapperClass }) {
                 key={d.key}
                 id={`slide-${index}`}
                 className={`my-slide bg-white bg-opacity-10 border border-solid border-fadeLightBlue1
-                          rounded-20 active`}
+                          rounded-20 active cursor-pointer`}
+                onClick={() => setSelectedItem(index)}
               >
                 <div
                   className="flex flex-col items-center"
@@ -420,7 +419,7 @@ function CalendarSlider({ wrapperClass }) {
                     <div className="text-20 text-white font-medium text-center">{d.title2}</div>
                   )}
                 </div>
-                {d.displayPointer && (
+                {index === selectedItem && (
                   <div className="flex justify-center -mb-1">
                     <div className="bg-primary rounded-b-6" style={{ width: 30, height: 3 }} />
                   </div>

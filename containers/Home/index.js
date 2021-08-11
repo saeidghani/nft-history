@@ -6,6 +6,7 @@ import CategoryTabs from '../../components/common/CategoryTabs';
 import PremierMarketplace from '../../components/common/PremierMarketplace';
 import Offers from './Offers';
 import routes from '../../constants/routes';
+import CalendarSlider from '../../components/common/CalendarSlider';
 
 export default function Home() {
   const Banner = () => (
@@ -38,7 +39,7 @@ export default function Home() {
           <PremierMarketplace />
         </div>
         <Banner />
-        <CategoryTabs wrapperClass="mt-9" />
+        <CalendarSlider wrapperClass="mt-9" />
         <Offers />
       </div>
     </Layout>
