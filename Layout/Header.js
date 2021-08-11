@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Navigation from '../components/common/Navigation';
+import SearchInput from '../components/common/SearchInput';
 import Drawer from '../components/UI/Drawer';
 import Dropdown from '../components/UI/Dropdown';
 import routes from '../constants/routes';
@@ -49,58 +50,6 @@ function Header({ isHome }) {
       </div>
     </div>
   );
-
-  const SearchInput = ({ isSm }) => (
-    <div className="relative w-full">
-      <input
-        type="text"
-        className={`text-white bg-white bg-opacity-10 rounded-18 w-full 
-                    border border-solid border-fadeLightBlue1 ${
-                      isSm ? 'h-9.5 pl-12' : 'h-11.5 pl-14'
-                    }`}
-        placeholder="Search"
-      />
-      <div className={`absolute left-4 ${isSm ? 'top-2.5' : 'top-3'}`}>
-        <Image src="/icons/magnifier.svg" width={isSm ? 19 : 25} height={isSm ? 19 : 25} />
-      </div>
-      <div
-        className={`absolute right-4 cursor-pointer ${isSm ? 'top-1.5' : 'top-3'}`}
-        onClick={() => setDisplaySearch(false)}
-      >
-        <Image src="/icons/close.svg" width={isSm ? 10 : 15} height={isSm ? 10 : 15} />
-      </div>
-    </div>
-  );
-
-  const helpItems = [
-    {
-      key: 1,
-      title: (
-        <div className="flex items-center space-x-2">
-          <Image src="/icons/magnifier.svg" width={25} height={25} />
-          <div className="text-white text-14">Nina Blake</div>
-        </div>
-      ),
-    },
-    {
-      key: 2,
-      title: (
-        <div className="flex items-center space-x-2">
-          <Image src="/images/avatar.png" width={38} height={38} />
-          <div className="text-white text-14">Emilie Butler</div>
-        </div>
-      ),
-    },
-    {
-      key: 3,
-      title: (
-        <div className="flex items-center space-x-2">
-          <Image src="/images/avatar2.png" width={38} height={38} />
-          <div className="text-white text-14">Emilie Bumser</div>
-        </div>
-      ),
-    },
-  ];
 
   const NotificationHeader = ({ title }) => (
     <div
@@ -236,7 +185,7 @@ function Header({ isHome }) {
           style={{ height: 786 }}
         >
           <div className="w-full">
-            <SearchInput />
+            <SearchInput onHideSearch={() => setDisplaySearch(false)} />
             <div className="flex flex-col space-y-5 mt-6">
               <div className="flex items-center space-x-2">
                 <Image src="/images/avatar.png" width={38} height={38} />
@@ -282,22 +231,16 @@ function Header({ isHome }) {
             />
           ) : (
             <div className="w-full relative left-2" style={{ maxWidth: 380 }}>
-              <SearchInput isSm />
+              <SearchInput isSm onHideSearch={() => setDisplaySearch(false)} />
             </div>
           )}
           <div className="flex justify-between items-center w-full" style={{ maxWidth: 160 }}>
             <div className="w-full flex justify-end">
-              <Dropdown
-                title={
-                  <div className="cursor-pointer">
-                    <Image src="/icons/help.svg" width={24} height={24} />
-                  </div>
-                }
-                items={helpItems}
-                width="w-6"
-                menuItemClass="justify-start"
-                menuItemsClass="pl-4 pb-5 -left-100 -mt-7 w-95"
-              />
+              <Link href={routes.faq}>
+                <div className="cursor-pointer">
+                  <Image src="/icons/help.svg" width={24} height={24} />
+                </div>
+              </Link>
             </div>
             <div className="w-full flex justify-end">
               <Dropdown

@@ -27,7 +27,7 @@ export default function Home() {
         </Link>
       </div>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/calendarIllustrationLg.svg" />
+      <img src="/images/calendarIllustration.png" />
     </div>
   );
 
