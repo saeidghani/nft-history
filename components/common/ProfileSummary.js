@@ -103,7 +103,7 @@ function ProfileSummary({
           {filterItems.map((i) => (
             <div
               key={i.key}
-              className={`rounded-10 p-2 ${
+              className={`rounded-10 p-2 transition-all duration-300 ease-in-out ${
                 i.key === activeFilter.key ? 'text-white bg-primary' : 'text-white text-opacity-40'
               }`}
               onClick={() => onSetActiveFilter(i)}

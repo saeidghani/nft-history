@@ -1,13 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import Image from 'next/image';
 import Layout from '../../Layout';
 
 export default function Edit() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const avatarFileRef = useRef(null);
@@ -73,7 +71,7 @@ export default function Edit() {
             />
             {!preview && (
               <div
-                className="absolute top-10 lg:top-9 left-3.5 font-semibold cursor-pointer mt-4"
+                className="absolute top-9 left-2.5 font-semibold cursor-pointer mt-4"
                 style={{ color: '#377CF6', fontSize: 18 }}
                 onClick={() => avatarFileRef?.current?.click()}
               >
