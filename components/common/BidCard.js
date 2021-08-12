@@ -88,26 +88,23 @@ function BidCard({
             </div>
             <div className="border-b border-solid border-white">More</div>
           </div>
-          <div className="flex justify-between border-t border-solid border-fadeWhite1 pt-3">
+          <div className="flex justify-between border-t border-solid border-fadeWhite1">
             <div
-              className="flex items-center space-x-1 cursor-pointer-none"
-              style={{ pointerEvents: 'none' }}
+              className="flex items-center space-x-1 pt-3 px-1"
               onClick={(e) => e.stopPropagation()}
             >
               <StarIcon fill="transparent" />
               <div className="text-white opacity-80 text-12">{stars}</div>
             </div>
             <div
-              className="flex items-center space-x-1"
-              style={{ pointerEvents: 'none' }}
+              className="flex items-center space-x-1 pt-3 px-1"
               onClick={(e) => e.stopPropagation()}
             >
               <CommentIcon />
               <div className="text-white opacity-80 text-12">{comments}</div>
             </div>
             <div
-              className="flex items-center space-x-1"
-              style={{ pointerEvents: 'none' }}
+              className="flex items-center space-x-1 pt-3 px-1"
               onClick={(e) => e.stopPropagation()}
             >
               <LikeIcon />

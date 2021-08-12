@@ -1,6 +1,5 @@
 import React from 'react';
 import BidCard from './BidCard';
-import routes from '../../constants/routes';
 import { useRouter } from 'next/router';
 
 function BidCardsList({ bidCards, wrapperClass, contentClass }) {
