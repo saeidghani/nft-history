@@ -39,14 +39,16 @@ function Header({ isHome }) {
           />
         </div>
       </div>
-      <div
-        className="w-full flex justify-end cursor-pointer"
-        onClick={() => {
-          setMenuOpen(false);
-          setSearchOpen(true);
-        }}
-      >
-        <Image src="/icons/magnifier.svg" width={25} height={25} />
+      <div className="w-full flex justify-end cursor-pointer">
+        <div
+          className="pt-2"
+          onClick={() => {
+            setMenuOpen(false);
+            setSearchOpen(true);
+          }}
+        >
+          <Image src="/icons/magnifier.svg" width={25} height={25} />
+        </div>
       </div>
     </div>
   );

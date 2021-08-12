@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Layout from '../../Layout';
 import routes from '../../constants/routes';
 import PlaceBidModal from './PlaceBidModal';
@@ -10,6 +9,13 @@ import ConfirmBidModal from './ConfirmBidModal';
 import CancelAuctionModal from './CancelAuctionModal';
 import MakeOfferModal from './MakeOfferModal';
 import UploadModal from './UploadModal';
+import ProfileSummary from '../../components/common/ProfileSummary';
+
+const filterItems = [
+  { key: 1, title: 'Owned', value: 'owned' },
+  { key: 2, title: 'Favorite', value: 'favorite' },
+  { key: 3, title: 'On Sale', value: 'onSale' },
+];
 
 function Auctions() {
   const [activeDetail, setActiveDetail] = useState('comments');
@@ -18,10 +24,14 @@ function Auctions() {
   const [cancelAuctionOpen, setCancelAuctionOpen] = useState(false);
   const [makeOfferOpen, setMakeOfferOpen] = useState(false);
   const [uploadOpen, setUploadOpen] = useState(false);
-  const [isFollowing, setIsFollowing] = useState(false);
+  const [activeFilter, setActiveFilter] = useState({});
 
   const router = useRouter();
   const { query } = router;
+
+  useEffect(() => {
+    setActiveFilter(filterItems[0]);
+  }, []);
 
   const {
     auctionNotStarted,
@@ -194,7 +204,7 @@ function Auctions() {
         {!collection && (auctionStarted || auctionNotStarted || auctionEnded || fixedPrice) && (
           <div
             className="font-medium text-primary text-left flex justify-center
-                      btn-primary bg-opacity-10 rounded-10 mt-1 xl:mt-2.5 py-1 w-16"
+                      bg-primary bg-opacity-10 rounded-10 mt-1 xl:mt-2.5 py-1 w-16"
           >
             Sport
           </div>
@@ -396,52 +406,13 @@ function Auctions() {
       />
       <MakeOfferModal open={makeOfferOpen} onCloseModal={() => setMakeOfferOpen(false)} />
       <UploadModal open={uploadOpen} onCloseModal={() => setUploadOpen(false)} />
-      <div className="bg-darkGray rounded-20 px-5 lg:px-8 py-6.5">
-        <div className="flex justify-between">
-          <div className="flex flex-col lg:flex-row space-x-0 lg:space-x-3">
-            <div className="w-23 h-23 flex justify-center items-center rounded-full">
-              <Image src="/images/avatar.png" width={112} height={112} />
-            </div>
-            <div className="flex flex-col mt-7 lg:mt-2">
-              <div className="text-white text-18 font-medium">Emilie Butler</div>
-              <div className="text-white text-14 font-light mt-2">The future is coming.</div>
-              <div className="flex mt-1">
-                <div className="text-white text-14 font-light mr-2">0x4A34639...5a81</div>
-                <CopyToClipboard text="0x4A34639...5a81">
-                  <div className="cursor-pointer">
-                    <Image src="/icons/walletAddress.svg" width={18} height={18} />
-                  </div>
-                </CopyToClipboard>
-              </div>
-            </div>
-          </div>
-          <div
-            className="flex flex-col lg:flex-row items-center space-y-12 lg:space-y-0
-                       space-x-0 lg:space-x-6.5 mt-6 lg:mt-0"
-          >
-            <div className="flex flex-col">
-              <div className="order-1 lg:order-2 flex space-x-8">
-                <div className="flex flex-col items-center">
-                  <div className="text-white text-14 font-light">Following</div>
-                  <div className="text-white text-18">56</div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="text-white text-14 font-light">Followers</div>
-                  <div className="text-white text-18">2,233</div>
-                </div>
-              </div>
-            </div>
-            <button
-              className={`border border-solid rounded-12 text-white w-33 h-9.5 ${
-                isFollowing ? 'bg-primary border-transparent' : 'border-white'
-              }`}
-              onClick={() => setIsFollowing(!isFollowing)}
-            >
-              {isFollowing ? 'Unfollow' : 'Follow'}
-            </button>
-          </div>
-        </div>
-      </div>
+      <ProfileSummary
+        filterItems={filterItems}
+        activeFilter={activeFilter}
+        onSetActiveFilter={(filter) => setActiveFilter(filter)}
+        displayCategories={false}
+        wrapperClass="bg-darkGray rounded-20 px-5 lg:px-8 py-6.5"
+      />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 xl:gap-8 mt-8">
         <Poster />
         <Offer />

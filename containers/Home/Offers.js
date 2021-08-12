@@ -229,10 +229,10 @@ function Offers() {
                   className="text-primary font-medium rounded-10 py-1 px-2
                                 bg-primary bg-opacity-10 capitalize"
                 >
-                  {category}
+                  {items[activeSlide].category}
                 </div>
               </div>
-              <p className="text-white mt-3">
+              <p className="text-white mt-4">
                 Apollo 11 was the spaceflight that first landed humans on the moon. Neil Armstrong
                 and Buzz Aldrin formed the American crew that landed the Apollo Lunar Module Eagle
                 on July 20, 1969, at 20:17 UTC. Armstrong became the first person to step onto the
