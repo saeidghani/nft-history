@@ -296,7 +296,7 @@ function Auctions() {
   const Details = () => (
     <div className="order-2 lg:order-3 bg-darkGray rounded-20 py-6.5 overflow-hidden lg:h-549px">
       <div
-        className="flex items-center space-x-6 bg-white bg-opacity-10 rounded-18 px-4 mx-6.5"
+        className="flex items-center space-x-4 lg:space-x-6 bg-white bg-opacity-10 rounded-18 px-4 mx-4 lg:mx-6.5"
         style={{ height: 58 }}
       >
         {details.map((d) => (

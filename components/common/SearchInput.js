@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-function SearchInput({ isSm, onHideSearch }) {
+function SearchInput({ isSm, onHideSearch, displayClose = true }) {
   const [searchVal, setSearchVal] = useState('');
 
   const SearchResults = () => (
@@ -40,12 +40,14 @@ function SearchInput({ isSm, onHideSearch }) {
         <div className={`absolute left-4 ${isSm ? 'top-2.5' : 'top-3'}`}>
           <Image src="/icons/magnifier.svg" width={isSm ? 19 : 25} height={isSm ? 19 : 25} />
         </div>
-        <div
-          className={`absolute right-4 cursor-pointer ${isSm ? 'top-1.5' : 'top-3'}`}
-          onClick={onHideSearch}
-        >
-          <Image src="/icons/close.svg" width={isSm ? 10 : 15} height={isSm ? 10 : 15} />
-        </div>
+        {displayClose && (
+          <div
+            className={`absolute right-4 cursor-pointer ${isSm ? 'top-1.5' : 'top-3'}`}
+            onClick={onHideSearch}
+          >
+            <Image src="/icons/close.svg" width={isSm ? 10 : 15} height={isSm ? 10 : 15} />
+          </div>
+        )}
       </div>
       {searchVal && <SearchResults />}
     </div>

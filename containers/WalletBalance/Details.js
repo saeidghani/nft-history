@@ -1,7 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Layout from '../../Layout';
 import PremierMarketplace from '../../components/common/PremierMarketplace';
+import routes from '../../constants/routes';
 
 const historyItems = [
   {
@@ -100,12 +102,14 @@ function Details() {
           <Image src="/icons/walletAddress.svg" width={18} height={18} />
         </div>
       </div>
-      <button
-        className="self-center lg:self-start text-lightBlue text-18 font-medium rounded-12
-                   h-14 w-44 border border-solid border-lightBlue mt-6"
-      >
-        Disconnect
-      </button>
+      <Link href={routes.walletBalance.index}>
+        <div
+          className="self-center lg:self-start text-lightBlue text-18 font-medium rounded-12 h-14
+          w-44 border border-solid border-lightBlue mt-6 cursor-pointer flex justify-center items-center"
+        >
+          Disconnect
+        </div>
+      </Link>
     </div>
   );
 

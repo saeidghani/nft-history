@@ -419,9 +419,11 @@ function CalendarSlider({ wrapperClass }) {
             {categories?.map((c) => (
               <Link key={c.key} href={{ pathname, query: { ...query, category: c.key } }}>
                 <div
-                  className={`text-14 lg:text-16 cursor-pointer ${
+                  className={`text-14 lg:text-16 cursor-pointer transition-all duration-500 ease-in-out 
+                  ${
                     c.key === category
-                      ? 'text-primary bg-primary bg-opacity-10 rounded-10 font-medium px-2.5 py-2'
+                      ? `text-primary bg-primary bg-opacity-10 rounded-10 
+                    font-medium px-2.5 py-2`
                       : 'text-secondary text-opacity-80 px-2.5 py-2'
                   }`}
                 >

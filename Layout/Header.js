@@ -185,7 +185,7 @@ function Header({ isHome }) {
           style={{ height: 786 }}
         >
           <div className="w-full">
-            <SearchInput onHideSearch={() => setDisplaySearch(false)} />
+            <SearchInput displayClose={false} onHideSearch={() => setDisplaySearch(false)} />
             <div className="flex flex-col space-y-5 mt-6">
               <div className="flex items-center space-x-2">
                 <Image src="/images/avatar.png" width={38} height={38} />
@@ -237,7 +237,7 @@ function Header({ isHome }) {
           <div className="flex justify-between items-center w-full" style={{ maxWidth: 160 }}>
             <div className="w-full flex justify-end">
               <Link href={routes.faq}>
-                <div className="cursor-pointer">
+                <div className="cursor-pointer pt-2">
                   <Image src="/icons/help.svg" width={24} height={24} />
                 </div>
               </Link>
