@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import Layout from '../../Layout';
 import BidCardsList from '../../components/common/BidCardsList';
 import CalendarSlider from '../../components/common/CalendarSlider';
-import CategoryTabs from '../../components/common/CategoryTabs';
 import Select from './Select';
 import SwitchSelect from '../../components/common/SwitchSelect';
 import CheckboxSelect from '../../components/common/CheckboxSelect';

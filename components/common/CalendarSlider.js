@@ -185,10 +185,6 @@ function CalendarSlider({ wrapperClass }) {
   const router = useRouter();
   const { pathname, query } = router;
   const { category, displayCalendar, calendarType } = query;
-  console.log(
-    '🚀 ~ file: CalendarSlider.js ~ line 113 ~ CalendarSlider ~ displayCalendar',
-    displayCalendar,
-  );
 
   const sliderRef = React.createRef();
 
@@ -297,16 +293,11 @@ function CalendarSlider({ wrapperClass }) {
       },
     ],
     beforeChange: function (currentSlide, nextSlide) {
-      console.log('before change', { currentSlide, nextSlide });
-
       if (currentSlide !== nextSlide) {
         removeFadeClass();
 
         let startSlide = currentSlide < nextSlide ? currentSlide : currentSlide;
         let endSlide = currentSlide < nextSlide ? nextSlide : currentSlide + count;
-
-        console.log({ startSlide });
-        console.log({ endSlide });
 
         for (let i = startSlide; i < endSlide; i++) {
           let el = document.getElementById(`slide-${i}`);
@@ -327,13 +318,10 @@ function CalendarSlider({ wrapperClass }) {
           el?.classList.add('fadeInDown');
         }, time * 50);
       }
-
-      console.log(currentSlide);
     },
   };
 
   const addFadeClass = () => {
-    console.log('addFadeClass');
     removeFadeClass();
     for (let i = 0; i < 13; i++) {
       setTimeout(() => {
@@ -363,13 +351,11 @@ function CalendarSlider({ wrapperClass }) {
   const showCalender = () => {
     setTimeout(() => {
       if (!displayCalendar) {
-        console.log('🚀 open');
         document.getElementById('calenderSlider').classList.add('display-block');
         document.getElementById('calender-title').classList.add('show');
         document.getElementById('calender-title').classList.add('show');
         addFadeClass();
       } else {
-        console.log('🚀 close');
         removeFadeClass();
         document.getElementById('calender-title').classList.remove('show');
         document.getElementById('calenderSlider').classList.remove('display-block');
