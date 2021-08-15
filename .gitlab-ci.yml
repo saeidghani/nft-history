@@ -5,7 +5,7 @@ variables:
 
 stages:
   - deploy
-
+ 
 cache:
   paths:
     - node_modules/
