@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Slider from 'react-slick';
 import routes from '../../constants/routes';
 import { useRouter } from 'next/router';
 import { useWindowSize } from '../../utils';
@@ -93,16 +92,41 @@ const items = [
     text,
     price: '299.49 HSY',
   },
+  {
+    key: 10,
+    date: '29 July 1969',
+    status: 'Sold',
+    title: 'First man on the moon',
+    category: 'History',
+    text,
+    price: '299.49 HSY',
+  },
+  {
+    key: 11,
+    date: '30 July 1969',
+    status: 'Sold',
+    title: 'First man on the moon',
+    category: 'History',
+    text,
+    price: '299.49 HSY',
+  },
+  {
+    key: 12,
+    date: '31 July 1969',
+    status: 'Sold',
+    title: 'First man on the moon',
+    category: 'History',
+    text,
+    price: '299.49 HSY',
+  },
 ];
 
 function Offers() {
-  const router = useRouter();
-  const { pathname, query } = router;
-  const { category } = query;
-  const [dateOrders, setDateOrders] = useState({});
-  const [activeSlide, setActiveSlide] = useState(2);
+  const [activeSlide, setActiveSlide] = useState(1);
   const [positions, setPositions] = useState([]);
+  const [dateOrders, setDateOrders] = useState({});
   const [dateOrderKeys, setDateOrderKeys] = useState([]);
+  const [middle, setMiddle] = useState(3);
   const sliderRef = React.createRef();
   const { width } = useWindowSize();
 
@@ -119,14 +143,22 @@ function Offers() {
   useEffect(() => {
     const orderKeys = items.map((i, index) => i.key);
     setDateOrderKeys(orderKeys);
+    setActiveSlide(middle);
   }, []);
+
+  useEffect(() => {
+    console.log(width);
+    const middle = width < 640 ? 1 : width < 768 ? 2 : width < 1024 ? 3 : 1;
+    setMiddle(middle);
+    setActiveSlide(middle);
+  }, [width]);
 
   useEffect(() => {
     const positions = items.map((i, index) => (width < 1024 ? index * 130 : index * 110));
     setPositions(positions);
     const dateOrders = {};
     items?.forEach((logo, index) => {
-      dateOrders[logo.key] = positions[index];
+      dateOrders[index] = positions[index];
     });
     setDateOrders(dateOrders);
   }, [width]);
@@ -146,19 +178,14 @@ function Offers() {
               className={`cursor-pointer text-white absolute top-0 bottom-0 transition-all duration-200`}
               style={{
                 transform: `translateX(${dateOrders[index + 1]}px)`,
-                opacity:
-                  dateOrderKeys.indexOf(index) === (width < 640 ? 0 : width < 768 ? 1 : 2)
-                    ? 1
-                    : 0.3,
+                opacity: dateOrderKeys.indexOf(index + 1) === middle ? 1 : 0.3,
               }}
               onClick={() => {
                 const num = index + 1;
                 setActiveSlide(index);
-                const newLogoOrderKeys = shift(
-                  dateOrderKeys,
-                  dateOrderKeys.indexOf(num) > 2 ? 0 : 1,
-                  Math.abs(dateOrderKeys.indexOf(num) - 2),
-                );
+                const dir = dateOrderKeys.indexOf(num) > middle ? 0 : 1;
+                const n = Math.abs(dateOrderKeys.indexOf(num) - middle);
+                const newLogoOrderKeys = shift(dateOrderKeys, dir, n);
                 setDateOrderKeys(newLogoOrderKeys);
                 const newDateOrders = {};
                 newLogoOrderKeys.forEach((num, index) => {
@@ -181,7 +208,7 @@ function Offers() {
         className="hidden lg:block w-full max-w-190px flex items-center overflow-hidden"
         style={{ height: 512 }}
       >
-        <div className="relative justify-between w-full">
+        <div className="relative w-full">
           {items.map(({ key, date }, index) => (
             <div
               key={key}
@@ -189,19 +216,15 @@ function Offers() {
                         absolute left-0 right-0 mx-auto transition-all duration-200`}
               style={{
                 transform: `translateY(${dateOrders[index + 1]}px)`,
-                opacity: [0, 4].includes(dateOrderKeys.indexOf(index + 1))
-                  ? 0.3
-                  : [1, 3].includes(dateOrderKeys.indexOf(index + 1))
-                  ? 0.45
-                  : 1,
+                opacity: dateOrderKeys.indexOf(index + 1) === middle ? 1 : 0.3,
               }}
               onClick={() => {
                 const num = index + 1;
                 setActiveSlide(index);
                 const newLogoOrderKeys = shift(
                   dateOrderKeys,
-                  dateOrderKeys.indexOf(num) > 2 ? 0 : 1,
-                  Math.abs(dateOrderKeys.indexOf(num) - 2),
+                  dateOrderKeys.indexOf(num) > middle ? 0 : 1,
+                  Math.abs(dateOrderKeys.indexOf(num) - middle),
                 );
                 setDateOrderKeys(newLogoOrderKeys);
                 const newDateOrders = {};
