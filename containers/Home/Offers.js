@@ -102,8 +102,8 @@ function Offers() {
   const [dateOrders, setDateOrders] = useState({});
   const [activeSlide, setActiveSlide] = useState(2);
   const [positions, setPositions] = useState([]);
-  const sliderRef = React.createRef();
   const [dateOrderKeys, setDateOrderKeys] = useState([]);
+  const sliderRef = React.createRef();
   const { width } = useWindowSize();
 
   const settings = {
@@ -129,7 +129,7 @@ function Offers() {
       dateOrders[logo.key] = positions[index];
     });
     setDateOrders(dateOrders);
-  }, []);
+  }, [width]);
 
   const shift = (arr, direction, n) => {
     const times = n > arr.length ? n % arr.length : n;
@@ -137,7 +137,7 @@ function Offers() {
   };
 
   return (
-    <div className="flex flex-col items-center lg:flex-row mt-6 lg:mt-11.5">
+    <div className="flex flex-col lg:flex-row items-center mt-6 lg:mt-11.5">
       <div className="block lg:hidden w-full overflow-hidden h-20">
         <div className="relative flex w-full h-full">
           {items.map(({ key, date }, index) => (
@@ -177,7 +177,10 @@ function Offers() {
           ))}
         </div>
       </div>
-      <div className="hidden lg:block w-full max-w-190px flex items-center overflow-hidden">
+      <div
+        className="hidden lg:block w-full max-w-190px flex items-center overflow-hidden"
+        style={{ height: 512 }}
+      >
         <div className="relative justify-between w-full">
           {items.map(({ key, date }, index) => (
             <div
