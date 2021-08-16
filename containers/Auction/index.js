@@ -333,9 +333,13 @@ function Auctions() {
               <Image src={i.src} width={48} height={48} />
             </div>
             <div className="">
-              <div className="text-14 text-white font-medium">artecsteam</div>
+              <div className="text-14 text-white font-medium">
+                {activeDetail === 'comments' ? 'artecsteam' : 'artecsteam!!!'}
+              </div>
               <div className="text-14 text-white font-medium mt-1">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                {activeDetail === 'comments'
+                  ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+                  : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.!!!'}
               </div>
             </div>
           </div>

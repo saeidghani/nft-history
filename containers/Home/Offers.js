@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import routes from '../../constants/routes';
-import { useRouter } from 'next/router';
 import { useWindowSize } from '../../utils';
 
 const text = `Apollo 11 was the spaceflight that first landed humans on the moon. 
@@ -127,18 +126,7 @@ function Offers() {
   const [dateOrders, setDateOrders] = useState({});
   const [dateOrderKeys, setDateOrderKeys] = useState([]);
   const [middle, setMiddle] = useState(3);
-  const sliderRef = React.createRef();
   const { width } = useWindowSize();
-
-  const settings = {
-    arrows: false,
-    infinite: true,
-    swipeToSlide: true,
-    speed: 500,
-    variableWidth: true,
-    className: 'center',
-    centerMode: true,
-  };
 
   useEffect(() => {
     const orderKeys = items.map((i, index) => i.key);
@@ -147,7 +135,6 @@ function Offers() {
   }, []);
 
   useEffect(() => {
-    console.log(width);
     const middle = width < 640 ? 1 : width < 768 ? 2 : width < 1024 ? 3 : 1;
     setMiddle(middle);
     setActiveSlide(middle);

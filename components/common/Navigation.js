@@ -73,7 +73,7 @@ function Navigation({ wrapperClass = '', isHome }) {
           }
         />
       ),
-      href: routes.account.index,
+      href: `${routes.account.index}?isAuth=true&hasProfilePic=true&myProfile=true`,
       activeHrefs: [routes.account.index, routes.account.followers],
     },
     {

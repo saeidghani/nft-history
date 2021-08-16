@@ -6,6 +6,7 @@ import CalendarSlider from '../../components/common/CalendarSlider';
 import Select from './Select';
 import SwitchSelect from '../../components/common/SwitchSelect';
 import CheckboxSelect from '../../components/common/CheckboxSelect';
+import { useWindowSize } from '../../utils';
 
 const sortByItems = [
   { key: 0, title: 'Sort By', value: '' },
@@ -127,19 +128,18 @@ const bidCards = [
 ];
 
 export default function MarketPlace() {
-  const router = useRouter();
-  const { query } = router;
-  const { displayCalendar } = query;
-
   const [activeSort, setActiveSort] = useState({});
   const [activeShowType, setActiveShowType] = useState({});
   const [activeFilters, setActiveFilters] = useState({});
+  const { width } = useWindowSize();
 
   useEffect(() => {
-    setActiveSort(sortByItems[0]);
-    setActiveShowType(showTypeItems[0]);
+    const defaultSort = width < 1024 ? sortByItems[0] : sortByItems[1];
+    const defaultShowType = width < 1024 ? showTypeItems[0] : showTypeItems[1];
+    setActiveSort(defaultSort);
+    setActiveShowType(defaultShowType);
     setActiveFilters(filterItems[0]);
-  }, []);
+  }, [width]);
 
   return (
     <Layout>
@@ -149,12 +149,12 @@ export default function MarketPlace() {
           <div className="hidden lg:flex flex-col space-y-8">
             <SwitchSelect
               title="Sort By"
-              items={sortByItems}
+              items={sortByItems.slice(1)}
               activeFilter={activeSort}
               onSetActiveFilter={(i) => setActiveSort(i)}
             />
             <SwitchSelect
-              items={showTypeItems}
+              items={showTypeItems.slice(1)}
               activeFilter={activeShowType}
               onSetActiveFilter={(i) => setActiveShowType(i)}
             />

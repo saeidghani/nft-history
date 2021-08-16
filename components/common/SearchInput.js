@@ -10,10 +10,6 @@ function SearchInput({ isSm, onHideSearch, displayClose = true }) {
                     px-4 pt-2 pb-7.5"
     >
       <div className="flex items-center space-x-2">
-        <Image src="/icons/magnifier.svg" width={25} height={25} />
-        <div className="text-white text-14">Nina Blake</div>
-      </div>
-      <div className="flex items-center space-x-2">
         <Image src="/images/avatar.png" width={38} height={38} />
         <div className="text-white text-14">Emilie Butler</div>
       </div>
