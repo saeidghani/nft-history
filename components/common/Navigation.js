@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { HomeIcon, AccountIcon, DropsIcon, MarketPlaceIcon, WalletBalanceIcon } from './Icons';
+import {
+  HomeIcon,
+  AccountIcon,
+  DropsIcon,
+  MarketPlaceIcon,
+  WalletBalanceIcon,
+  NotificationsIcon,
+  FaqIcon,
+} from './Icons';
 import routes from '../../constants/routes';
 import { useWindowSize } from '../../utils';
 
@@ -70,8 +78,19 @@ function Navigation({ wrapperClass = '', isHome }) {
     },
     {
       key: 6,
+      title: 'Notifications',
+      icon: (
+        <NotificationsIcon
+          fill={findActiveNavItem([routes.notifications.index]) ? '#fff' : '#B9C0DE'}
+        />
+      ),
+      href: routes.notifications.index,
+      activeHrefs: [routes.notifications.index],
+    },
+    {
+      key: 7,
       title: 'FAQ',
-      icon: <AccountIcon fill={findActiveNavItem([routes.faq]) ? '#fff' : '#B9C0DE'} />,
+      icon: <FaqIcon fill={findActiveNavItem([routes.faq]) ? '#fff' : '#B9C0DE'} />,
       href: routes.faq,
       activeHrefs: [routes.faq],
     },

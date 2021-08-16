@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import Image from 'next/image';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Layout from '../../Layout';
 import BidCardsList from '../../components/common/BidCardsList';
 import SwitchSelect from '../../components/common/SwitchSelect';
-import routes from '../../constants/routes';
 import ProfileSummary from '../../components/common/ProfileSummary';
 
 const bidCards = [

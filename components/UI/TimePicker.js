@@ -26,7 +26,7 @@ function TimePicker() {
         style={{ height: 56, width: '100%' }}
       />
       <div className="absolute top-3 right-4">
-        <Image src="/icons/clock.svg" width={32} height={32} />
+        <Image src="/icons/clock.svg" width={32} height={32} alt="" />
       </div>
     </div>
   );

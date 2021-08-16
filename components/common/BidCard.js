@@ -10,19 +10,21 @@ function BidCard({
   status,
   date,
   price,
-  comments,
-  likes,
-  stars,
   timer,
   fixedPriceDate,
   id,
+  comments,
+  likes,
+  stars,
+  onStarClick,
+  onLikeClick,
 }) {
   const router = useRouter();
 
   return (
     <div className={wrapperClass}>
       <div
-        className={`flex flex-col bg-darkGray rounded-20 pb-4 px-5 cursor-pointer ${
+        className={`flex flex-col bg-darkGray rounded-20 pb-4 px-5 cursor-pointer mx-9 sm:mx-0 ${
           calendar && timer ? 'pt-3' : 'pt-5'
         }`}
         onClick={() => router.push(routes.auctions.view(id))}
@@ -91,7 +93,10 @@ function BidCard({
           <div className="flex justify-between border-t border-solid border-fadeWhite1">
             <div
               className="flex items-center space-x-1 pt-3 px-1"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                onStarClick();
+              }}
             >
               <StarIcon fill="transparent" />
               <div className="text-white opacity-80 text-12">{stars}</div>
@@ -105,7 +110,10 @@ function BidCard({
             </div>
             <div
               className="flex items-center space-x-1 pt-3 px-1"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                onLikeClick();
+              }}
             >
               <LikeIcon />
               <div className="text-white opacity-80 text-12">{likes}</div>
