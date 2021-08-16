@@ -14,8 +14,10 @@ function BidCard({
   fixedPriceDate,
   id,
   comments,
-  likes,
-  stars,
+  currentLikes,
+  likeIsFilled,
+  currentStars,
+  starIsFilled,
   onStarClick,
   onLikeClick,
 }) {
@@ -98,8 +100,8 @@ function BidCard({
                 onStarClick();
               }}
             >
-              <StarIcon fill="transparent" />
-              <div className="text-white opacity-80 text-12">{stars}</div>
+              <StarIcon fill={starIsFilled ? '#fff' : 'transparent'} />
+              <div className="text-white opacity-80 text-12">{currentStars}</div>
             </div>
             <div
               className="flex items-center space-x-1 pt-3 px-1"
@@ -115,8 +117,8 @@ function BidCard({
                 onLikeClick();
               }}
             >
-              <LikeIcon />
-              <div className="text-white opacity-80 text-12">{likes}</div>
+              <LikeIcon fill={likeIsFilled ? '#fff' : 'transparent'} />
+              <div className="text-white opacity-80 text-12">{currentLikes}</div>
             </div>
           </div>
         </div>

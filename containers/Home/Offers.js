@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Slider from 'react-slick';
 import routes from '../../constants/routes';
 import { useRouter } from 'next/router';
+import { useWindowSize } from '../../utils';
 
 const text = `Apollo 11 was the spaceflight that first landed humans on the moon. 
            Neil Armstrong and Buzz Aldrin formed the American crew that landed the Apollo 
@@ -103,6 +104,7 @@ function Offers() {
   const [positions, setPositions] = useState([]);
   const sliderRef = React.createRef();
   const [dateOrderKeys, setDateOrderKeys] = useState([]);
+  const { width } = useWindowSize();
 
   const settings = {
     arrows: false,
@@ -116,12 +118,11 @@ function Offers() {
 
   useEffect(() => {
     const orderKeys = items.map((i, index) => i.key);
-    console.log(orderKeys);
     setDateOrderKeys(orderKeys);
   }, []);
 
   useEffect(() => {
-    const positions = items.map((i, index) => index * 110);
+    const positions = items.map((i, index) => (width < 1024 ? index * 130 : index * 110));
     setPositions(positions);
     const dateOrders = {};
     items?.forEach((logo, index) => {
@@ -136,30 +137,45 @@ function Offers() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row mt-6 lg:mt-11.5">
-      <div className="grid lg:hidden grid-cols-1 slick-slides-gap relative sm:mr-2 lg:mx-5">
-        <Slider className="" {...settings} ref={sliderRef}>
-          {items.map((i, index) => (
+    <div className="flex flex-col items-center lg:flex-row mt-6 lg:mt-11.5">
+      <div className="block lg:hidden w-full overflow-hidden h-20">
+        <div className="relative flex w-full h-full">
+          {items.map(({ key, date }, index) => (
             <div
-              key={i.key}
-              className="flex flex-col items-center justify-center cursor-pointer text-white"
-              onClick={() => setActiveSlide(index)}
+              key={key}
+              className={`cursor-pointer text-white absolute top-0 bottom-0 transition-all duration-200`}
+              style={{
+                transform: `translateX(${dateOrders[index + 1]}px)`,
+                opacity:
+                  dateOrderKeys.indexOf(index) === (width < 640 ? 0 : width < 768 ? 1 : 2)
+                    ? 1
+                    : 0.3,
+              }}
+              onClick={() => {
+                const num = index + 1;
+                setActiveSlide(index);
+                const newLogoOrderKeys = shift(
+                  dateOrderKeys,
+                  dateOrderKeys.indexOf(num) > 2 ? 0 : 1,
+                  Math.abs(dateOrderKeys.indexOf(num) - 2),
+                );
+                setDateOrderKeys(newLogoOrderKeys);
+                const newDateOrders = {};
+                newLogoOrderKeys.forEach((num, index) => {
+                  newDateOrders[num] = positions[index];
+                });
+                setDateOrders(newDateOrders);
+              }}
             >
-              <div
-                className="rounded-14 border border-solid border-white py-2 px-3"
-                style={{ opacity: activeSlide === index ? 1 : 0.2 }}
-              >
-                <div className="text-white text-center">{i.date}</div>
+              <div className="rounded-14 border border-solid border-white py-2 px-3">
+                <div className="text-white text-center">{date}</div>
               </div>
-              <div
-                className="-ml-1.5 transform rotate-90 mt-10"
-                style={{ opacity: activeSlide === index ? 1 : 0.2 }}
-              >
+              <div className="transform rotate-90 mt-10">
                 <Image src="/images/circleLine.svg" width={81} height={12} />
               </div>
             </div>
           ))}
-        </Slider>
+        </div>
       </div>
       <div className="hidden lg:block w-full max-w-190px flex items-center overflow-hidden">
         <div className="relative justify-between w-full">

@@ -4,17 +4,24 @@ import BidCard from './BidCard';
 function BidCardsList({ bidCards, wrapperClass, contentClass }) {
   const [likes, setLikes] = useState({});
   const [stars, setStars] = useState({});
+  const [likedCards, setLikedCards] = useState([]);
+  const [starCards, setStarCards] = useState([]);
 
-  /* useEffect(() => {
+  useEffect(() => {
     const newLikes = {};
+    const likedCards = [];
     const newStars = {};
+    const starCards = [];
     bidCards.forEach((c) => {
-      newLikes[c.key] = c.likes;
-      newStars[c.key] = c.stars;
+      newLikes[c.key] = c.details.likes;
+      newStars[c.key] = c.details.stars;
+      likedCards.push(c.key);
     });
     setLikes(newLikes);
     setStars(newStars);
-  }, []);*/
+    setLikedCards(likedCards);
+    setStarCards(starCards);
+  }, []);
 
   return (
     <div className={wrapperClass}>
@@ -24,8 +31,30 @@ function BidCardsList({ bidCards, wrapperClass, contentClass }) {
             <BidCard
               {...i.details}
               id={i.key}
-              onLikeClick={() => console.log(i.key)}
-              onStarClick={() => console.log(i.key)}
+              currentLikes={likes[i.key]}
+              likeIsFilled={likedCards.includes(i.key)}
+              starIsFilled={starCards.includes(i.key)}
+              currentStars={stars[i.key]}
+              onLikeClick={() => {
+                if (!likedCards.includes(i.key)) {
+                  setLikedCards([...likedCards, i.key]);
+                  setLikes({ ...likes, [i.key]: likes[i.key] + 1 });
+                } else {
+                  const newLikedCards = likedCards.filter((c) => c !== i.key);
+                  setLikedCards(newLikedCards);
+                  setLikes({ ...likes, [i.key]: likes[i.key] - 1 });
+                }
+              }}
+              onStarClick={() => {
+                if (!starCards.includes(i.key)) {
+                  setStarCards([...starCards, i.key]);
+                  setStars({ ...stars, [i.key]: stars[i.key] + 1 });
+                } else {
+                  const newStarCards = starCards.filter((c) => c !== i.key);
+                  setStarCards(newStarCards);
+                  setStars({ ...stars, [i.key]: stars[i.key] - 1 });
+                }
+              }}
             />
           </div>
         ))}

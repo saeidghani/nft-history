@@ -100,7 +100,7 @@ function Navigation({ wrapperClass = '', isHome }) {
     <div className={wrapperClass}>
       <div className={`flex ${isHome ? 'flex-row space-x-10' : 'flex-col space-y-10 mt-15'}`}>
         {navItems?.map((i) =>
-          width > 1024 && i.key === 6 ? null : (
+          width > 1024 && [6, 7].includes(i.key) ? null : (
             <div
               key={i.key}
               className={`flex justify-between ${isHome ? 'flex-col items-center' : ''}`}
