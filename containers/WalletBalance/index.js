@@ -20,7 +20,7 @@ function WalletBalance() {
           Connect with one of available wallet providers
         </div>
         <div className="mt-3 lg:mt-7">
-          <Image src="/images/metamask.png" width={115} height={90} />
+          <Image src="/images/metamask.svg" width={115} height={90} />
         </div>
         <Link href={routes.walletBalance.details}>
           <div
