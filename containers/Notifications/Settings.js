@@ -18,6 +18,15 @@ export default function Settings() {
     },
   ];
 
+  const handleItemClick = (item) => {
+    if (selectedItems.includes(item.key)) {
+      const newItems = selectedItems.filter((s) => s !== item.key);
+      setSelectedItems(newItems);
+    } else {
+      setSelectedItems([...selectedItems, item.key]);
+    }
+  };
+
   const handleSave = () => {
     console.log(selectedItems);
   };
@@ -33,14 +42,7 @@ export default function Settings() {
           <div
             key={i.key}
             className={`flex space-x-2.5 cursor-pointer ${index === 5 ? 'mt-11' : 'mt-5'}`}
-            onClick={() => {
-              if (selectedItems.includes(i.key)) {
-                const newItems = selectedItems.filter((s) => s !== i.key);
-                setSelectedItems(newItems);
-              } else {
-                setSelectedItems([...selectedItems, i.key]);
-              }
-            }}
+            onClick={() => handleItemClick(i)}
           >
             <div
               className={`w-6.5 h-6.5 rounded-md flex justify-center items-center

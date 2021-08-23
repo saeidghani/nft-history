@@ -393,6 +393,15 @@ function CalendarSlider({ wrapperClass }) {
     }, 500);
   };
 
+  const handleCalendarClick = () => {
+    showCalender();
+    if (displayCalendar) {
+      router.push({ pathname, query: filterQuery(query, 'displayCalendar') });
+    } else {
+      router.push({ pathname, query: { ...query, displayCalendar: !displayCalendar } });
+    }
+  };
+
   return (
     <div className={wrapperClass}>
       <div>
@@ -418,17 +427,7 @@ function CalendarSlider({ wrapperClass }) {
               </Link>
             ))}
           </div>
-          <div
-            className="cursor-pointer"
-            onClick={() => {
-              showCalender();
-              if (displayCalendar) {
-                router.push({ pathname, query: filterQuery(query, 'displayCalendar') });
-              } else {
-                router.push({ pathname, query: { ...query, displayCalendar: !displayCalendar } });
-              }
-            }}
-          >
+          <div className="cursor-pointer" onClick={handleCalendarClick}>
             {displayCalendar ? (
               <div className="bg-primary bg-opacity-10 rounded-10 px-4 pt-2 pb-1">
                 <Image src="/icons/calendarColorful.svg" width={25} height={22} />

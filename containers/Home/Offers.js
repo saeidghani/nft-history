@@ -155,6 +155,20 @@ function Offers() {
     return arr.concat(arr.splice(0, direction > 0 ? arr.length - times : times));
   };
 
+  const handleItemClick = (index) => {
+    const num = index + 1;
+    setActiveSlide(index);
+    const dir = dateOrderKeys.indexOf(num) > middle ? 0 : 1;
+    const n = Math.abs(dateOrderKeys.indexOf(num) - middle);
+    const newLogoOrderKeys = shift(dateOrderKeys, dir, n);
+    setDateOrderKeys(newLogoOrderKeys);
+    const newDateOrders = {};
+    newLogoOrderKeys.forEach((num, index) => {
+      newDateOrders[num] = positions[index];
+    });
+    setDateOrders(newDateOrders);
+  };
+
   return (
     <div className="flex flex-col lg:flex-row items-center mt-6 lg:mt-11.5">
       <div className="block lg:hidden w-full overflow-hidden h-20">
@@ -167,19 +181,7 @@ function Offers() {
                 transform: `translateX(${dateOrders[index + 1]}px)`,
                 opacity: dateOrderKeys.indexOf(index + 1) === middle ? 1 : 0.3,
               }}
-              onClick={() => {
-                const num = index + 1;
-                setActiveSlide(index);
-                const dir = dateOrderKeys.indexOf(num) > middle ? 0 : 1;
-                const n = Math.abs(dateOrderKeys.indexOf(num) - middle);
-                const newLogoOrderKeys = shift(dateOrderKeys, dir, n);
-                setDateOrderKeys(newLogoOrderKeys);
-                const newDateOrders = {};
-                newLogoOrderKeys.forEach((num, index) => {
-                  newDateOrders[num] = positions[index];
-                });
-                setDateOrders(newDateOrders);
-              }}
+              onClick={() => handleItemClick(index)}
             >
               <div className="rounded-14 border border-solid border-white py-2 px-3">
                 <div className="text-white text-center">{date}</div>
@@ -205,21 +207,7 @@ function Offers() {
                 transform: `translateY(${dateOrders[index + 1]}px)`,
                 opacity: dateOrderKeys.indexOf(index + 1) === middle ? 1 : 0.3,
               }}
-              onClick={() => {
-                const num = index + 1;
-                setActiveSlide(index);
-                const newLogoOrderKeys = shift(
-                  dateOrderKeys,
-                  dateOrderKeys.indexOf(num) > middle ? 0 : 1,
-                  Math.abs(dateOrderKeys.indexOf(num) - middle),
-                );
-                setDateOrderKeys(newLogoOrderKeys);
-                const newDateOrders = {};
-                newLogoOrderKeys.forEach((num, index) => {
-                  newDateOrders[num] = positions[index];
-                });
-                setDateOrders(newDateOrders);
-              }}
+              onClick={() => handleItemClick(index)}
             >
               <div className="rounded-14 border border-solid border-white py-2 px-3">
                 <div className="text-white text-center">{date}</div>
@@ -286,7 +274,6 @@ function Offers() {
                   <div
                     className="h-14 w-14 rounded-12 flex justify-center items-center
                         border border-solid border-lightBlue cursor-pointer"
-                    onClick={() => {}}
                   >
                     <Image src="/icons/switch.svg" width={26} height={26} />
                   </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Modal from '../../components/UI/Modal';
-import Layout from '../../Layout';
 
 function PlaceBidModal({ open, onCloseModal, onConfirmPlaceBid }) {
   const title = (

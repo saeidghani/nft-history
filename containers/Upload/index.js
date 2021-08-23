@@ -42,6 +42,8 @@ export default function Upload() {
     setSelectedFile(e.target.files[0]);
   };
 
+  const handleAvatarClick = () => avatarFileRef?.current?.click();
+
   const onSubmit = (data) => console.log(data);
 
   return (
@@ -72,7 +74,7 @@ export default function Upload() {
                 <div
                   className="flex justify-center relative bottom-40 lg:bottom-44 xl:bottom-72
                              z-30 mt-4 cursor-pointer"
-                  onClick={() => avatarFileRef?.current?.click()}
+                  onClick={handleAvatarClick}
                 >
                   <Image src="/icons/switchLight.svg" width={94} height={96} />
                 </div>

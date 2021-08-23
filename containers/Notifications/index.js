@@ -21,6 +21,15 @@ function Notifications() {
     { key: 'reject', title: 'Reject' },
   ];
 
+  const handleOpenOfferButtonsClick = (id) =>
+    setAcceptedOffers({
+      ...acceptedOffers,
+      [id]:
+        acceptedOffers[id] === acceptRejectButtons[0].key
+          ? acceptRejectButtons[1].key
+          : acceptRejectButtons[0].key,
+    });
+
   const OpenOfferButtons = ({ id, wrapperClass }) => (
     <div className={wrapperClass}>
       <div className="flex space-x-4 xl:space-x-5 mt-5">
@@ -32,15 +41,7 @@ function Notifications() {
                 ? 'text-white btn-primary'
                 : `text-lightBlue border border-solid border-lightBlue`
             }`}
-            onClick={() =>
-              setAcceptedOffers({
-                ...acceptedOffers,
-                [id]:
-                  acceptedOffers[id] === acceptRejectButtons[0].key
-                    ? acceptRejectButtons[1].key
-                    : acceptRejectButtons[0].key,
-              })
-            }
+            onClick={() => handleOpenOfferButtonsClick(id)}
           >
             {b.title}
           </button>

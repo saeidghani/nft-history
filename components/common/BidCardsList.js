@@ -23,6 +23,28 @@ function BidCardsList({ bidCards, wrapperClass, contentClass }) {
     setStarCards(starCards);
   }, []);
 
+  const handleLikeClick = (item) => {
+    if (!likedCards.includes(item.key)) {
+      setLikedCards([...likedCards, item.key]);
+      setLikes({ ...likes, [item.key]: likes[item.key] + 1 });
+    } else {
+      const newLikedCards = likedCards.filter((c) => c !== item.key);
+      setLikedCards(newLikedCards);
+      setLikes({ ...likes, [item.key]: likes[item.key] - 1 });
+    }
+  };
+
+  const handleStarClick = (item) => {
+    if (!starCards.includes(item.key)) {
+      setStarCards([...starCards, item.key]);
+      setStars({ ...stars, [item.key]: stars[item.key] + 1 });
+    } else {
+      const newStarCards = starCards.filter((c) => c !== item.key);
+      setStarCards(newStarCards);
+      setStars({ ...stars, [item.key]: stars[item.key] - 1 });
+    }
+  };
+
   return (
     <div className={wrapperClass}>
       <div className={contentClass}>
@@ -35,26 +57,8 @@ function BidCardsList({ bidCards, wrapperClass, contentClass }) {
               likeIsFilled={likedCards.includes(i.key)}
               starIsFilled={starCards.includes(i.key)}
               currentStars={stars[i.key]}
-              onLikeClick={() => {
-                if (!likedCards.includes(i.key)) {
-                  setLikedCards([...likedCards, i.key]);
-                  setLikes({ ...likes, [i.key]: likes[i.key] + 1 });
-                } else {
-                  const newLikedCards = likedCards.filter((c) => c !== i.key);
-                  setLikedCards(newLikedCards);
-                  setLikes({ ...likes, [i.key]: likes[i.key] - 1 });
-                }
-              }}
-              onStarClick={() => {
-                if (!starCards.includes(i.key)) {
-                  setStarCards([...starCards, i.key]);
-                  setStars({ ...stars, [i.key]: stars[i.key] + 1 });
-                } else {
-                  const newStarCards = starCards.filter((c) => c !== i.key);
-                  setStarCards(newStarCards);
-                  setStars({ ...stars, [i.key]: stars[i.key] - 1 });
-                }
-              }}
+              onLikeClick={() => handleLikeClick(i)}
+              onStarClick={() => handleStarClick(i)}
             />
           </div>
         ))}

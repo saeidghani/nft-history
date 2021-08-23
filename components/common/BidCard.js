@@ -23,6 +23,16 @@ function BidCard({
 }) {
   const router = useRouter();
 
+  const handleStarClick = (e) => {
+    e.stopPropagation();
+    onStarClick();
+  };
+
+  const handleLikeClick = (e) => {
+    e.stopPropagation();
+    onLikeClick();
+  };
+
   return (
     <div className={wrapperClass}>
       <div
@@ -93,13 +103,7 @@ function BidCard({
             <div className="border-b border-solid border-white">More</div>
           </div>
           <div className="flex justify-between border-t border-solid border-fadeWhite1">
-            <div
-              className="flex items-center space-x-1 pt-3 px-1"
-              onClick={(e) => {
-                e.stopPropagation();
-                onStarClick();
-              }}
-            >
+            <div className="flex items-center space-x-1 pt-3 px-1" onClick={handleStarClick}>
               <StarIcon fill={starIsFilled ? '#fff' : 'transparent'} />
               <div className="text-white opacity-80 text-12">{currentStars}</div>
             </div>
@@ -110,13 +114,7 @@ function BidCard({
               <CommentIcon />
               <div className="text-white opacity-80 text-12">{comments}</div>
             </div>
-            <div
-              className="flex items-center space-x-1 pt-3 px-1"
-              onClick={(e) => {
-                e.stopPropagation();
-                onLikeClick();
-              }}
-            >
+            <div className="flex items-center space-x-1 pt-3 px-1" onClick={handleLikeClick}>
               <LikeIcon fill={likeIsFilled ? '#fff' : 'transparent'} />
               <div className="text-white opacity-80 text-12">{currentLikes}</div>
             </div>

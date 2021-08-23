@@ -4,7 +4,6 @@ import Layout from '../../Layout';
 import Image from 'next/image';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import moment from 'moment';
 import Select from '../../components/UI/Select';
 import TimePicker from '../../components/UI/TimePicker';
 
@@ -68,6 +67,8 @@ export default function Edit() {
     { key: 'fixed', title: 'Fixed' },
   ];
 
+  const handleAvatarClick = () => avatarFileRef?.current?.click();
+
   return (
     <Layout>
       <form
@@ -101,7 +102,7 @@ export default function Edit() {
                 <div
                   className="flex justify-center relative bottom-40 lg:bottom-44 xl:bottom-72
                              z-30 mt-4 cursor-pointer"
-                  onClick={() => avatarFileRef?.current?.click()}
+                  onClick={handleAvatarClick}
                 >
                   <Image src="/icons/switchLight.svg" width={94} height={96} />
                 </div>

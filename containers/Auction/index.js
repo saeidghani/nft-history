@@ -67,6 +67,20 @@ function Auctions() {
     { key: 'likes', title: 'Likes(20)' },
   ];
 
+  const handleOfferClick = () => {
+    if (auctionStarted) {
+      setPlaceABidOpen(true);
+    } else if (onSale && cancel) {
+      setCancelAuctionOpen(true);
+    } else if (!onSale && auctionEnded) {
+      setMakeOfferOpen(true);
+    } else if (fixedPrice) {
+    } else if (onSale && auctionEnded) {
+    } else if (auctionWon) {
+    } else {
+    }
+  };
+
   const Poster = () => (
     <div
       className={`justify-self-center order-1 bg-darkGray rounded-20 
@@ -253,19 +267,7 @@ function Auctions() {
             className={`btn-primary text-white text-18 font-medium rounded-12 w-full h-14 ${
               auctionNotStarted ? 'opacity-40 cursor-not-allowed' : ''
             }`}
-            onClick={() => {
-              if (auctionStarted) {
-                setPlaceABidOpen(true);
-              } else if (onSale && cancel) {
-                setCancelAuctionOpen(true);
-              } else if (!onSale && auctionEnded) {
-                setMakeOfferOpen(true);
-              } else if (fixedPrice) {
-              } else if (onSale && auctionEnded) {
-              } else if (auctionWon) {
-              } else {
-              }
-            }}
+            onClick={handleOfferClick}
           >
             {auctionNotStarted || auctionStarted
               ? 'Place a Bid'
@@ -293,7 +295,6 @@ function Auctions() {
             <div
               className="h-14 w-14 rounded-18 flex justify-center items-center
                         border border-solid border-lightBlue cursor-pointer"
-              //onClick={() => setUploadOpen(true)}
             >
               <Image src="/icons/switch.svg" width={26} height={26} />
             </div>

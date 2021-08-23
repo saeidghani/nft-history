@@ -7,6 +7,24 @@ function Followers() {
   const [followingUsers, setFollowingUsers] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
   const [followerUsers, setFollowerUsers] = useState([2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
 
+  const handleFollowingClick = (item) => {
+    if (followingUsers.includes(item)) {
+      const newFollowings = followingUsers.filter((u) => u !== item);
+      setFollowingUsers(newFollowings);
+    } else {
+      setFollowingUsers([...followingUsers, item]);
+    }
+  };
+
+  const handleFollowersClick = (item) => {
+    if (followerUsers.includes(item)) {
+      const newFollowers = followerUsers.filter((u) => u !== item);
+      setFollowerUsers(newFollowers);
+    } else {
+      setFollowerUsers([...followerUsers, item]);
+    }
+  };
+
   const SearchInput = ({ wrapperClass }) => (
     <div className={wrapperClass}>
       <div className="relative w-full">
@@ -82,14 +100,7 @@ function Followers() {
                 <FollowStatus
                   key={i}
                   isFollowing={followingUsers.includes(i)}
-                  onClick={() => {
-                    if (followingUsers.includes(i)) {
-                      const newFollowings = followingUsers.filter((u) => u !== i);
-                      setFollowingUsers(newFollowings);
-                    } else {
-                      setFollowingUsers([...followingUsers, i]);
-                    }
-                  }}
+                  onClick={() => handleFollowingClick(i)}
                 />
               ))}
             </div>
@@ -108,14 +119,7 @@ function Followers() {
                 <FollowStatus
                   key={i}
                   isFollowing={followerUsers.includes(i)}
-                  onClick={() => {
-                    if (followerUsers.includes(i)) {
-                      const newFollowers = followerUsers.filter((u) => u !== i);
-                      setFollowerUsers(newFollowers);
-                    } else {
-                      setFollowerUsers([...followerUsers, i]);
-                    }
-                  }}
+                  onClick={() => handleFollowersClick(i)}
                 />
               ))}
             </div>
@@ -136,14 +140,7 @@ function Followers() {
               <FollowStatus
                 key={i}
                 isFollowing={followingUsers.includes(i)}
-                onClick={() => {
-                  if (followingUsers.includes(i)) {
-                    const newFollowings = followingUsers.filter((u) => u !== i);
-                    setFollowingUsers(newFollowings);
-                  } else {
-                    setFollowingUsers([...followingUsers, i]);
-                  }
-                }}
+                onClick={() => handleFollowingClick(i)}
               />
             ))}
           </div>
@@ -161,14 +158,7 @@ function Followers() {
               <FollowStatus
                 key={i}
                 isFollowing={followerUsers.includes(i)}
-                onClick={() => {
-                  if (followerUsers.includes(i)) {
-                    const newFollowers = followerUsers.filter((u) => u !== i);
-                    setFollowerUsers(newFollowers);
-                  } else {
-                    setFollowerUsers([...followerUsers, i]);
-                  }
-                }}
+                onClick={() => handleFollowersClick(i)}
               />
             ))}
           </div>

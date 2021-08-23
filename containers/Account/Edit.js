@@ -41,6 +41,8 @@ export default function Edit() {
     setSelectedFile(e.target.files[0]);
   };
 
+  const handleAvatarClick = () => avatarFileRef?.current?.click();
+
   const onSubmit = (data) => console.log(data);
 
   return (
@@ -73,7 +75,7 @@ export default function Edit() {
               <div
                 className="absolute top-9 left-2.5 font-semibold cursor-pointer mt-4"
                 style={{ color: '#377CF6', fontSize: 18 }}
-                onClick={() => avatarFileRef?.current?.click()}
+                onClick={handleAvatarClick}
               >
                 Add Picture
               </div>
@@ -83,7 +85,7 @@ export default function Edit() {
             <div
               className="z-10 font-semibold cursor-pointer mt-4"
               style={{ color: '#377CF6', fontSize: 18 }}
-              onClick={() => avatarFileRef?.current?.click()}
+              onClick={handleAvatarClick}
             >
               Edit picture
             </div>

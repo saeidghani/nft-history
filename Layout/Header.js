@@ -16,6 +16,11 @@ function Header({ isHome }) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [displaySearch, setDisplaySearch] = useState(false);
 
+  const handleSearchOpen = () => {
+    setMenuOpen(false);
+    setSearchOpen(true);
+  };
+
   const Menu = () => (
     <div className="flex justify-between items-center pt-13 px-6">
       <div className="flex items-center space-x-4">
@@ -39,13 +44,7 @@ function Header({ isHome }) {
         </div>
       </div>
       <div className="w-full flex justify-end cursor-pointer">
-        <div
-          className="pt-2"
-          onClick={() => {
-            setMenuOpen(false);
-            setSearchOpen(true);
-          }}
-        >
+        <div className="pt-2" onClick={handleSearchOpen}>
           <Image src="/icons/magnifier.svg" width={25} height={25} />
         </div>
       </div>
