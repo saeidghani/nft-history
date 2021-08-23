@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import Image from 'next/image';
 import { Listbox, Transition } from '@headlessui/react';
-import { twOverride } from '../../utils';
+import { twOverride } from '../utils';
 
-export default function Select({
+export default function MarketPlaceSelect({
   type = 'primary',
   options,
   label,
@@ -17,34 +17,6 @@ export default function Select({
   isSwitch,
   ...props
 }) {
-  const SwitchOption = ({ isSelected, title }) => (
-    <>
-      <div
-        className={`w-4 h-4 rounded-full flex justify-center items-center border border-solid 
-      ${isSelected ? 'border-primary' : 'border-lightBlue'}`}
-      >
-        <div className={`w-2 h-2 rounded-full ${isSelected ? 'bg-primary' : 'bg-transparent'}`} />
-      </div>
-      <div className={`text-white text-12 ${isSelected ? '' : 'text-opacity-40'}`}>{title}</div>
-    </>
-  );
-
-  const CheckboxOption = ({ isSelected, title }) => (
-    <>
-      <div
-        className={`w-4 h-4 rounded flex justify-center items-center border border-solid 
-      ${isSelected ? 'bg-primary border-primary' : 'border-lightBlue'}`}
-      >
-        {isSelected && (
-          <div className={`pb-1 ${isSelected ? '' : 'bg-transparent'}`}>
-            <Image src="/icons/tick.svg" width={8} height={6} />
-          </div>
-        )}
-      </div>
-      <div className={`text-white text-12 ${isSelected ? '' : 'text-opacity-40'}`}>{title}</div>
-    </>
-  );
-
   return (
     <div className="w-38.5 xs:w-40">
       <Listbox placeholder={placeholder} value={selected.value} onChange={onSelect}>
@@ -116,15 +88,57 @@ export default function Select({
                             onClick={() => onSelect(option)}
                           >
                             {isSwitch ? (
-                              <SwitchOption
-                                title={option.title}
-                                isSelected={option.key === selected.key}
-                              />
+                              <>
+                                <div
+                                  className={`w-4 h-4 rounded-full flex justify-center items-center border border-solid 
+                                             ${
+                                               option.key === selected.key
+                                                 ? 'border-primary'
+                                                 : 'border-lightBlue'
+                                             }`}
+                                >
+                                  <div
+                                    className={`w-2 h-2 rounded-full ${
+                                      option.key === selected.key ? 'bg-primary' : 'bg-transparent'
+                                    }`}
+                                  />
+                                </div>
+                                <div
+                                  className={`text-white text-12 ${
+                                    option.key === selected.key ? '' : 'text-opacity-40'
+                                  }`}
+                                >
+                                  {option.title}
+                                </div>
+                              </>
                             ) : (
-                              <CheckboxOption
-                                title={option.title}
-                                isSelected={option.key === selected.key}
-                              />
+                              <>
+                                <div
+                                  className={`w-4 h-4 rounded flex justify-center items-center border border-solid 
+                                              ${
+                                                option.key === selected.key
+                                                  ? 'bg-primary border-primary'
+                                                  : 'border-lightBlue'
+                                              }`}
+                                >
+                                  {option.key === selected.key && (
+                                    <div
+                                      className={`pb-1 ${
+                                        option.key === selected.key ? '' : 'bg-transparent'
+                                      }`}
+                                    >
+                                      <Image src="/icons/tick.svg" width={8} height={6} />
+                                    </div>
+                                  )}
+                                </div>
+                                <div
+                                  className={`text-white text-12 ${
+                                    option.key === selected.key ? '' : 'text-opacity-40'
+                                  }`}
+                                >
+                                  {option.title}
+                                </div>
+                              </>
                             )}
                           </div>
                         </Listbox.Option>

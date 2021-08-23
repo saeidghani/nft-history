@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Modal from '../../components/UI/Modal';
-import TimePicker from '../../components/UI/TimePicker';
-import Select from '../../components/UI/Select';
+import Modal from './UI/Modal';
+import TimePicker from './UI/TimePicker';
+import Select from './UI/Select';
 
 function MakeOfferModal({ open, onCloseModal }) {
   const [selectedOfferExpiration, setSelectedOfferExpiration] = useState({});

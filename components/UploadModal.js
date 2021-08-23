@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Modal from '../../components/UI/Modal';
-import routes from '../../constants/routes';
+import Modal from './UI/Modal';
+import routes from '../constants/routes';
 
 function UploadModal({ open, onCloseModal }) {
   const title = (
