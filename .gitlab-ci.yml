@@ -14,9 +14,10 @@ deploy-prod:
   stage: deploy
   variables:
     PORT: $MASTER_PORT
+    CI: ''
   script:
     - yarn
-    - yarn build
+    - CI='' yarn build
     - pm2 delete $MASTER_NAME || true
     - pm2 start npm --name $MASTER_NAME -- run start -- --port $PORT
   only:
@@ -28,9 +29,10 @@ deploy-dev:
   stage: deploy
   variables:
     PORT: $DEVELOP_PORT
+    CI: ''
   script:
     - yarn
-    - yarn build
+    - CI='' yarn build
     - pm2 delete $DEVELOP_NAME || true
     - pm2 start npm --name $DEVELOP_NAME -- run start -- --port $PORT
   only:
