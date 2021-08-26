@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Layout from '../../Layout';
 import PremierMarketplace from '../../components/common/PremierMarketplace';
 import routes from '../../constants/routes';
-import { claimingItems } from '../../constants/walletDetailsData';
+import { claimingItems, offersItems, historyItems } from '../../constants/walletDetailsData';
 
 function WalletBalanceDetails() {
   return (

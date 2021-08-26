@@ -179,6 +179,7 @@ export default function EditAuction() {
                   minDate={startDate}
                   placeholder="Right after listing"
                 />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   className="absolute top-7 right-6 pointer-events-none transform rotate-180"
                   style={{ top: 28, right: 24 }}
