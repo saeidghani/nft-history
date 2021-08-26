@@ -61,7 +61,7 @@ function Offers() {
           {items.map(({ key, date }, index) => (
             <div
               key={key}
-              className={`cursor-pointer text-white absolute top-0 bottom-0 transition-all duration-200`}
+              className={`cursor-pointer text-white absolute top-0 bottom-0 transition-all duration-300`}
               style={{
                 transform: `translateX(${dateOrders[index + 1]}px)`,
                 opacity: dateOrderKeys.indexOf(index + 1) === middle ? 1 : 0.3,
@@ -87,7 +87,7 @@ function Offers() {
             <div
               key={key}
               className={`flex flex-row items-center justify-center cursor-pointer text-white 
-                        absolute left-0 right-0 mx-auto transition-all duration-200`}
+                        absolute left-0 right-0 mx-auto transition-all duration-300`}
               style={{
                 transform: `translateY(${dateOrders[index + 1]}px)`,
                 opacity: dateOrderKeys.indexOf(index + 1) === middle ? 1 : 0.3,
