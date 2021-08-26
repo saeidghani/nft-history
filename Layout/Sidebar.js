@@ -29,7 +29,7 @@ function Sidebar() {
         style={{ width: 206, height: 213 }}
       >
         <div className="flex justify-center -mt-10">
-          <Image src="/images/calendarIllustration.png" width={180} height={180} />
+          <Image src="/images/calendarIllustration.svg" width={180} height={180} />
         </div>
         <div className="">
           <div className="text-white text-15 font-light text-center" style={{ letterSpacing: 2 }}>
